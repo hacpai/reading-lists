@@ -85,8 +85,58 @@
                 <div class="q-row">
                     <div class="q-left">
                         <h2>Form</h2>
-                        <form method="GET" action="#">
+                        <form method="GET" action="#" class="q-form">
+                            <div class="q-form-row">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            </div>
+                            <div class="q-form-row">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <div class="q-form-row">
+                                <label for="exampleInputFile">File input</label>
+                                <input type="file" id="exampleInputFile">
+                                <p class="q-help-block">Example block-level help text here.</p>
+                            </div>
+                            <div class="q-checkbox">
+                                <label>
+                                    <input type="checkbox"> Check me out
+                                </label>
+                            </div>
+                            <label class="q-checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                            </label>
+                            <label class="q-checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                            </label>
+                            <label class="q-checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                            </label>
 
+                            <select class="q-form-row">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                            <select multiple class="q-form-row">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <div class="q-form-row success">
+                                <label class="q-form-label" for="inputSuccess2">Input with success</label>
+                                <input type="text" class="q-form-label" id="inputSuccess2">
+                                <span class="q-form-success"></span>
+                            </div>
+                            <div class="q-form-row">
+                                <button class="q-btn q-btn-primary">Submit</button>
+                            </div>
                         </form>
                     </div>
                     <div class="q-right">
