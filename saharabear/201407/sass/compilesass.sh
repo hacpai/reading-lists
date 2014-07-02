@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ${0%/*}
-sass --watch src/main.sass:style.css
+sass --watch src/main.scss:style.css
