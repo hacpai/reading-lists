@@ -1,7 +1,15 @@
+@import "color";
 @import "base";
 @import "reset";
-@import "color";
 
-body{
-  background-color: #EEEEEE;
-}
+@import "index";
+@import "panel";
+@import "image";
+@import "button";
+@import "table";
+@import "form";
+@import "pagination";
+@import "label";
+@import "alert";
+@import "listgroup";
+@import "badge"; 
