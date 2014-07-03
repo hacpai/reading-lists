@@ -1,9 +1,29 @@
-.q-clearfix {
+.q-clearfix:after {
   clear: both;
 }
 
-.q-clearfix:before,
-.q-clearfix:after {
+.q-row {
+  display:block;
+}
+
+.q-row:after {
   clear: both;
+  margin:20px;
+}
+
+.q-left {
+  margin:0;
+  padding:0;
+  border:0;
+  float:left;
+  padding: 20px 10px 20px 0px;
+}
+
+.q-right {
+  margin:0;
+  padding:0;
+  border:0;
+  float:right;
+  padding: 20px 0px 20px 10px;
 }
 

@@ -301,12 +301,29 @@ h1, h2, h3, h4, h5, h6 {
 .typo img {
   max-width: 100%; }
 
-.q-clearfix {
-  clear: both; }
-
-.q-clearfix:before,
 .q-clearfix:after {
   clear: both; }
+
+.q-row {
+  display: block; }
+
+.q-row:after {
+  clear: both;
+  margin: 20px; }
+
+.q-left {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  float: left;
+  padding: 20px 10px 20px 0px; }
+
+.q-right {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  float: right;
+  padding: 20px 0px 20px 10px; }
 
 .q-header {
   background-color: #111111;
@@ -344,6 +361,9 @@ h1, h2, h3, h4, h5, h6 {
 .q-container {
   width: 1180px;
   margin: 0 auto; }
+
+.q-body {
+  padding: 20px 0px; }
 
 .q-footer {
   height: 50px;
