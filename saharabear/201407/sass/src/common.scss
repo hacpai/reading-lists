@@ -1,1 +1,9 @@
- 
+.q-clearfix {
+  clear: both;
+}
+
+.q-clearfix:before,
+.q-clearfix:after {
+  clear: both;
+}
+
