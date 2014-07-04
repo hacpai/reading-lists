@@ -305,25 +305,34 @@ h1, h2, h3, h4, h5, h6 {
   clear: both; }
 
 .q-row {
-  display: block; }
+  margin: 10px 0px 0px 10px; }
 
 .q-row:after {
-  clear: both;
-  margin: 20px; }
+  content: "";
+  display: block;
+  clear: both; }
 
 .q-left {
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 10px;
   float: left;
-  padding: 20px 10px 20px 0px; }
+  width: 560px; }
+
+.q-left:hover h2 {
+  color: #2ecc40; }
 
 .q-right {
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 10px;
   float: right;
-  padding: 20px 0px 20px 10px; }
+  width: 560px; }
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #aaaaaa;
+  padding: 0px 0px 10px 0px;
+  border-bottom: 2px solid #aaaaaa; }
 
 .q-header {
   background-color: #111111;

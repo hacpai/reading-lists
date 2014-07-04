@@ -1,29 +1,44 @@
+@import "color";
+
 .q-clearfix:after {
   clear: both;
 }
 
-.q-row {
-  display:block;
+.q-row{
+  margin:10px 0px 0px 10px;
 }
 
-.q-row:after {
-  clear: both;
-  margin:20px;
+.q-row:after{
+  content: "";
+  display:block;
+  clear:both;
 }
 
 .q-left {
-  margin:0;
-  padding:0;
-  border:0;
+  margin:0;;
+  padding:10px;
   float:left;
-  padding: 20px 10px 20px 0px;
+  width: 560px;
+}
+
+.q-left:hover{
+  h2{
+    color:$color-green;
+  }
 }
 
 .q-right {
   margin:0;
-  padding:0;
-  border:0;
+  padding:10px;
   float:right;
-  padding: 20px 0px 20px 10px;
+  width: 560px;
+}
+
+h2{
+  font-size: 26px;
+  font-weight: bold;
+  color:$color-gray;
+  padding:0px 0px 10px 0px;
+  border-bottom: 2px solid $color-gray;
 }
 
