@@ -1,0 +1,23 @@
+@import "color";
+
+.q-panel{
+  border: 2px solid $color-olive;
+  border-radius: 4px 4px 0px 0px;
+  margin:20px;
+}
+
+.q-panel-header{
+  min-height: 20px;
+  padding:10px;
+  color: $color-white;
+  background-color: $color-olive;
+}
+.q-panel-body{
+  padding:10px;
+}
+
+.q-panel-footer{
+  background-color:$color-olive;
+  color: $color-silver;
+  padding: 5px 10px;
+}

@@ -386,3 +386,22 @@ h2 {
     padding: 10px 0px; }
     .q-footer .q-right a {
       color: white; }
+
+.q-panel {
+  border: 2px solid #3d9970;
+  border-radius: 4px 4px 0px 0px;
+  margin: 20px; }
+
+.q-panel-header {
+  min-height: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #3d9970; }
+
+.q-panel-body {
+  padding: 10px; }
+
+.q-panel-footer {
+  background-color: #3d9970;
+  color: #dddddd;
+  padding: 5px 10px; }
