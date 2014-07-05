@@ -321,7 +321,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 10px;
   float: left;
-  width: 560px; }
+  width: 50%; }
 
 .q-left:hover h2 {
   color: #2ecc40; }
@@ -330,7 +330,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 10px;
   float: right;
-  width: 560px; }
+  width: 50%; }
 
 h2 {
   font-size: 26px;
