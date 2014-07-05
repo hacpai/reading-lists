@@ -301,6 +301,11 @@ h1, h2, h3, h4, h5, h6 {
 .typo img {
   max-width: 100%; }
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 .q-clearfix:after {
   clear: both; }
 
@@ -362,7 +367,6 @@ h2 {
           text-decoration: none; }
       .q-header .q-menu ul li:hover {
         background-color: #dddddd;
-        height: 96px;
         border-bottom: 4px solid #2ecc40; }
         .q-header .q-menu ul li:hover a {
           color: #2ecc40; }
