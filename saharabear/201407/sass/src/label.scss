@@ -1,0 +1,20 @@
+@import "color";
+
+.q-label {
+  margin: 10px;
+  padding: 5px 10px;
+  color: $color-white;
+  font-weight:bold;
+  border-radius: 6px;
+  border: 1px solid ;
+  display: inline-block;
+  
+}
+
+.q-label-primary {
+  background-color: $color-blue;
+}
+
+.q-label-success {
+  background-color: $color-green;
+}

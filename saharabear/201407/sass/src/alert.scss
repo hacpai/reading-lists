@@ -1,0 +1,20 @@
+@import "color";
+
+.q-alert {
+  padding: 10px 20px;
+  margin: 20px 0px;
+  border-radius: 6px;
+  line-height: 100%;
+}
+
+.q-alert-primary {
+  border:1px solid $color-blue;
+  background-color: $color-aqua;
+  color: $color-blue;
+}
+
+.q-alert-success {
+  border:1px solid $color-green;
+  background-color: $color-lime;
+  color: $color-olive;
+}

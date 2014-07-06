@@ -413,3 +413,34 @@ h2 {
   max-width: 100%;
   border-radius: 4px;
   border: 1px solid #aaaaaa; }
+
+.q-label {
+  margin: 10px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 1px solid;
+  display: inline-block; }
+
+.q-label-primary {
+  background-color: #0074d9; }
+
+.q-label-success {
+  background-color: #2ecc40; }
+
+.q-alert {
+  padding: 10px 20px;
+  margin: 20px 0px;
+  border-radius: 6px;
+  line-height: 100%; }
+
+.q-alert-primary {
+  border: 1px solid #0074d9;
+  background-color: #7fdbff;
+  color: #0074d9; }
+
+.q-alert-success {
+  border: 1px solid #2ecc40;
+  background-color: #01ff70;
+  color: #3d9970; }
