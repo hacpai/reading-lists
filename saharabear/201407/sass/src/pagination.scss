@@ -1,0 +1,27 @@
+@import "color";
+
+.q-pagination {
+  display: inline-block;
+  margin: 20px 0px;
+  border: 1px solid $color-olive;
+  border-radius: 4px;
+  width: auto;
+  li{
+    display:inline;
+    border-right:1px solid $color-olive;
+  }
+
+  li:nth-last-child(-n+1){
+    border-gith: 0px;
+  }
+  a:hover{
+    position:relative;
+    float:left;
+    text-decoration: none;
+  }
+  li:hover{
+    color: $color-white;
+    background-color: $color-olive;
+  }
+}
+

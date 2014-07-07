@@ -459,6 +459,25 @@ h2 {
     background-color: #0074d9;
     color: white; }
 
+.q-pagination {
+  display: inline-block;
+  margin: 20px 0px;
+  border: 1px solid #3d9970;
+  border-radius: 4px;
+  width: auto; }
+  .q-pagination li {
+    display: inline;
+    border-right: 1px solid #3d9970; }
+  .q-pagination li:nth-last-child(-n+1) {
+    border-gith: 0px; }
+  .q-pagination a:hover {
+    position: relative;
+    float: left;
+    text-decoration: none; }
+  .q-pagination li:hover {
+    color: white;
+    background-color: #3d9970; }
+
 .q-label {
   margin: 10px;
   padding: 5px 10px;
