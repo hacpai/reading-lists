@@ -1,0 +1,33 @@
+@import "color";
+
+.q-table{
+  width: 100%;
+  empty-cells: show;
+  border-collapse: collapse;
+  th,td{
+    text-align:center;
+    padding: 5px;
+  }
+  th{
+    font-weight: bold;
+  }
+  tr{
+    border-bottom: 1px solid $color-silver;
+  }
+  tbody>tr:hover{
+    background-color: $color-silver;
+  }
+  caption{
+    text-align: left;
+    font-weight: bold;
+    font-size: 200%;
+    color: $color-olive;
+    border-bottom: .2em solid #4ca;
+    margin-bottom: .5em;
+  }
+  thead,tfoot{
+    background-color: $color-blue;
+    color: $color-white;
+  }
+
+}

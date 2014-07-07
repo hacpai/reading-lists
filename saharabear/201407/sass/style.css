@@ -435,6 +435,30 @@ h2 {
 .q-btn-success:hover {
   background-color: #01ff70; }
 
+.q-table {
+  width: 100%;
+  empty-cells: show;
+  border-collapse: collapse; }
+  .q-table th, .q-table td {
+    text-align: center;
+    padding: 5px; }
+  .q-table th {
+    font-weight: bold; }
+  .q-table tr {
+    border-bottom: 1px solid #dddddd; }
+  .q-table tbody > tr:hover {
+    background-color: #dddddd; }
+  .q-table caption {
+    text-align: left;
+    font-weight: bold;
+    font-size: 200%;
+    color: #3d9970;
+    border-bottom: .2em solid #4ca;
+    margin-bottom: .5em; }
+  .q-table thead, .q-table tfoot {
+    background-color: #0074d9;
+    color: white; }
+
 .q-label {
   margin: 10px;
   padding: 5px 10px;
