@@ -1,0 +1,44 @@
+@import "color";;
+
+.q-form{
+  margin: 20px;
+  .q-form-row{
+    display:block;
+    margin-bottom:20px;
+  }
+
+  input[type=text],
+  input[type=password],
+  input[type=textarea],
+  input[type=email]{
+    display:block;
+    width: 100%;
+    border: 1px solid $color-gray;
+    padding: 5px;
+    border-radius: 5px;
+    color: $color-gray;
+  }
+
+  input[type=checkbox]{
+    border: 1px solid $color-gray;
+    color: $color-gray;
+  }
+  
+  select{
+    padding:5px;
+    border: 1px solid $color-gray;
+    border-radius: 5px;
+    color: $color-gray;
+    width: 100%;
+    display:block;
+  }
+
+  #inputSuccess2{
+    border: 1px solid $color-green;
+  }
+
+  .q-checkbox{
+    display:inline-block;
+  }
+
+}
