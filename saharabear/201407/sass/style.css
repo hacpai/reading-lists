@@ -491,22 +491,27 @@ h2 {
 
 .q-pagination {
   display: inline-block;
-  margin: 20px 0px;
+  margin: 20px auto;
   border: 1px solid #3d9970;
   border-radius: 4px;
-  width: auto; }
+  box-sizing: border-box; }
   .q-pagination li {
+    box-sizing: border-box;
     display: inline;
-    border-right: 1px solid #3d9970; }
+    position: relative; }
   .q-pagination li:nth-last-child(-n+1) {
-    border-gith: 0px; }
-  .q-pagination a:hover {
+    border-with: 0px;
+    float: left; }
+  .q-pagination a {
+    border-right: 1px solid #3d9970;
     position: relative;
     float: left;
-    text-decoration: none; }
-  .q-pagination li:hover {
+    padding: 5px 10px;
+    margin-left: 0px; }
+  .q-pagination a:hover {
+    background-color: #3d9970;
     color: white;
-    background-color: #3d9970; }
+    text-decoration: none; }
 
 .q-label {
   margin: 10px;

@@ -2,26 +2,36 @@
 
 .q-pagination {
   display: inline-block;
-  margin: 20px 0px;
+  margin: 20px auto;
   border: 1px solid $color-olive;
   border-radius: 4px;
-  width: auto;
+  box-sizing: border-box;
   li{
+    box-sizing: border-box;
     display:inline;
-    border-right:1px solid $color-olive;
+    position:relative;
   }
 
   li:nth-last-child(-n+1){
-    border-gith: 0px;
+    border-with: 0px;
+    float:left;
+
+
   }
-  a:hover{
+
+  a{
+    border-right:1px solid $color-olive;
     position:relative;
     float:left;
+    padding: 5px 10px;
+    margin-left:0px;
+  }
+
+  a:hover{
+    background-color: $color-olive;
+    color: $color-white;
     text-decoration: none;
   }
-  li:hover{
-    color: $color-white;
-    background-color: $color-olive;
-  }
+
 }
 
