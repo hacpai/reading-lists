@@ -1,0 +1,16 @@
+@import "color";
+
+.q-list-group{
+  display: block;
+  margin: 20px;
+  border: 1px solid $color-gray;
+  border-radius: 4px;
+  .q-list-group-item{
+    display:block;
+    border-top: 1px solid $color-gray;
+    padding: 10px;
+  }
+  .q-list-group-item:after{
+    clear:both;
+  }
+}

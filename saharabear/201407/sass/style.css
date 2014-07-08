@@ -539,6 +539,18 @@ h2 {
   background-color: #01ff70;
   color: #3d9970; }
 
+.q-list-group {
+  display: block;
+  margin: 20px;
+  border: 1px solid #aaaaaa;
+  border-radius: 4px; }
+  .q-list-group .q-list-group-item {
+    display: block;
+    border-top: 1px solid #aaaaaa;
+    padding: 10px; }
+  .q-list-group .q-list-group-item:after {
+    clear: both; }
+
 .q-badge {
   display: inline-block;
   margin: 20px 10px;
