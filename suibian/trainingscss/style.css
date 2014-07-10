@@ -1,0 +1,56 @@
+/*
+Syntax error: File to import not found or unreadable: color.
+              Load path: /home/big/workspace/mystudy/quanchike-webtraining/suibian/trainingscss (DEPRECATED)
+        on line 1 of src/main.scss
+
+1: @import "color";
+2: @import "base";
+3: @import "common";
+4: 
+5: @import "index";
+
+Backtrace:
+src/main.scss:1
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/import_node.rb:45:in `import'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/import_node.rb:28:in `imported_file'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/import_node.rb:37:in `css_import?'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:283:in `visit_import'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/stack.rb:79:in `block in with_base'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/stack.rb:121:in `with_frame'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/stack.rb:79:in `with_base'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/base.rb:52:in `map'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/root_node.rb:20:in `render'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/engine.rb:274:in `render'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/plugin/compiler.rb:378:in `update_stylesheet'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/plugin/compiler.rb:186:in `each'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/plugin/compiler.rb:221:in `watch'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/plugin.rb:108:in `method_missing'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/exec.rb:509:in `watch_or_update'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/exec.rb:346:in `process_result'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/exec.rb:43:in `parse'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/lib/sass/exec.rb:22:in `parse!'
+/usr/lib/ruby/gems/1.9.1/gems/sass-3.3.9/bin/sass:13:in `<top (required)>'
+/usr/bin/sass:23:in `load'
+/usr/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: color.\A               Load path: /home/big/workspace/mystudy/quanchike-webtraining/suibian/trainingscss (DEPRECATED)\A         on line 1 of src/main.scss\A \A 1: @import \"color\";\A 2: @import \"base\";\A 3: @import \"common\";\A 4: \A 5: @import \"index\";"; }
