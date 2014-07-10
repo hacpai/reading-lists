@@ -1,0 +1,124 @@
+html {
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: grayscale; }
+
+html.borderbox *, html.borderbox *:before, html.borderbox *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  margin: 0;
+  padding: 0; }
+
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  display: block; }
+
+audio, canvas, video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+button, input {
+  *width: auto;
+  *overflow: visible;
+  line-height: normal; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.q-clearfix:after {
+  clear: both; }
+
+.q-row {
+  margin: 10px 0px 0px 10px; }
+
+.q-row:after {
+  content: "";
+  diplay: block;
+  clear: both; }
+
+.q-left {
+  margin: 0;
+  padding: 10px;
+  float: left;
+  width: 50%; }
+
+.q-left:hover h2 {
+  color: #0074d9; }
+
+.q-right {
+  margin: 0;
+  padding: 10px;
+  float: right;
+  width: 50%l; }
+
+h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2ecc40;
+  padding: 0px 0px 0px 0px;
+  border-boottom: 2px solid #2ecc40; }
+
+.q-header {
+  background-color: #111111;
+  height: 100px; }
+  .q-header .q-logo {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 100px;
+    float: left; }
+  .q-header .q-menu {
+    float: right;
+    line-height: 100px; }
+    .q-header .q-menu ul {
+      height: 100px;
+      list-style: none; }
+      .q-header .q-menu ul li {
+        margin: 0px 5px;
+        padding: 0px 10px;
+        display: inline-block;
+        line-height: 100px;
+        height: 100px; }
+        .q-header .q-menu ul li a {
+          color: white;
+          font-weight: bold; }
+        .q-header .q-menu ul li a:hover {
+          text-decoration: none; }
+      .q-header .q-menu ul li:hover {
+        background-color: #dddddd;
+        border-bottom: 4px solid #2ecc40; }
+        .q-header .q-menu ul li:hover a {
+          color: #2ecc40; }
+
+.q-container {
+  width: 1180px;
+  margin: 0 auto; }
+
+.q-body {
+  padding: 20px 0px; }
+
+.q-footer {
+  height: 50px;
+  background-color: #111111; }
+  .q-footer .q-right {
+    float: right;
+    padding: 10px 0px; }
+    .q-footer .q-right a {
+      color: white; }

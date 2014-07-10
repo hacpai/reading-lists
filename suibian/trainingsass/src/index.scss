@@ -1,0 +1,65 @@
+@import "color";
+
+.q-header {
+  background-color:$color-black;
+  height:100px;
+  .q-logo{
+    color: $color-white;
+    font-size:60px;
+    font-weight:bold;
+    line-height:100px;
+    float:left;
+  }
+
+  .q-menu{
+    float:right;
+    line-height:100px;
+    ul{
+      height:100px;
+      list-style:none;
+      li{
+        margin:0px 5px;
+        padding:0px 10px;
+        display:inline-block;
+        line-height:100px;
+        height:100px;
+        a{
+          color:$color-white;
+          font-weight:bold;
+        }
+        a:hover{
+          text-decoration:none;
+        }
+      }
+      li:hover{
+        background-color:$color-silver;
+        a{
+          color:$color-green;
+        }
+        border-bottom:4px solid $color-green;
+      }
+    }
+  }
+}
+
+
+.q-container {
+  width: 1180px;
+  margin:0 auto;
+}
+
+.q-body{
+  padding: 20px 0px;
+}
+
+.q-footer {
+  height:50px;
+  background-color: $color-black;
+  .q-right{
+    float:right;
+    padding:10px 0px;
+    a{
+      color:$color-white;
+    }
+  }
+}
