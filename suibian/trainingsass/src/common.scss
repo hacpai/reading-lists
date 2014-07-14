@@ -8,38 +8,38 @@
   }
 
 
-.q-clearfix:after{
+.s-clearfix:after{
   clear:both;
   }
 
-.q-row{
+.s-row{
   margin:10px 0px 0px 10px;
   }
 
-.q-row:after{
+.s-row:after{
   content:"";
   diplay:block;
   clear:both;
   }
 
-.q-left{
+.s-left{
   margin:0;
   padding:10px;
   float:left;
   width:50%
   }
 
-.q-left:hover{
+.s-left:hover{
   h2{
     color:$color-blue;
     }
   }
 
-.q-right{
+.s-right{
   margin:0;
   padding:10px;
   float:right;
-  width:50%l
+  width:50%;
   }
 h2{
   font-size:36px;
