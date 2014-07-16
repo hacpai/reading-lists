@@ -433,3 +433,27 @@ h2 {
 
 .s-btn-second:hover {
   background-color: #39cccc; }
+
+.s-table {
+  width: 100%;
+  empty-cells: show;
+  border-collapse: collapse; }
+  .s-table th, .s-table td {
+    text-align: center;
+    padding: 5px; }
+  .s-table th {
+    font-weight: bold; }
+  .s-table tr {
+    border-bottom: 1px solid #dddddd; }
+  .s-table tbody > tr:hover {
+    background-color: #dddddd; }
+  .s-table caption {
+    text-align: left;
+    font-weight: bold;
+    font-size: 200%;
+    color: #3d9970;
+    border-bottom: .2em solid #4ca;
+    margin-bottom: .5em; }
+  .s-table thead, .s-table tfoot {
+    background-color: #0074d9;
+    color: white; }
