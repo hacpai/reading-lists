@@ -1,0 +1,14 @@
+@import "color";
+
+.s-pagination{
+  diplay:inline-block;
+  margin:25px auto;
+  border:2px solid $color-olive;
+  border-radius:5px;
+  box-sizing:border-box;
+  li{
+    box-sizing:border-box;
+    display:inline;
+    position:relative;
+    }
+  li:

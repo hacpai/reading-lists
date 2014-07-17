@@ -459,10 +459,10 @@ h2 {
     color: white; }
 
 .s-form {
-  margin: 20px; }
+  margin: 25px; }
   .s-form .s-form-row {
     display: block;
-    margin-bottom: 20px; }
+    margin-bottom: 25px; }
   .s-form input[type=text],
   .s-form input[type=password],
   .s-form input[type=textarea],
