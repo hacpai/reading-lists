@@ -459,31 +459,31 @@ h2 {
     color: white; }
 
 .s-form {
-  max-wight: 100%;
-  margin: 25px; }
-  .s-form s-form-row {
+  margin: 20px; }
+  .s-form .s-form-row {
     display: block;
-    margin-bottom: 25px; }
+    margin-bottom: 20px; }
   .s-form input[type=text],
   .s-form input[type=password],
   .s-form input[type=textarea],
   .s-form input[type=email] {
     display: block;
-    border: 2px solid #aaaaaa;
-    padding: 7px;
-    border-radius: 7px;
+    width: 100%;
+    border: 1px solid #aaaaaa;
+    padding: 5px;
+    border-radius: 5px;
     color: #aaaaaa; }
   .s-form input[type=checkbox] {
-    border: 2px solid #aaaaaa;
+    border: 1px solid #aaaaaa;
     color: #aaaaaa; }
   .s-form select {
-    padding: 7px;
+    padding: 5px;
     border: 1px solid #aaaaaa;
-    border-radius: 7px;
+    border-radius: 5px;
     color: #aaaaaa;
     width: 100%;
     display: block; }
   .s-form #inputsuccess {
-    border: 2px solid #aaaaaa; }
-  .s-form .q-checkbox {
+    border: 1px solid #2ecc40; }
+  .s-form .s-checkbox {
     display: inline-block; }
