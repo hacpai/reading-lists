@@ -457,3 +457,33 @@ h2 {
   .s-table thead, .s-table tfoot {
     background-color: #0074d9;
     color: white; }
+
+.s-form {
+  max-wight: 100%;
+  margin: 25px; }
+  .s-form s-form-row {
+    display: block;
+    margin-bottom: 25px; }
+  .s-form input[type=text],
+  .s-form input[type=password],
+  .s-form input[type=textarea],
+  .s-form input[type=email] {
+    display: block;
+    border: 2px solid #aaaaaa;
+    padding: 7px;
+    border-radius: 7px;
+    color: #aaaaaa; }
+  .s-form input[type=checkbox] {
+    border: 2px solid #aaaaaa;
+    color: #aaaaaa; }
+  .s-form select {
+    padding: 7px;
+    border: 1px solid #aaaaaa;
+    border-radius: 7px;
+    color: #aaaaaa;
+    width: 100%;
+    display: block; }
+  .s-form #inputsuccess {
+    border: 2px solid #aaaaaa; }
+  .s-form .q-checkbox {
+    display: inline-block; }
