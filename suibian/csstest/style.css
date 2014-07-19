@@ -1,0 +1,31 @@
+html {
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: grayscale; }
+
+html.borderbox *, html.borderbox *:before, html.borderbox *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.news {
+  color: black; }
+
+.corpName {
+  font-weight: bold;
+  color: red; }
+
+#stockTicker {
+  font-weight: bold; }
+
+.stockSymbol {
+  color: red; }
+
+/*  other rules             */
+/*  other rules             */
+/*  other rules             */
+.stockSymbol {
+  font-weight: normal; }
