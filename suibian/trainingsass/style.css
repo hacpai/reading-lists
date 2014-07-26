@@ -511,3 +511,18 @@ h2 {
     background-color: #3d9970;
     color: white;
     text-decoration: none; }
+
+.s-label {
+  margin: 10px;
+  padding: 5px 10px;
+  color: #111111;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid;
+  display: inline-block; }
+
+.s-label-primary {
+  background-color: #3d9970; }
+
+.s-label-second {
+  background-color: #2ecc40; }
