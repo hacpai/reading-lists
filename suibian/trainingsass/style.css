@@ -542,3 +542,14 @@ h2 {
 
 .s-label-second {
   background-color: #2ecc40; }
+
+.s-list {
+  display: block;
+  margin: 25px;
+  border: 1px solid #3d9970;
+  border-radius: 6px; }
+  .s-list .s-list-item {
+    border-top: 1px solid #aaaaaa;
+    padding: 11px; }
+  .s-list .s-list-item:after {
+    clear: both; }
