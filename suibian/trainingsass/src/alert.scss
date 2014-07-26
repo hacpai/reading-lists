@@ -1,0 +1,17 @@
+@import "color";
+.s-alert{
+  margin:20px 0px;
+  padding:10px 20px;
+  border-radius:6px;
+  line-height:100%;
+  }
+.s-alert-primary{
+  background-color:$color-aqua;
+  color:$color-blue;
+  border:1px solid $color-blue;
+  }
+.s-alert-second{
+  border:1px solid $color-green;
+  background-color:$color-lime;
+  color:$color-olive;
+  }

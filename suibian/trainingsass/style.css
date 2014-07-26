@@ -512,13 +512,29 @@ h2 {
     color: white;
     text-decoration: none; }
 
+.s-alert {
+  margin: 20px 0px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  line-height: 100%; }
+
+.s-alert-primary {
+  background-color: #7fdbff;
+  color: #0074d9;
+  border: 1px solid #0074d9; }
+
+.s-alert-second {
+  border: 1px solid #2ecc40;
+  background-color: #01ff70;
+  color: #3d9970; }
+
 .s-label {
-  margin: 10px;
+  margin: 15px;
   padding: 5px 10px;
-  color: #111111;
+  color: white;
   font-weight: bold;
   border-radius: 5px;
-  border: 2px solid;
+  border: 1px solid;
   display: inline-block; }
 
 .s-label-primary {
