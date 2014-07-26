@@ -487,3 +487,27 @@ h2 {
     border: 1px solid #2ecc40; }
   .s-form .s-checkbox {
     display: inline-block; }
+
+.s-pagination {
+  display: inline-block;
+  margin: 20px auto;
+  border: 1px solid #0074d9;
+  border-radius: 4px;
+  box-sizing: border-box; }
+  .s-pagination li {
+    box-sizing: border-box;
+    display: inline;
+    position: relative; }
+  .s-pagination li:nth-last-child(-n+1) {
+    border-with: 0px;
+    float: left; }
+  .s-pagination a {
+    border-right: 1px solid #3d9970;
+    position: relative;
+    float: left;
+    padding: 5px 10px;
+    margin-left: 0px; }
+  .s-pagination a:hover {
+    background-color: #3d9970;
+    color: white;
+    text-decoration: none; }
