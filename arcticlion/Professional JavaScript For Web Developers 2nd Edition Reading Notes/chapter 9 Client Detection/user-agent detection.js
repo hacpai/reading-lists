@@ -35,6 +35,20 @@ var client = function() {
      * safari和chrome同一WebKit，但JavaScript引擎不同
      * 由于大多数浏览器与呈现引擎相关
      * 所以检测浏览器代码与检测引擎代码是混合的
+     * 同时可以编写下面逻辑：
+     * if (client.engine.webkit) { //if it's WebKit
+     *     if (client.browser.chrome) {
+     *         //执行针对Chrome的代码
+     *     } else if (client.browser.safari) {
+     *         //执行针对Safari的代码
+     *     } 
+     * }} else if (client.engine.gecko) {
+     *      if (client.browser.firefox) {
+     *          //执行针对Firefox的代码
+     *      } else {
+     *          //执行针对其他Gecko浏览器的代码
+     *      }
+     * }
      */
     var browser = {
         ie: 0,
@@ -75,7 +89,33 @@ var client = function() {
     else if (/AppleWebKit\/(\S+)/.test(ua) {
         engine.ver = RegExp["$1"];
         engine.webkit = parseFloat(engine.ver);
-    }
+    } else {
+        /*
+         * 提取Chrome版本号："Chrome/"后面的数值
+         * 提取Safari版本号："Version/"后面的数值
+         * Safari3-版本号：WebKit版本号近似映射Safari版本号
+         */
+        if (/Chrome\/(\S+)/.test(ua) {
+            browser.ver = RegExp["$1"];
+            browser.chrome = parseFloat(browser.ver);
+        } else if (/Version\/(\S+)/.test(ua) {
+            browser.ver = RegExp["$1"];
+            browser.safari = parseFloat(browser.ver);
+        } else {
+            //近似确定版本号
+            var safariVersion = 1;
+            if (engine.webkit < 100) {
+                safariVersion = 1;
+            } else if (engine.webkit < 312) {
+                safariVersion = 1.2;
+            } else if (engine.webkit <412) {
+                safariVersion = 1.3;
+            } else {
+                safariVersion = 2;
+            }
+
+            browser.safari = browser.ver = safariVersion;
+        }
     /*
      * 检测呈现引擎KHTML
      * 因为WebKit's user-Agent中包含"KHTML"
