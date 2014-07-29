@@ -192,13 +192,47 @@ var client = function() {
     system.mac = p.indexOf("Mac") == 0;
     system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
 
-    /* 移动设备
+    /* 
+     * 检测Windows操作系统
+     * "[^do]{2}"表示2个非空格字符
+     * "Win(?:dows )?"表示匹配"Windows "or"Win"
+     * "\d+\"匹配一个数值
+     * "s?"表示是否有空格
+     */
+    if (system.win) {
+        if (/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)) {
+            if (RegExp["$1"] == "NT") {
+                switch(RegExp["$2"]) {
+                    case "5.0":
+                        system.win = "2000";
+                        break;
+                    case "5.1":
+                        system.win = "XP";
+                        break;
+                    case "6.0":
+                        system.win = "Vista";
+                        break;
+                    default:
+                        system.win = "NT";
+                        break;
+                }
+            }else if (RegExp["$1"] == "9X") {
+                system.win = "ME";
+            } else {
+                system.win = RegExp["$1"];
+            }
+        }
+    }
+    /* 
+     * 移动设备
      * iPhone,iPod,nokiaN用indexOf字符串相应的属性值
+     * Windows Mobile用上面的Windows操作系统检测
      */
     system.iphone = ua.indexOf("iPhone") > -1;
     system.ipad = ua.indexOf("iPod") > -1;
     system.nokiaN = ua.indexOf("NokiaN") > -1;
     system.macMobile = (system.iphone || system.ipod);
+    system.winMobile = (system.win == "CE");
 
     return { 
         engine: engine,
