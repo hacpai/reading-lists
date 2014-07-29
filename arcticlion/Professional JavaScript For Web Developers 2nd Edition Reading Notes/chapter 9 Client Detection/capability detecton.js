@@ -22,7 +22,8 @@ function getElement(id) {
     }
 }
 
-/* 一次性检测所需特性
+/* 
+ * 一次性检测所需特性
  * 储藏布尔值供后续使用
  * 这里用到双逻辑非操作符号
  * 原因http://oceanzhu.com/archives/81
