@@ -107,10 +107,11 @@ var client = function() {
     /* 
      * 检测呈现引擎IE
      * IE版本号在"MSIE"后";"前
+     * browser对象中的值等于engine对象中的值
      */
     else if (/MSIE ([^;]+)/.test(ua)) {
-        engine.ver = RegExp["$1"];
-        engine.ie = parseFloat(engine.ver);
+        engine.ver = browser.ver = RegExp["$1"];
+        engine.ie = browser.ie = parseFloat(engine.ver);
     }
     //返回这些对象
     return {
