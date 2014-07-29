@@ -31,7 +31,15 @@ var client = function() {
     };
 
     //在此检测呈现引擎
-    
+    /*
+     * Opera5+有window.opera对象
+     * 用以保存与浏览器相关的识别信息
+     * window.opera.version()返回浏览器版本的字符串
+     */
+    if (window.opera) {
+        engine.ver = window.opera.version();
+        engine.opera = parseFloat(engine.ver);
+    }
     //返回这些对象
     return {
         engine: engine
