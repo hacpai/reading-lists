@@ -103,6 +103,12 @@ var client = function() {
     else if (/rv:([^)]+) Gecko\/\d{8}/.test(ua)) {
         engine.ver = RegExp["$1"];
         engine.gecko = parseFloat(engine.ver);
+        
+        //确定是不是Firefox
+        if (/Firefox\/(\S+)/.test(ua)) {
+            browser.ver = RegExp["$1"];
+            browser.firefox = parseFloat(browser.ver);
+        }
     }
     /* 
      * 检测呈现引擎IE
