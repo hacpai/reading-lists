@@ -33,8 +33,10 @@ var client = function() {
     /*
      * 浏览器
      * safari和chrome同一WebKit，但JavaScript引擎不同
+     * 由于大多数浏览器与呈现引擎相关
+     * 所以检测浏览器代码与检测引擎代码是混合的
      */
-    var brower = {
+    var browser = {
         ie: 0,
         firefox: 0,
         konq: 0,
@@ -53,11 +55,12 @@ var client = function() {
      * 检测呈现引擎Opera
      * Opera5+有window.opera对象
      * 用以保存与浏览器相关的识别信息
+     * window.opera.version()返回呈现引擎版本的字符串
      * window.opera.version()返回浏览器版本的字符串
      */
     if (window.opera) {
-        engine.ver = window.opera.version();
-        engine.opera = parseFloat(engine.ver);
+        engine.ver = browser.ver = window.opera.version();
+        engine.opera = browser.opera = parseFloat(engine.ver);
     }
     /*
      * 检测呈现引擎 WebKit
@@ -110,6 +113,6 @@ var client = function() {
     //返回这些对象
     return {
         engine: engine,
-        brower: brower
+        browser: browser
     };
 }();
