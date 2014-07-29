@@ -59,7 +59,7 @@ var client = function() {
         safari: 0,
 
         ver: null
-    }
+    };
 
     /*
      * 平台
@@ -69,8 +69,15 @@ var client = function() {
     var system = {
         win: false,
         mac: false,
-        x11: false
-    }
+        x11: false,
+
+        //移动设备
+        iphone: false,
+        ipod: false,
+        nokiaN: false,
+        winMobile: false,
+        macMobile: false
+    };
     //将用户代理字符串保存在变量ua中
     var ua = navigator.userAgent;
 
@@ -184,6 +191,14 @@ var client = function() {
     system.win = p.indexOf("Win") == 0;
     system.mac = p.indexOf("Mac") == 0;
     system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+
+    /* 移动设备
+     * iPhone,iPod,nokiaN用indexOf字符串相应的属性值
+     */
+    system.iphone = ua.indexOf("iPhone") > -1;
+    system.ipad = ua.indexOf("iPod") > -1;
+    system.nokiaN = ua.indexOf("NokiaN") > -1;
+    system.macMobile = (system.iphone || system.ipod);
 
     return { 
         engine: engine,
