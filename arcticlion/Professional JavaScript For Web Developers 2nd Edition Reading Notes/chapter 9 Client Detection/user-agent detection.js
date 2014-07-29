@@ -35,6 +35,7 @@ var client = function() {
 
     //在此检测呈现引擎
     /*
+     * 检测呈现引擎Opera
      * Opera5+有window.opera对象
      * 用以保存与浏览器相关的识别信息
      * window.opera.version()返回浏览器版本的字符串
@@ -58,6 +59,7 @@ var client = function() {
         engine.webkit = parseFloat(engine.ver);
     }
     /*
+     * 检测呈现引擎KHTML
      * 因为WebKit's user-Agent中包含"KHTML"
      * 排除WebKit就可以通过正则测试是否包含"KHTML"判断
      * Konqueror3.1-不包含KHTML版本
@@ -68,7 +70,9 @@ var client = function() {
     else if (/KHTML\/($S+)/.test(ua) | (/Konqueror\/([^;]+/) {
         engine.ver = RegExp["$1"];
         engine.khtml = parseFloat(engine.ver);
-    /* 因为WebKit和 KHTML’s user-Agent中都包含"Gecko"
+    /*
+     * 检测呈现引擎Gecko
+     * 因为WebKit和 KHTML’s user-Agent中都包含"Gecko"
      * 排除了WebKit和KHTML就可以通过包含"Gecko"判断
      * Gecko版本号在"rv:"与一个闭括号之间
      * 还要正则匹配"Gecko/"后跟8个数字
@@ -79,6 +83,14 @@ var client = function() {
     else if (/rv:([^)]+) Gecko\/\d{8}/.test(ua)) {
         engine.ver = RegExp["$1"];
         engine.gecko = parseFloat(engine.ver);
+    }
+    /* 
+     * 检测呈现引擎IE
+     * IE版本号在"MSIE"后";"前
+     */
+    else if (/MSIE ([^;]+)/.test(ua)) {
+        engine.ver = RegExp["$1"];
+        engine.ie = parseFloat(engine.ver);
     }
     //返回这些对象
     return {
