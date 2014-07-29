@@ -30,6 +30,9 @@ var client = function() {
         ver: null
     };
 
+    //将用户代理字符串保存在变量ua中
+    var ua = navigator.userAgent;
+
     //在此检测呈现引擎
     /*
      * Opera5+有window.opera对象
@@ -39,6 +42,20 @@ var client = function() {
     if (window.opera) {
         engine.ver = window.opera.version();
         engine.opera = parseFloat(engine.ver);
+    }
+    /*
+     * 检测呈现引擎 WebKit
+     * userAgent中"AppleWebKit"独一无二
+     * 通过正则测试是否包含"AppleWebKit"
+     * 使用捕获组取得版本号
+     * "\S"表示非空格特殊字符
+     * 由于版本号与与下一部分分隔符是空格，故用"\S"
+     * test()返回布尔值
+     * RegExp["$1"]存储第一个捕获组
+     */
+    else if (/AppleWebKit\/(\S+)/.test(ua) {
+        engine.ver = RegExp["$1"];
+        engine.webkit = parseFloat(engine.ver);
     }
     //返回这些对象
     return {
