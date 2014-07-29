@@ -76,8 +76,13 @@ var client = function() {
         ipod: false,
         nokiaN: false,
         winMobile: false,
-        macMobile: false
+        macMobile: false,
+
+        //游戏系统
+        wii: false,
+        ps: false
     };
+
     //将用户代理字符串保存在变量ua中
     var ua = navigator.userAgent;
 
@@ -233,6 +238,13 @@ var client = function() {
     system.nokiaN = ua.indexOf("NokiaN") > -1;
     system.macMobile = (system.iphone || system.ipod);
     system.winMobile = (system.win == "CE");
+
+    /* 
+     * 游戏系统
+     * 检测字符串
+     */
+    system.wii = ua.indexOf("Wii") > -1;
+    system.ps = /playstation/i.test(ua);
 
     return { 
         engine: engine,
