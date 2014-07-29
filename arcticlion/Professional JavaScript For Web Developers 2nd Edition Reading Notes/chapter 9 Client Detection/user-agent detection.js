@@ -57,6 +57,17 @@ var client = function() {
         engine.ver = RegExp["$1"];
         engine.webkit = parseFloat(engine.ver);
     }
+    /*
+     * 因为WebKit's user-Agent中包含"KHTML"
+     * 排除WebKit就可以通过正则测试是否包含"KHTML"判断
+     * Konqueror3.1-不包含KHTML版本
+     * 故用Konqueror版本替代
+     * [^;]表示不带分号所有字符
+     * 由于Konqueror中版本号与下一步分风格符是分号，故用"[^;]"
+     */
+    else if (/KHTML\/($S+)/.test(ua) | (/Konqueror\/([^;]+/) {
+        engine.ver = RegExp["$1"];
+        engine.khtml = parseFloat(engine.ver);
     //返回这些对象
     return {
         engine: engine
