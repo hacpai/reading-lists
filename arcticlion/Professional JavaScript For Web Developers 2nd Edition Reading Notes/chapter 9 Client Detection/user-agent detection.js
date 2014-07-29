@@ -61,6 +61,16 @@ var client = function() {
         ver: null
     }
 
+    /*
+     * 平台
+     * 浏览器对操作系统信息量有限
+     * 故属性保存布尔值
+     */
+    var system = {
+        win: false,
+        mac: false,
+        x11: false
+    }
     //将用户代理字符串保存在变量ua中
     var ua = navigator.userAgent;
 
@@ -159,9 +169,20 @@ var client = function() {
         engine.ver = browser.ver = RegExp["$1"];
         engine.ie = browser.ie = parseFloat(engine.ver);
     }
-    //返回这些对象
-    return {
+    
+    /* 
+     * 平台检测
+     * 通过navigator.platform检测
+     * indexof()查找开始位置 
+     * "Win32"和"Win64"查找"Win"的开始位置就可以了
+     */
+    var p = navigator.platform;
+    system.win = p.indexOf("Win") == 0;
+    system.mac = p.indexOf("Mac") == 0;
+    system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+    return { 
         engine: engine,
-        browser: browser
+        browser: browser,
+        system: system
     };
 }();
