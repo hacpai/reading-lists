@@ -170,6 +170,10 @@ var client = function() {
         engine.ie = browser.ie = parseFloat(engine.ver);
     }
     
+    //检测IE和Opera
+    browser.ie = engine.ie;
+    browser.opera = engine.opera;
+
     /* 
      * 平台检测
      * 通过navigator.platform检测
@@ -180,6 +184,7 @@ var client = function() {
     system.win = p.indexOf("Win") == 0;
     system.mac = p.indexOf("Mac") == 0;
     system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+
     return { 
         engine: engine,
         browser: browser,
