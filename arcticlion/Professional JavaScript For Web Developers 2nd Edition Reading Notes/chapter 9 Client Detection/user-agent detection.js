@@ -84,10 +84,12 @@ var client = function() {
      * 故用Konqueror版本替代
      * [^;]表示不带分号所有字符
      * 由于Konqueror中版本号与下一步分风格符是分号，故用"[^;]"
+     * Konqueror的browser.konq=engine.khtml
+     * Konqueror的browser.ver=engine.ver
      */
     else if (/KHTML\/($S+)/.test(ua) | (/Konqueror\/([^;]+/) {
-        engine.ver = RegExp["$1"];
-        engine.khtml = parseFloat(engine.ver);
+        engine.ver = browser.ver =  RegExp["$1"];
+        engine.khtml = browser.konq =  parseFloat(engine.ver);
     /*
      * 检测呈现引擎Gecko
      * 因为WebKit和 KHTML’s user-Agent中都包含"Gecko"
