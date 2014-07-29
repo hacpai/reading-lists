@@ -29,6 +29,21 @@ var client = function() {
         //具体版本号
         ver: null
     };
+    
+    /*
+     * 浏览器
+     * safari和chrome同一WebKit，但JavaScript引擎不同
+     */
+    var brower = {
+        ie: 0,
+        firefox: 0,
+        konq: 0,
+        opera: 0,
+        chrome: 0,
+        safari: 0,
+
+        ver: null
+    }
 
     //将用户代理字符串保存在变量ua中
     var ua = navigator.userAgent;
@@ -94,6 +109,7 @@ var client = function() {
     }
     //返回这些对象
     return {
-        engine: engine
+        engine: engine,
+        brower: brower
     };
 }();
