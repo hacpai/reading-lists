@@ -68,6 +68,18 @@ var client = function() {
     else if (/KHTML\/($S+)/.test(ua) | (/Konqueror\/([^;]+/) {
         engine.ver = RegExp["$1"];
         engine.khtml = parseFloat(engine.ver);
+    /* 因为WebKit和 KHTML’s user-Agent中都包含"Gecko"
+     * 排除了WebKit和KHTML就可以通过包含"Gecko"判断
+     * Gecko版本号在"rv:"与一个闭括号之间
+     * 还要正则匹配"Gecko/"后跟8个数字
+     * 正则表达式中":"不转义
+     * 空格不转义
+     * "\d{8}"表示后跟8个数字
+     */
+    else if (/rv:([^)]+) Gecko\/\d{8}/.test(ua)) {
+        engine.ver = RegExp["$1"];
+        engine.gecko = parseFloat(engine.ver);
+    }
     //返回这些对象
     return {
         engine: engine
