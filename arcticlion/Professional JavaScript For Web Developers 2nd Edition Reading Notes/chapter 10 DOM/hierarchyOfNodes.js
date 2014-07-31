@@ -154,3 +154,17 @@ for (var i = 0; i < 3; i++) {
 }
 
 ul.appendChild(fragment);
+
+/* 
+ * 创建特性节点
+ * setAttributeNode():将新创建的特性添加到元素
+ * getAttribute():只返回特性的值
+ */
+var element = document.getElementById("myDiv);
+var attr = document.createAttribute("align");
+attr.value = "left";
+element.setAttribute(attr);
+
+alert(element.attributes["align"].value);    //"left"
+alert(element.getAttributeNode("align").value);    //"left"
+alert(element.getAttribute("align"));    //"left"
