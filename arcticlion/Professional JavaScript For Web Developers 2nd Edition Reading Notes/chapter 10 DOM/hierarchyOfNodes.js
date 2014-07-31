@@ -88,6 +88,7 @@ function converToArray(nodes) {
  * 首先数组保存名值对
  * 循环初始化时计算特性长度
  * 防止判断时多次计算
+ * specified值为true意味着HTML中设置了特性
  * 最后空格为分隔符拼接
  */
 function outputAttributes(element) {
@@ -95,7 +96,9 @@ function outputAttributes(element) {
     for (var i = 0, len = element.attributes.length; i < len; i++) {
         var attrName = element.attributes[i].nodeName;
         var attrValue = element.attributes[i].nodeValue;
-        pairs.push(attrName + "=\"" + attrValue + "\"");
+        if (element.attributes[i].specified) {
+            pairs.push(attrName + "=\"" + attrValue + "\"");
+        }
     }
     return pairs.join(" ");
 }
