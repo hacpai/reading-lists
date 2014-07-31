@@ -82,4 +82,20 @@ function converToArray(nodes) {
 <body>
 </html>
 
-                    
+/*
+ * 遍历元素特性
+ * DOM结构化为HTML字符串时需要
+ * 首先数组保存名值对
+ * 循环初始化时计算特性长度
+ * 防止判断时多次计算
+ * 最后空格为分隔符拼接
+ */
+function outputAttributes(element) {
+    var pairs = new Array();
+    for (var i = 0, len = element.attributes.length; i < len; i++) {
+        var attrName = element.attributes[i].nodeName;
+        var attrValue = element.attributes[i].nodeValue;
+        pairs.push(attrName + "=\"" + attrValue + "\"");
+    }
+    return pairs.join(" ");
+}
