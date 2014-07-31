@@ -43,3 +43,25 @@ if (someNode.nodeType == 1) {
     value = someNode.nodeName;
 }
 
+/* 
+ * NodeList转换为数组
+ * 首先尝试最简方式
+ * 若IE则捕获错误，手动枚举所有成员
+ * call()第一个参数作用域，第二个传入函数的参数
+ * slice()第一个参数开始提取的位置
+ */
+function converToArray(nodes) {
+    var array = null;
+    try {
+        array = Array.prototype.slice.call(nodes, 0);
+    } catch (ex) {
+        array = new Array();
+        for (var i = 0; i < array.length; i++) {
+            array.push(nodes[i]);
+        }
+    }
+    return array;
+}
+
+
+                    
