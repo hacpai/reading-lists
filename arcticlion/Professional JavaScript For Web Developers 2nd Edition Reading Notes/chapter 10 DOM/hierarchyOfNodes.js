@@ -63,5 +63,21 @@ function converToArray(nodes) {
     return array;
 }
 
+/* 
+ * 文档写入document.write()
+ * 若在文档后调用
+ * 那么，输出内容重新加载页面
+ */
+<html>
+<head>
+    <title>document.write() Example</title>
+</head>
+<body>
+    <p>No extra characters here:</p>
+    <script type="text/javascript">
+        document.write("<script type=\"text/javascript\" src=\"file.js\"></script>");
+    </script>
+<body>
+</html>
 
                     
