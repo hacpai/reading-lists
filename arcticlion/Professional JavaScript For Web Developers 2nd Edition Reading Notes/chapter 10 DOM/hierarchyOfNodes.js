@@ -102,3 +102,21 @@ function outputAttributes(element) {
     }
     return pairs.join(" ");
 }
+
+/* 
+ * 创建文本节点
+ * 每个元素只有一个文本子节点
+ * 若2个文本节点相邻会连起来显示
+ */
+
+var element = document.createElement("div");
+element.className = "message";
+
+var textNode = document.createTextNode("Hello World!");
+element.appendChild(textNode);
+
+var anotherTextNode = document.createTextNode("Yippee!");
+element.appendChild(anotherTextNode);
+
+document.body.appendChild(element);
+
