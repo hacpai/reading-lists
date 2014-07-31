@@ -32,3 +32,14 @@
                                    |      +-----------------+
                                    +++++++|Text Hello World!|
                                           +-----------------+
+                                          
+/* 
+ * 确定节点类型
+ * 适用于所有浏览器
+ * 取得并保存元素标签名
+ */
+if (someNode.nodeType == 1) {
+    alert("Node is an element.";)
+    value = someNode.nodeName;
+}
+
