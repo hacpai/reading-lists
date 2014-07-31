@@ -127,3 +127,12 @@ alert(element.childNodes.length);    //2
 element.normalize();
 alert(element.childNodes.length);    //1
 alert(element.firstChild.nodeValue);    //"Hello World!Yeppee!"
+
+/* 
+ * 分割文本节点
+ * splitText()返回参数位置到剩下的文本
+ */
+var newNode = element.firstChild.split(5);
+alert(element.firstChild.nodeValue);    //"Hello"
+alert(newNode.nodeValue);    //" World!"
+alert(element.childNodes.length);    //2
