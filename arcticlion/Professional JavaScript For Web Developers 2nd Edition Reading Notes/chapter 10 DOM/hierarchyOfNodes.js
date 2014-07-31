@@ -107,6 +107,7 @@ function outputAttributes(element) {
  * 创建文本节点
  * 每个元素只有一个文本子节点
  * 若2个文本节点相邻会连起来显示
+ * normalize()合并文本节点
  */
 
 var element = document.createElement("div");
@@ -117,6 +118,12 @@ element.appendChild(textNode);
 
 var anotherTextNode = document.createTextNode("Yippee!");
 element.appendChild(anotherTextNode);
+alert(element.nodeValue)    //"Hello World!Yippee!"
 
 document.body.appendChild(element);
 
+alert(element.childNodes.length);    //2
+
+element.normalize();
+alert(element.childNodes.length);    //1
+alert(element.firstChild.nodeValue);    //"Hello World!Yeppee!"
