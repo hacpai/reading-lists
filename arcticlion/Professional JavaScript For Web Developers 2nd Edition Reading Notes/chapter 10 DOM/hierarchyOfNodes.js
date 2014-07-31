@@ -136,3 +136,21 @@ var newNode = element.firstChild.split(5);
 alert(element.firstChild.nodeValue);    //"Hello"
 alert(newNode.nodeValue);    //" World!"
 alert(element.childNodes.length);    //2
+
+/* 
+ * 文档片段的应用
+ * 为<ul>添加3个列表项
+ * getElementByID():通过ID得到元素
+ * createDocumentFragment()创建文档片段
+ */
+var fragment = document.createDocumentFragment();
+var ul = document.getElementById("myList");
+var li = null;
+
+for (var i = 0; i < 3; i++) {
+    li = document.createElement("li");
+    li.appendChild(document.createTextNode("Item " + (i+1)));
+    fragment.appendChild(li);
+}
+
+ul.appendChild(fragment);
