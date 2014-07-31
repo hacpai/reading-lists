@@ -67,6 +67,8 @@ function converToArray(nodes) {
  * 文档写入document.write()
  * 若在文档后调用
  * 那么，输出内容重新加载页面
+ * </script>拼接成"<scr"+"ipt>"
+ * 避免被当作外部的关闭标签
  */
 <html>
 <head>
@@ -75,7 +77,7 @@ function converToArray(nodes) {
 <body>
     <p>No extra characters here:</p>
     <script type="text/javascript">
-        document.write("<script type=\"text/javascript\" src=\"file.js\"></script>");
+        document.write("<script type=\"text/javascript\" src=\"file.js\">" + "</scr" + "ipt>");
     </script>
 <body>
 </html>
