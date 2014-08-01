@@ -23,3 +23,12 @@ function contains(refNode, otherNode) {
         }
     }
 }
+
+/* 
+ * innerText
+ * 只生成当前节点的一个文本节点
+ * 并移除先前存在的所有子节点
+ */
+function getInnerText(element) {
+    return (typeof element.textContent == "string") ? element.textContent: element.innerText;
+}
