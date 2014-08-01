@@ -9,7 +9,13 @@
 <form id="form">
 单价：<input id="price" name="price" type="text" /><br />
 数量：<input id="count" name="count" type="text" /><br />
+<select id="calctype" name="calctype">
+    <option value="正常收费">正常收费</option>
+    <option value="满300返100">满300返100</option>
+    <option value="打8折">打8折</option>
+</select>
 </form>
+<br />
 <button id="submit">确定</button>
 <button id="reset">重置</button><br />
 总计：<span id="total"></span>
@@ -27,7 +33,7 @@ $(document).ready(function(){
                 alert("error");
                 },
                 success:function(json){
-                $("#display").append("单价："+json.price+",数量："+json.count+",合计："+json.sum+"<br />");
+                $("#display").append("单价："+json.price+",数量："+json.count+",计算方式："+json.calctype+",合计："+json.sum+"<br />");
                 total += json.sum;
                 $("#total").text(total);
                 },
