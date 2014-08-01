@@ -57,3 +57,16 @@ div.removeChild(div.firstChild);
 
 //针对Safari和Chrome
 document.getElementsByName("head")[0].appendChild(div.firstChild);
+
+/* 
+ * 内存和性能问题
+ * innerHTML比多次DOM创建节点效率高
+ * innerHTML创建列表项
+ * 先单独构建字符串
+ * 再一次性赋值给innerHTML
+ */
+var itemHtml = "";
+for (var i = 0, len=values.length; i < len; i++) {
+    itemHtml += "<li>" + values[i] + "</li>";
+}
+ul.innerHTML = itemHtml;
