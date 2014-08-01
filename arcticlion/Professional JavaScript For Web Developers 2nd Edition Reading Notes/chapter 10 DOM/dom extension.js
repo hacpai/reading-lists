@@ -43,3 +43,17 @@ function setInnerText(element, text) {
 
 setInnerText(div, "Hello world!");
 alert(getInnerText(div));    //"Hello world!"
+
+/* 
+ * innerHTML
+ * 类似innerText
+ * 插入<script>不被执行
+ * 解决方案是：前置一个作用域内元素
+ * Safari和Chrome还需添加到<head>后
+ */
+//针对Opera、Firefox、IE
+div.innerHTML = "_<style type=\"text/css\">body {background-color: red; }</style>";
+div.removeChild(div.firstChild);
+
+//针对Safari和Chrome
+document.getElementsByName("head")[0].appendChild(div.firstChild);
