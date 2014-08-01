@@ -20,9 +20,15 @@ loadScript("client.js");
  *         alert("Hi");
  *     }
  * </script>
- * text属性添加<script>内容
+ * text()指定JavaScript代码
  */
 var script = document.createElement("script");
 script.type = "text/javascript";
 var code = "function sayHi() {alert('hi');}";
+try {
+    script.appendChild(document.createTextNode(code));
+} catch (ex) {
+    script.text = code;
+}
+
 document.body.appendChild(script);
