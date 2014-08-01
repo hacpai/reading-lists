@@ -1,0 +1,50 @@
+@import "color";
+
+
+*{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  }
+
+
+.s-clearfix:after{
+  clear:both;
+  }
+
+.s-row{
+  margin:10px 0px 0px 10px;
+  }
+
+.s-row:after{
+  content:"";
+  diplay:block;
+  clear:both;
+  }
+
+.s-left{
+  margin:0;
+  padding:10px;
+  float:left;
+  width:50%
+  }
+
+.s-left:hover{
+  h2{
+    color:$color-blue;
+    }
+  }
+
+.s-right{
+  margin:0;
+  padding:10px;
+  float:right;
+  width:50%;
+  }
+h2{
+  font-size:26px;
+  font-weight:bold;
+  color:$color-gray;
+  padding:0px 0px 10px 0px;
+  border-bottom:2px solid $color-gray;
+  }

@@ -1,0 +1,22 @@
+@import "color";
+
+.s-panel{
+  border:2px solid $color-olive;
+  border-radius:4px 4px 0px 0px;
+  margin:20px;
+  
+  }
+.s-panel-header{
+  color:$color-white;
+  background-color:$color-olive;
+  min-height:20px;
+  padding:10px;
+  }
+.s-panel-body{
+  padding:10px;}
+.s-panel-footer{
+  background-color:$color-olive;
+  color: $color-silver;
+  padding: 5px 10px;
+}
+
