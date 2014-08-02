@@ -4,12 +4,16 @@
  * <link rel="stylesheet" type="text/css" href="style.css">
  * DOM代码如下
  * <link>需要添加到<head>下
+ * 以loadStyles()封装
  */
-var link = document.createElement("link");
-link.rel = "stylesheet";
-link.type = "style/css";
-link.href = "style.css";
-link.head = document.getElementsByTagName("head")[0];
-head.appendChild(link);
+function loadStyles(url) {
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "style/css";
+    link.href = link;
+    link.head = document.getElementsByTagName("head")[0];
+    head.appendChild(link);
+}
 
+loadStyles("styles.css");
 
