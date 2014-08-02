@@ -32,7 +32,7 @@ function loadStylesString(css) {
     var style = document.createElement("style");
     style.type = "text/css";
     try {
-        style.appendChild(document.createElement(css));
+        style.appendChild(document.createTextNode(css));
     } catch (ex) {
         style.styleSheet.cssText = css;
     }
