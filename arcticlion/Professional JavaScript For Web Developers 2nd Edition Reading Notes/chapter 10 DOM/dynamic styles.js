@@ -25,9 +25,14 @@ loadStyles("styles.css");
  * }
  * </style>
  * DOM代码
+ * 兼容IE
  */
 var style = document.createElement("style");
 style.type = "text/css";
-style.appendChild(document.createElement("body{background-color:red}"));
+try {
+    style.appendChild(document.createElement("body{background-color:red}"));
+} catch (ex) {
+    style.styleSheet.cssText = "body{backgroud-color:red} ";
+}
 var head = document.getElementsByTagName("head")[0];
 head.appendChild(style);
