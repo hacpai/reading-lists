@@ -26,13 +26,18 @@ loadStyles("styles.css");
  * </style>
  * DOM代码
  * 兼容IE
+ * 以loadStyleString()封装
  */
-var style = document.createElement("style");
-style.type = "text/css";
-try {
-    style.appendChild(document.createElement("body{background-color:red}"));
-} catch (ex) {
-    style.styleSheet.cssText = "body{backgroud-color:red} ";
+function loadStylesString(css) {
+    var style = document.createElement("style");
+    style.type = "text/css";
+    try {
+        style.appendChild(document.createElement(css));
+    } catch (ex) {
+        style.styleSheet.cssText = css;
+    }
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(style);
 }
-var head = document.getElementsByTagName("head")[0];
-head.appendChild(style);
+
+loadStylesString("body{backgroud-color:red}");
