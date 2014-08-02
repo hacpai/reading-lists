@@ -17,3 +17,17 @@ function loadStyles(url) {
 
 loadStyles("styles.css");
 
+/*
+ * <style>元素包含嵌入式CSS
+ * <style type="text/css">
+ * body {
+ *     backgroud-color: red;
+ * }
+ * </style>
+ * DOM代码
+ */
+var style = document.createElement("style");
+style.type = "text/css";
+style.appendChild(document.createElement("body{background-color:red}"));
+var head = document.getElementsByTagName("head")[0];
+head.appendChild(style);
