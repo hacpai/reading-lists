@@ -3,7 +3,7 @@
 ### saharabear
 
 #### HTML
-** quanchike-webtraining / saharabear / 201407 / sass / index.html **
+**quanchike-webtraining / saharabear / 201407 / sass / index.html**
 
     <!doctype html>
     <html lang="zh-CN" >
