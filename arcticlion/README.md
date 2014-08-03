@@ -271,8 +271,9 @@
 
 ### 在线阅读源码体验
 - [CodeWa读懂每一行代码](codewa.com)
-- [Sourcegraph](sourcegraph.com)
 - [Go Walker搜索Go项目](gowalker.org)
+- [Sourcegraph](sourcegraph.com)
+
 ---------
 感谢阅读这份帮助文档。
 
