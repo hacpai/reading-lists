@@ -42,3 +42,5 @@ alert(rule.style.cssText);                    //完整的CSS代码
 alert(rule.style.backgroundColor);            //"blue"
 alert(rule.style.width);                      //"100px"
 alert(rule.style.height);                     //"200px"
+
+rule.style.backgroundColor = "red";           //修改样式信息
