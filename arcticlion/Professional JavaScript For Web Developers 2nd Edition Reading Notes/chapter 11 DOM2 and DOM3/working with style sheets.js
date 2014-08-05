@@ -46,6 +46,7 @@ alert(rule.style.height);                     //"200px"
 rule.style.backgroundColor = "red";           //修改样式信息
 
 /*
+ * 创建规则
  * inserRule()
  * 接受2个参数：规则文本和插入的位置索引
  * sheet.insertRule("body { background-color: silver }", 0);    //DOM方法
@@ -64,3 +65,20 @@ function insertRule(sheet, selectorText, cssText, position) {
 
 insertRule(document.stylesheets[0], "body", "background-color: silver", 0);
 
+/* 
+ * 删除样式
+ * deletRule()
+ * 接受一个参数：要删除的规则位置
+ * sheet.deletRule(0);    //DOM方法
+ * IE支持的方法removeRule()
+ * sheet.removeRule(0);
+ */
+function deleteRule(sheet, index) {
+    if (sheet.deleteRule) {
+        sheet.deleteRule(index);
+    } else if (sheet.removeRule) {
+        sheet.removeRule(index);
+    }
+}
+
+deleteRule(document.stylesheets[0], 0);
