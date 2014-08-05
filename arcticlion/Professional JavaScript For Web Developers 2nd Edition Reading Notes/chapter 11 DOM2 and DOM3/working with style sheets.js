@@ -10,3 +10,15 @@ for (var i = 0, len = document.stylesheets.length; i < len; i++) {
     alert(sheet.href);
 }
 
+/*
+ * sheet属性
+ * 不同浏览器取得样式表对象
+ * 取得第一个<link/>元素引入的样式表
+ */
+function getStyleSheet(element) {
+    return element.sheet || element.stylesheets;
+}
+
+var link = document.getElementsByTagName("link")[0];
+var sheet = getStyleSheet(link);
+
