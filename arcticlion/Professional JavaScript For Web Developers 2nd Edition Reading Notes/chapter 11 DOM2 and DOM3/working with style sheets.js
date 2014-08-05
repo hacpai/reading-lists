@@ -44,3 +44,23 @@ alert(rule.style.width);                      //"100px"
 alert(rule.style.height);                     //"200px"
 
 rule.style.backgroundColor = "red";           //修改样式信息
+
+/*
+ * inserRule()
+ * 接受2个参数：规则文本和插入的位置索引
+ * sheet.insertRule("body { background-color: silver }", 0);    //DOM方法
+ * IE类似的方法addRule()
+ * 接受2个参数：选择符文本和CSS样式信息;1个可选参数：插入的规则位置
+ * sheet.addRule("body", "background-color: silver", 0);
+ * 跨浏览器插入规则
+ */
+function insertRule(sheet, selectorText, cssText, position) {
+    if (sheet.inserRule) {
+        sheet.insertRule(selectorText + "{" + cssText + "}", position);
+    } else if (sheet.addRule) {
+        sheet.addRule(selectorText, cssText, position);
+    }
+}
+
+insertRule(document.stylesheets[0], "body", "background-color: silver", 0);
+
