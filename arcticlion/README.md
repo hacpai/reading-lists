@@ -3,7 +3,7 @@
 ### saharabear
 
 #### HTML
-** quanchike-webtraining / saharabear / 201407 / sass / index.html **
+**quanchike-webtraining / saharabear / 201407 / sass / index.html**
 
     <!doctype html>
     <html lang="zh-CN" >
@@ -271,9 +271,9 @@
 
 ### 在线阅读源码体验
 - [CodeWa读懂每一行代码](codewa.com)
-- [Sourcegraph](sourcegraph.com)
 - [Go Walker搜索Go项目](gowalker.org)
-- 
+- [Sourcegraph](sourcegraph.com)
+
 ---------
 感谢阅读这份帮助文档。
 
