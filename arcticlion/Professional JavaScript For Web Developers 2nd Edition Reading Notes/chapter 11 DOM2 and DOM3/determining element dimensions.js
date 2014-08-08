@@ -13,17 +13,25 @@
  * 然后调整其getBoundingClientRect()
  * 减去视口的scrollTop是为了防止调用这个函数窗口被滚动
  * 最后再传入的元素上调用这个方法并基于新的计算公式和创建一个对象
+ * 对于不支持getBoundingClientRect()浏览器
+ * right-left = offsetWidth且bottom-top = offsetHeight
+ * left和top属性等于getElementLeft()和getElementLeft()的值
  */
 function getBoundingClientRect(element) {
-    if (typeof argument.callee.offset != "number") {
-        var scrollTop = document.documentElement.scrollTop;
-        var temp = document.createElement("div");
-        temp.style.cssText = "position:absolute;left:0;top:0;";
-        document.body.appendChild(temp);
-        argument.callee.offset = -temp.getBoundlingClientRect().top - scrollTop;
-        document.body.removeChild(temp);
-        temp = null;
-    }
+
+    var scrollTop = document.documentElement.scrollTop;
+    var scrollLeft = document.documentElement.scrollLeft;
+    
+    if (element.getBoundingClientRect() {
+        if (typeof argument.callee.offset != "number") {
+            var scrollTop = document.documentElement.scrollTop;
+            var temp = document.createElement("div");
+            temp.style.cssText = "position:absolute;left:0;top:0;";
+            document.body.appendChild(temp);
+            argument.callee.offset = -temp.getBoundlingClientRect().top - scrollTop;
+            document.body.removeChild(temp);
+            temp = null;
+        }
 
     var rect = element.getBundingclientRect();
     var offset = argument.callee.offset;
@@ -34,4 +42,16 @@ function getBoundingClientRect(element) {
         top: rect.top + offset,
         bottom: rect.bottom + offset
     };
+    }  else {
+
+        var actualLeft = getElementLeft(element);
+        var actualTop = getElementTop(element);
+
+        return {
+            left: actualLeft - scrollLeft,
+            right: actualLeft + element.offsetWidth - scrollLeft,
+            top: actualTop - scrollTop,
+            bottom: actualTop + element.offsetTop - scrollTop
+        } 
+    }
 }
