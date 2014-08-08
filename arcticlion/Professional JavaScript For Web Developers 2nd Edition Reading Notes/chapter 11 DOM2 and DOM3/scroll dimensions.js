@@ -8,3 +8,14 @@
  */
 var docHeight = Math.max(document.documentElement.scrollHeight, document.documentElement.clientHeight);
 var docWidth = Math.max(document.documentElement.scrollWidth, document.documentElement.clientWidth);
+
+/*
+ * scrollLeft和scrollTop属性确定当前滚动状态
+ * 也可以滚动位置
+ * 函数作用：检测元素是否位于顶部，不是则回滚到顶部
+ */
+function scrollToTop(element) {
+    if (element.scrollTop != 0) {
+        element.scrollTop = 0;
+    }
+}
