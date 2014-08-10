@@ -28,3 +28,23 @@ var filter = function(node) {
 //能够访问所有类型节点
 var iterator = document.createNodeIterator(root, NodeFilter.SHOW_ALL, null, false);
 
+/*
+ * NodeIterator类型2个方法nextNode()和previousNode()
+ * <div id="div1">
+ *     <p><b>Hello</b> world!</p>
+ *     <ul>
+ *         <li>List item 1</li>
+ *         <li>List item 2</li>
+ *         <li>List item 3</li>
+ *     </ul>
+ * </div>
+ * 遍历<div>元素中所有元素
+ */
+var div = document.getElementById("div1");
+var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT, null, false);
+var node = iterator.nextNode();
+while (node != null) {
+    alert(node.tagName);
+    node = iterator.nextNode();
+}
+
