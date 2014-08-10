@@ -48,6 +48,7 @@ range2.setEnd(p1, p1.length);
  * p1.firstChild.firstChild取得"Hello"的文本节点
  * deleteContents()从文档那中删除范围内容
  * extractContents()返回移除的范围内容
+ * insertNode()在选择的范围开始处插入
  */
 var p1 = document.getElementById("p1");
 var helloNode = p1.firstChild.firstChild;
@@ -61,3 +62,9 @@ range.deleteContents();    //<p id="p1"><b>He</b>rld!</p>
 
 var fragment = range.extractContents();
 p1.appendChild(fragment);    //<p id="p1"><b>He</b>rld!</p><b>llo</b> wo 
+
+var span = document.createElement("span");
+span.style.color = "red";
+span.appendChild(document.createTextNode("Inserted text"));
+range.insertNode(span);    //<p id="p1"><b>He<span style="color: red">Inserted text</span>llo</b> world!</p>
+
