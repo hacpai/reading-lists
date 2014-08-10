@@ -50,6 +50,10 @@ range2.setEnd(p1, p1.length);
  * extractContents()返回移除的范围内容
  * insertNode()在选择的范围开始处插入
  * sorroundContents()环绕范围插入内容
+ * collapse()折叠范围
+ * 接受一个参数：ture：折叠到范围起点;false：折叠到范围重点
+ * collapsed检测是否折叠
+ * 检测某个范围是否处于折叠状态，可以帮我们确定范围中的2个节点是否紧密相邻
  */
 var p1 = document.getElementById("p1");
 var helloNode = p1.firstChild.firstChild;
@@ -71,4 +75,15 @@ range.insertNode(span);    //<p id="p1"><b>He<span style="color: red">Inserted t
 
 range.surroundContents(span);    //<p id="p1"><b>He</b><span style="color: red">Inserted text</span><b>llo</b> world!</p>
                                  //类似给选区加了一个红色背景（不同insertNode()之处：这里<b>元素拆分成两个<b>)
+
+range.collapse(true);    //折叠到起点
+alert(range.collapsed);  //true
+
+//<p id="p1">Paragraph 1</p><p id="p2">Paragraph 2</p>
+var p1 = document.getElementById("p1");
+var p2 = document.getElementById("p2");
+var range = document.createRange();
+range.setStartAfter(p1);
+range.setStartBefore(p2);
+alert(range.collapsed);    //true.范围是折叠的，<p1>和<p2>相邻
 
