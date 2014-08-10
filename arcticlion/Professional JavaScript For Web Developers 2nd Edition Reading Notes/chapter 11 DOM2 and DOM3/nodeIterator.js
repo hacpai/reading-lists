@@ -48,3 +48,8 @@ while (node != null) {
     node = iterator.nextNode();
 }
 
+//返回遍历遇到的<li>只需修改filter
+var filter = function(node) {
+    rerturn (node.tagName.toLowerCase() == "li") ? NodeFilter.FILTER_ACCEPT: NodeFilter.FILTER_SKIP;
+};
+var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT, filter, false);
