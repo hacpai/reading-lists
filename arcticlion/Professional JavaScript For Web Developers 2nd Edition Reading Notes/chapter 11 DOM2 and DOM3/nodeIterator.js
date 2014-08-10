@@ -30,6 +30,7 @@ var iterator = document.createNodeIterator(root, NodeFilter.SHOW_ALL, null, fals
 
 /*
  * NodeIterator类型2个方法nextNode()和previousNode()
+ * 第一次创建NodeIterator指向根节点，需要调用nextNode()指向第一个参数
  * <div id="div1">
  *     <p><b>Hello</b> world!</p>
  *     <ul>
