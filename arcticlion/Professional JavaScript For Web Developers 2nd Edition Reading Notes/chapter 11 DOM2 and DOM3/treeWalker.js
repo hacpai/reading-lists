@@ -6,6 +6,7 @@
  * lastChild(): 遍历到当前节点的最后一个子节点
  * nextSilbling(): 遍历到当前节点的下一个同辈节点
  * previousSibling(): 遍历到当前节点的上一个同辈节点
+ * currentNode: 遍历方法在上一次遍历中返回的节点
  * document.createTreeWalker()接受4个参数创建(同document.createNodeIterator())
  * 刚创建的TreeWalker指向根节点，第一次调用nextNode()指向第一个参数的位置
  */
@@ -33,4 +34,9 @@ while (node != null) {
     alert(node.tagName);
     node = walker.nextSibling();
 }
+
+//修改遍历继续进行的起点
+var node = walker.nextNode();
+alert(node === walker.currentNode);    //true
+walker.currentNode = document.body;    //修改起点
 
