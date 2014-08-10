@@ -54,6 +54,17 @@ range2.setEnd(p1, p1.length);
  * 接受一个参数：ture：折叠到范围起点;false：折叠到范围重点
  * collapsed检测是否折叠
  * 检测某个范围是否处于折叠状态，可以帮我们确定范围中的2个节点是否紧密相邻
+ * compareBoundaryPoints()确定这些范围是否有公共边界
+ * 接受2个参数：表示比较方式的常量值和第一个范围的起点
+ * 比较方式常量值如下：
+ * Range.START_TO_START(0)
+ * Range.START_TO_END(1)
+ * Range.END_TO_END(2)
+ * Range.END_TO_START(3)
+ * 返回值如下:
+ * 第一个范围中的点位于第二个范围中的点之前，返回-1
+ * 相等 0
+ * 之后 1
  */
 var p1 = document.getElementById("p1");
 var helloNode = p1.firstChild.firstChild;
@@ -87,3 +98,13 @@ range.setStartAfter(p1);
 range.setStartBefore(p2);
 alert(range.collapsed);    //true.范围是折叠的，<p1>和<p2>相邻
 
+var range1 = document.createRange();
+var range2 = document.createRange();
+var p1 = document.getElementById("p1");
+
+range1.selectNodeContents(p1);
+range2.selextNodeContents(p2);
+range2.setEndefore(p1.lastChild);
+
+alert(range1.compareBoundaryPoints(Range.START_TO_START, range2));    //0
+alert(range1.compareBoundaryPoints(Range.END_TO_END, range2));    //1
