@@ -46,6 +46,7 @@ range2.setEnd(p1, p1.length);
  * 因为"Hello"是<p>的孙子节点
  * p1.firstChild取的<b>
  * p1.firstChild.firstChild取得"Hello"的文本节点
+ * deleteContents()从文档那中删除范围内容
  */
 var p1 = document.getElementById("p1");
 var helloNode = p1.firstChild.firstChild;
@@ -55,3 +56,4 @@ var range = document.createRange();
 range.setStart(helloNode, 2);
 range.setEnd(worldNode, 3);
 
+range.deleteContents();    //<p id="p1"><b>He</b>rld!</p>
