@@ -49,6 +49,7 @@ range2.setEnd(p1, p1.length);
  * deleteContents()从文档那中删除范围内容
  * extractContents()返回移除的范围内容
  * insertNode()在选择的范围开始处插入
+ * sorroundContents()环绕范围插入内容
  */
 var p1 = document.getElementById("p1");
 var helloNode = p1.firstChild.firstChild;
@@ -67,4 +68,7 @@ var span = document.createElement("span");
 span.style.color = "red";
 span.appendChild(document.createTextNode("Inserted text"));
 range.insertNode(span);    //<p id="p1"><b>He<span style="color: red">Inserted text</span>llo</b> world!</p>
+
+range.surroundContents(span);    //<p id="p1"><b>He</b><span style="color: red">Inserted text</span><b>llo</b> world!</p>
+                                 //类似给选区加了一个红色背景（不同insertNode()之处：这里<b>元素拆分成两个<b>)
 
