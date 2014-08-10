@@ -65,6 +65,7 @@ range2.setEnd(p1, p1.length);
  * 第一个范围中的点位于第二个范围中的点之前，返回-1
  * 相等 0
  * 之后 1
+ * cloneRange()复制范围
  */
 var p1 = document.getElementById("p1");
 var helloNode = p1.firstChild.firstChild;
@@ -108,3 +109,6 @@ range2.setEndefore(p1.lastChild);
 
 alert(range1.compareBoundaryPoints(Range.START_TO_START, range2));    //0
 alert(range1.compareBoundaryPoints(Range.END_TO_END, range2));    //1
+
+var newRange = range.cloneRange();
+
