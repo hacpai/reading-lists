@@ -22,3 +22,22 @@ var p1 = document.getElementById("p1");
 range1.selectNode(p1);
 range2.selectNodeContents(p1);
 
+/*
+ * DOM范围实现幅炸选择
+ * setStart()和setEnd()
+ * 接受2个参数：参照节点和偏移量值
+ * 确定节点在其父节点的childNodes集合中的索引
+ */
+var p1Index = -1;
+for (var i = 0, len = p1.parentNode.childNodes.length; i < len; i++) {
+    if (p1.parentNode.childNodes[i] == p1) {
+        p1Index = i;
+        break;
+    }
+}
+
+range1.setStart(p1.parentNode, p1Index);
+range1.setEnd(p1.parent, p1Index + 1);
+range2.setStart(p1, 0);
+range2.setEnd(p1, p1.length);
+
