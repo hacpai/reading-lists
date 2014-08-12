@@ -6,8 +6,10 @@
  * 元素的方法
  */
 var btn = document.getElementById("myBtn");
-btn.onClick = function() {
+btn.onclick = function() {
     alert("CLicked");
     alert(this.id);    //"myBtn"
 }
+
+btn.onclick = null;    //删除事件处理程序
 
