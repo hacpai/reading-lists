@@ -4,9 +4,11 @@
  * 接受2个参数
  * 事件程序名称:需要加"on"
  * 事件处理函数
+ * 事件处理程序的作用域为window
  */
 var btn = document.getElementById("myBtn");
 btn.attchEvent("onclick", function() {
     alert("Click");
+    alert(this === window);    //true
 });
 
