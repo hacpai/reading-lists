@@ -34,3 +34,12 @@ var EventUtil = {
     }
 }
 
+//使用EventUtil对象
+var btn = document.getElementById("myBtn");
+var handler = function () {
+    alert("Clicked");
+};
+EventUtil.addHandler(btn, "click", handler);
+
+EventUtil.removeHandler(btn, "click", handler);
+
