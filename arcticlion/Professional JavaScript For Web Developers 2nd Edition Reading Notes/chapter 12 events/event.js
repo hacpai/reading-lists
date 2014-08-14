@@ -8,7 +8,11 @@
  * 直接将事件处理程序指点给目标元素，三者相等
  * 事件处理程序在按钮的富姐电中this === currentTarget
  * 通过一个函数处理多个事件用event.type
- * 
+ * 定义名为handler的函数处理3种事件
+ * 单击按钮出现警告框
+ * 将鼠标移到按钮上背景变红
+ * 鼠标移出按钮范围恢复默认值
+ * preventDefault()阻止特定事件的默认行为
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function(event) {
@@ -46,4 +50,10 @@ var handler = fucnction(event) {
 btn.onclick = handler;
 btn.onmouseover = handler;
 btn.onmouseout = handler;
+
+//取消链接的默认行为
+var link = document.getElementById("myLink");
+link.onclick = fucnction(event) {
+    event.preventDefault();
+};
 
