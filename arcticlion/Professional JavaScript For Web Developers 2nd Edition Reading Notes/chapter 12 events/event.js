@@ -6,6 +6,7 @@
  * 事件处理程序内部this === event.currentTarget
  * event.target等于真正的目标值
  * 直接将事件处理程序指点给目标元素，三者相等
+ * 事件处理程序在按钮的富姐电中this === currentTarget
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function(event) {
@@ -17,4 +18,10 @@ btn.addEventListener("click", function(event) {
     alert(event.type);    //"click"
 }, false);
 <input type="button" value="Click Me" onclick="alert(event.type)"/>
+
+document.body.onclick = function(event) {
+    alert(event.currentTarget === document.body);    //true
+    alert(this === document.body);    //true
+    alert(event.target === document.getElementById("myBtn");    //true
+};
 
