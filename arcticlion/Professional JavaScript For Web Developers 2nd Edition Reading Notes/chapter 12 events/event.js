@@ -19,6 +19,8 @@
  * if 捕获阶段调用 then eventPhase = 1
  * if 事件处理程序处在目标对象上 then eventPhase = 2
  * if 冒泡阶段调用 then eventPhase = 3
+ * 只有在事件处理程序执行期间event才存在
+ * 一旦事件执行完成event就被销毁
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function(event) {
