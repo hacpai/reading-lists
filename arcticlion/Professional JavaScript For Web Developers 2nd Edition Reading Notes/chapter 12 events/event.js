@@ -11,4 +11,5 @@ btn.onclick = function(event) {
 btn.addEventListener("click", function(event) {
     alert(event.type);    //"click"
 }, false);
+<input type="button" value="Click Me" onclick="alert(event.type)"/>
 
