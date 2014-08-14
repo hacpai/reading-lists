@@ -13,6 +13,8 @@
  * 将鼠标移到按钮上背景变红
  * 鼠标移出按钮范围恢复默认值
  * preventDefault()阻止特定事件的默认行为
+ * stopPropagation()立即停止事件在DOM层中传播
+ * 添加一个按钮事件调用stopropagation()避免触发注册在document.body上面的事件处理程序
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function(event) {
@@ -55,5 +57,15 @@ btn.onmouseout = handler;
 var link = document.getElementById("myLink");
 link.onclick = fucnction(event) {
     event.preventDefault();
+};
+
+//如果不掉用stopPropagation()就会出现两个警告框
+btn.onclick = function(event) {
+    alert("CLicked");
+    event.stopPropagation();
+}
+
+document.body.onclick = function(event) {
+    alert("Body clicked");
 };
 
