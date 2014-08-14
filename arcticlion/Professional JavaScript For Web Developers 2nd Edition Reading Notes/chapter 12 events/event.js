@@ -15,6 +15,10 @@
  * preventDefault()阻止特定事件的默认行为
  * stopPropagation()立即停止事件在DOM层中传播
  * 添加一个按钮事件调用stopropagation()避免触发注册在document.body上面的事件处理程序
+ * eventPhase确定事件当前位于事件流哪个阶段
+ * if 捕获阶段调用 then eventPhase = 1
+ * if 事件处理程序处在目标对象上 then eventPhase = 2
+ * if 冒泡阶段调用 then eventPhase = 3
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function(event) {
@@ -33,7 +37,7 @@ document.body.onclick = function(event) {
     alert(event.target === document.getElementById("myBtn");    //true,由于按钮上没有注册事件处理程序，click事件就冒泡到了document.body那里进行处理
 };
 
-var handler = fucnction(event) {
+var handler = function(event) {
     switch(event.type) {
         case "click": 
             alert("CLicked");
@@ -55,7 +59,7 @@ btn.onmouseout = handler;
 
 //取消链接的默认行为
 var link = document.getElementById("myLink");
-link.onclick = fucnction(event) {
+link.onclick = function(event) {
     event.preventDefault();
 };
 
@@ -67,5 +71,23 @@ btn.onclick = function(event) {
 
 document.body.onclick = function(event) {
     alert("Body clicked");
+};
+
+/*
+ * 单击这个例子按钮
+ * 首先执行的事件处理程序是在捕获阶段触发的添加到doument.body中的那个
+ * 接着会触发按钮上的注册的事件处理程序
+ * 最后触发是在冒泡阶段上的document.body的那个
+ */
+btn.onclick = function(event) {
+    alert(event.eventPhase);    //2
+};
+
+document.body.addEventListener = function(event) {
+    alert(event.eventPhase);    //1
+}, true);
+
+document.body.onclick = function(event) {
+    alert(event.eventPhase);    //3
 };
 
