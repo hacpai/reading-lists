@@ -9,6 +9,7 @@
  * 故this不一定会等于事件的目标，使用event.srcElement保险
  * DOM0级方法指定的事件处理程序中，srcElement属性===this
  * returnValue相当于preventDefault()取消给定事件的默认行为
+ * cancelBubble与stopPropagation()相同，用来停止事件冒泡
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function() {
@@ -28,5 +29,16 @@ btn.attachEvent("onclick", function(event) {
 var link = document.getElementById("myLink");
 link.onclick = function() {
     window.event.returnValue = false;
+};
+
+//通过在onclick事件处理程序中将cancelBubble设置为true，可阻止事件通过冒泡而触发document.body中注册的事件处理程序
+//结果，单击按钮之后，智慧显示一个警告框
+btn.onclick = function() {
+    alert("Clicked");
+    window.event.cancelBubble = true;
+};
+
+document.body.onclick = function() {
+    alert("Body clicked");
 };
 
