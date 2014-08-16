@@ -14,6 +14,7 @@
  *     getEvent()返回对event对象的引用
  *     getTarget()返回事件的目标
  *     preventDefault()取消事件的默认行为 
+ *     stopPropagation()取消事件的冒泡行为
  */
 var EventUtil = {
 
@@ -50,6 +51,14 @@ var EventUtil = {
             element.detachEvent("on" + type, handler);
         } else {
             element["on" + type = null];
+        }
+    },
+
+    stopPropagation: function(event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
         }
     }
 }
