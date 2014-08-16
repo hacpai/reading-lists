@@ -13,7 +13,7 @@
  * 跨浏览器事件对象
  *     getEvent()返回对event对象的引用
  *     getTarget()返回事件的目标
- *     
+ *     preventDefault()取消事件的默认行为 
  */
 var EventUtil = {
 
@@ -33,6 +33,14 @@ var EventUtil = {
 
     getTarget: function(event) {
         return event.target || event.srcElement;
+    },
+
+    preventDefault: function(event) {
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = fale;
+        }
     },
 
     removeHandler: function(element, type, handler) {
