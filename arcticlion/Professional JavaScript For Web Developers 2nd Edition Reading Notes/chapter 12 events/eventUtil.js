@@ -12,6 +12,7 @@
  *     else DOM0级方法
  * 跨浏览器事件对象
  *     getEvent()返回对event对象的引用
+ *     getTarget()返回事件的目标
  *
  */
 var EventUtil = {
@@ -28,6 +29,10 @@ var EventUtil = {
 
     getEvent: function(event) {
         return event ? event : window.event;
+    },
+
+    getTarget: function(event) {
+        return event.target || event.srcElement;
     },
 
     removeHandler: function(element, type, handler) {
