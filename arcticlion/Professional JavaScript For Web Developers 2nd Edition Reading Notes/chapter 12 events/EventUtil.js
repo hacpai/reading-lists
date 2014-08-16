@@ -10,6 +10,9 @@
  *     if addEventListener添加事件处理程序
  *     elif attachEvent
  *     else DOM0级方法
+ * 跨浏览器事件对象
+ *     getEvent()返回对event对象的引用
+ *
  */
 var EventUtil = {
 
@@ -21,6 +24,10 @@ var EventUtil = {
         } else {
             element["on" + type] = handler;
         }
+    },
+
+    getEvent: function(event) {
+        return event ? event : window.event;
     },
 
     removeHandler: function(element, type, handler) {
