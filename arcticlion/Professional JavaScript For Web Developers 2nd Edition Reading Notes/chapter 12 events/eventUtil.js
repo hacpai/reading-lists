@@ -69,4 +69,9 @@ btn.onclick = function(event) {
     var target = EventUtil.getTarget(event);
 };
 
+var link = document.getElementById("myLink");
+link.onclick = function(event) {
+    event = EventUtil.getEvent(event);
+    EventUtil.preventDefault(event);
+};
 
