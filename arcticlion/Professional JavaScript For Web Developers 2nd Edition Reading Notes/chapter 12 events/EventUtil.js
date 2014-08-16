@@ -50,3 +50,8 @@ EventUtil.addHandler(btn, "click", handler);
 
 EventUtil.removeHandler(btn, "click", handler);
 
+//使用getEvent方法
+btn.onclick = function(event) {
+    event = EventUtil.getEvent(event);
+};
+
