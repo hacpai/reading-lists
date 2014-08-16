@@ -13,7 +13,7 @@
  * 跨浏览器事件对象
  *     getEvent()返回对event对象的引用
  *     getTarget()返回事件的目标
- *
+ *     
  */
 var EventUtil = {
 
@@ -55,8 +55,10 @@ EventUtil.addHandler(btn, "click", handler);
 
 EventUtil.removeHandler(btn, "click", handler);
 
-//使用getEvent方法
+//事件对象的使用
 btn.onclick = function(event) {
     event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
 };
+
 
