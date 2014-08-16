@@ -5,15 +5,20 @@
  * attachEvent()添加事件处理程序
  * event对象作为参数传入事件处理程序函数中
  * HTML特性指定的事件处理程序通过event的变量访问event对象
+ * IE事件处理程序作用域是根据他指定的方式确定的
+ * 故this不一定会等于事件的目标，使用event.srcElement保险
+ * DOM0级方法指定的事件处理程序中，srcElement属性===this
  */
 var btn = document.getElementById("myBtn");
 btn.onclick = function() {
     var event = window.event;
     alert(event.type);    //"click"
+    alert(window.event.srcElement === this);    //true
 };
 
 btn.attachEvent("onclick", function(event) {
     alert(event.type);    //"clcik"
+    alert(event.srcElement === this);    //false
 });
 
 <input type="button" value="Click Me" onclick="alert(event.type)"/>
