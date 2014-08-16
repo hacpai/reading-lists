@@ -76,6 +76,8 @@ EventUtil.removeHandler(btn, "click", handler);
 btn.onclick = function(event) {
     event = EventUtil.getEvent(event);
     var target = EventUtil.getTarget(event);
+    alert("Clicked");
+    eventUtil.stopPropagation(event);
 };
 
 var link = document.getElementById("myLink");
