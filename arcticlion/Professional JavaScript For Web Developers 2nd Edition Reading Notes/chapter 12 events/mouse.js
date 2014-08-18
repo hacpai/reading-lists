@@ -6,6 +6,17 @@
  * screenX和screenY确定事件发生时鼠标指针相对于整个屏幕的坐标信息
  * DOM规定4个属性(shiftKey, ctrlKey, altKey, metaKey)修改键的状态
  * 4个属性返回布尔值：用户按下该键则值为true
+ * 相关元素
+ * <html>
+ * <head>
+ *     <title>Related Element Example</title>
+ * </head>
+ * <body>
+ *     <div id="myDiv" style="background-color:red;height:100px;width:100px">Move the mouse from here to the white</div>
+ * </body>
+ * </html>
+ * 指针从<div>移出时，触发mouseout事件，相关元素为<body>.
+ * 与此同时，<body>触发mouseover事件，相关元素为<div>
  */
 var div = document.getElementById("myDiv");
 EventUtil.addHandler(div, "click", function(event) {
