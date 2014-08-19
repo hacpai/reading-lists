@@ -20,6 +20,8 @@
  *         该属性只支持mouseover&mouseout
  *     IE的fromElement&toElement属性分别保存mouseover&mouseout事件触发着的相关元素
  *     对于其他事件这个属性为null
+ * 检测“MouseEvent”特性确定event对象中button是否含正确值
+ * 检测失败说明为IE，就对相应值进行规范化
  */
 var EventUtil = {
 
@@ -40,6 +42,27 @@ var EventUtil = {
     getTarget: function(event) {
         return event.target || event.srcElement;
     },
+    
+    getButton: function(event) {
+        if (document.implementation.hasFeature("MouseEvents", "2.0")) {
+            return event.button;
+        } else {
+            switch(event.button) {
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4:
+                    return 1;
+            }
+        }
+    },
+    
 
     preventDefault: function(event) {
         if (event.preventDefault) {
