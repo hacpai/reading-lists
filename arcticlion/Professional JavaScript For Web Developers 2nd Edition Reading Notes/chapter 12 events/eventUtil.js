@@ -136,6 +136,8 @@ EventUtil.addHandler(div, "mouseout", function(event) {
     alert("Moused out of " + target.tagName + " to " + relatedTarget.tagName);
 });
 
+//为<div>添加onmousedown事件处理程序
+//在这个元素按下鼠标按钮时警告框显示按钮代码
 EventUtil.addHandler(div, "mousedown", function(event) {
     event = EventUtil.getEvent(event);
     alert(EventUtil.getButton(event));
