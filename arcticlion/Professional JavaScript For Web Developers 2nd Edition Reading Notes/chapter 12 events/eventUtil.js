@@ -128,10 +128,16 @@ link.onclick = function(event) {
 
 //为<div>mouseout事件注册一个事件处理程序
 //事件触发时，弹窗显示鼠标移出和移入的元素信息
+var div = document.getElementById("myDiv");
 EventUtil.addHandler(div, "mouseout", function(event) {
     event = EventUtil.getEvent(event);
     var target = EventUtil.getTarget(event);
     var relatedTarget = EventUtil.getRelatedTarget(event);
     alert("Moused out of " + target.tagName + " to " + relatedTarget.tagName);
+});
+
+EventUtil.addHandler(div, "mousedown", function(event) {
+    event = EventUtil.getEvent(event);
+    alert(EventUtil.getButton(event));
 });
 
