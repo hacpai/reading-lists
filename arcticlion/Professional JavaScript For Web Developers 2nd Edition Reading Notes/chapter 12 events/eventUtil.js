@@ -15,6 +15,11 @@
  *     getTarget()返回事件的目标
  *     preventDefault()取消事件的默认行为 
  *     stopPropagation()取消事件的冒泡行为
+ * 得到相关元素信息
+ *     DOM通过event对象的relatedTarget属性提供相关信息
+ *         该属性只支持mouseover&mouseout
+ *     IE的fromElement&toElement属性分别保存mouseover&mouseout事件触发着的相关元素
+ *     对于其他事件这个属性为null
  */
 var EventUtil = {
 
@@ -41,6 +46,18 @@ var EventUtil = {
             event.preventDefault();
         } else {
             event.returnValue = fale;
+        }
+    },
+    
+    getRelatedTarget: function(event) {
+        if (event.relatedTarget) {
+            return event.relatedTarget;
+        } else if (event.toElement) {
+            return event.toElement;
+        } else if (event.fromeElement) {
+            return event.fromElement;
+        } else {
+            return null;
         }
     },
 
