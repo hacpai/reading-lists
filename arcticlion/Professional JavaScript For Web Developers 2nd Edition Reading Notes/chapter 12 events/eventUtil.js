@@ -103,3 +103,12 @@ link.onclick = function(event) {
     EventUtil.preventDefault(event);
 };
 
+//为<div>mouseout事件注册一个事件处理程序
+//事件触发时，弹窗显示鼠标移出和移入的元素信息
+EventUtil.addHandler(div, "mouseout", function(event) {
+    event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
+    var relatedTarget = EventUtil.getRelatedTarget(event);
+    alert("Moused out of " + target.tagName + " to " + relatedTarget.tagName);
+});
+
