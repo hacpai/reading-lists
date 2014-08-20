@@ -15,6 +15,13 @@
  *     getTarget()返回事件的目标
  *     preventDefault()取消事件的默认行为 
  *     stopPropagation()取消事件的冒泡行为
+ * 得到相关元素信息
+ *     DOM通过event对象的relatedTarget属性提供相关信息
+ *         该属性只支持mouseover&mouseout
+ *     IE的fromElement&toElement属性分别保存mouseover&mouseout事件触发着的相关元素
+ *     对于其他事件这个属性为null
+ * 检测“MouseEvent”特性确定event对象中button是否含正确值
+ * 检测失败说明为IE，就对相应值进行规范化
  */
 var EventUtil = {
 
@@ -35,12 +42,45 @@ var EventUtil = {
     getTarget: function(event) {
         return event.target || event.srcElement;
     },
+    
+    getButton: function(event) {
+        if (document.implementation.hasFeature("MouseEvents", "2.0")) {
+            return event.button;
+        } else {
+            switch(event.button) {
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4:
+                    return 1;
+            }
+        }
+    },
+    
 
     preventDefault: function(event) {
         if (event.preventDefault) {
             event.preventDefault();
         } else {
             event.returnValue = fale;
+        }
+    },
+    
+    getRelatedTarget: function(event) {
+        if (event.relatedTarget) {
+            return event.relatedTarget;
+        } else if (event.toElement) {
+            return event.toElement;
+        } else if (event.fromeElement) {
+            return event.fromElement;
+        } else {
+            return null;
         }
     },
 
@@ -85,4 +125,21 @@ link.onclick = function(event) {
     event = EventUtil.getEvent(event);
     EventUtil.preventDefault(event);
 };
+
+//为<div>mouseout事件注册一个事件处理程序
+//事件触发时，弹窗显示鼠标移出和移入的元素信息
+var div = document.getElementById("myDiv");
+EventUtil.addHandler(div, "mouseout", function(event) {
+    event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
+    var relatedTarget = EventUtil.getRelatedTarget(event);
+    alert("Moused out of " + target.tagName + " to " + relatedTarget.tagName);
+});
+
+//为<div>添加onmousedown事件处理程序
+//在这个元素按下鼠标按钮时警告框显示按钮代码
+EventUtil.addHandler(div, "mousedown", function(event) {
+    event = EventUtil.getEvent(event);
+    alert(EventUtil.getButton(event));
+});
 
