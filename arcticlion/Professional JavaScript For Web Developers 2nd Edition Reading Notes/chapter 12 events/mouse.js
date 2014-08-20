@@ -17,6 +17,11 @@
  * </html>
  * 指针从<div>移出时，触发mouseout事件，相关元素为<body>.
  * 与此同时，<body>触发mouseover事件，相关元素为<div>
+ * detail:记录给定位置发生多少次单击
+ * 易访问性问题
+ *     使用click事件执行代码。即使onmousedown执行代码让人觉得速度更快
+ *     不用用onmouseover显示新选项，因为屏幕阅读器无法触发这个事件
+ *     不使用dbclick执行重复操作，因为键盘无法触发这个事件
  */
 var div = document.getElementById("myDiv");
 EventUtil.addHandler(div, "click", function(event) {
