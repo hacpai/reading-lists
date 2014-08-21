@@ -156,3 +156,12 @@ EventUtil.addHandler(div, "mousedown", function(event) {
     alert(EventUtil.getButton(event));
 });
 
+//使用getCharCode
+var textbox = document.getElementById("myText");
+EventUtil.addHandle(textbox, "keypress", function(event) {
+    event = EventUtil.getEvent(event);
+
+    event = EventUtil.getEvent(event);
+    //String.fromCharCode()将编码转化为实际字符
+    alert(String.fromCharCode(EventUtil.getCharCode(event))); 
+
