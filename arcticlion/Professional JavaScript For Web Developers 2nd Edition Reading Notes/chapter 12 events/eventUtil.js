@@ -22,6 +22,11 @@
  *     对于其他事件这个属性为null
  * 检测“MouseEvent”特性确定event对象中button是否含正确值
  * 检测失败说明为IE，就对相应值进行规范化
+ * 字符编码
+ *     event.charCode:keypress事件时才包含那个键的ASCII值
+ *     跨浏览器取得字符编码
+ *         检测charCode是否可用
+ *         不可用使用keycode
  */
 var EventUtil = {
 
@@ -60,6 +65,14 @@ var EventUtil = {
                 case 4:
                     return 1;
             }
+        }
+    },
+
+    getCharCode: function(event) {
+        if (typeof event.charCode == "number") {
+            return event.charCode;
+        } else {
+            return event.keyCode;
         }
     },
     
