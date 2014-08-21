@@ -3,6 +3,7 @@
  *     load事件
  *         当页面加载后触发window上的load事件
  *         两种定义onload事件处理程序方式
+ *         建议使用JavaScript方式
  */
 
 //JavaScript指定事件处理程序方式
