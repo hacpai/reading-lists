@@ -46,3 +46,13 @@ EventUtil.addHandler(window, "load", function() {
     image.src = "smile.gif";
 });
 
+//为<script>触发load事件
+EventUtil.addHandler(window, "load", function() {
+    var script = document.createElement("script");
+    EventUtil.addHandler(script, "load", function(event) {
+        alert("Loaded");
+    });
+    script.src = "example.js";
+    document.body.appendChild(script);
+});
+
