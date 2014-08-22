@@ -6,6 +6,7 @@
  *         建议使用JavaScript方式
  *         图像也有两种可触发load事件
  *         创建<img>为其指定事件处理程序，以便图像加载完毕后给出提示
+ *         IE,Opera还支持<link>元素上load事件
  */
 
 //JavaScript指定事件处理程序方式
@@ -54,5 +55,16 @@ EventUtil.addHandler(window, "load", function() {
     });
     script.src = "example.js";
     document.body.appendChild(script);
+});
+
+EventUtil.addHandler(window, "load", function() {
+    var link = document.createElement("link");
+    link.rype = "text/css";
+    link.rel = "stylesheet";
+    EventUtil.addHandler(link, "load", function(event) {
+        alert("css loaded");
+    });
+    link.href = "example.css";
+    document.getElementsByTagName("head")[0].appendChild(link);
 });
 
