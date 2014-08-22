@@ -37,4 +37,12 @@ EventUtil.addHandler(window, "load", function() {
     image.src = "smile.gif";
 });
 
+//DOM0级预先加载图片
+EventUtil.addHandler(window, "load", function() {
+    var image = new Image();
+    EventUtil.addHadnler(image, "load", function(event) {
+        alert("Image loaded!");
+    });
+    image.src = "smile.gif";
+});
 
