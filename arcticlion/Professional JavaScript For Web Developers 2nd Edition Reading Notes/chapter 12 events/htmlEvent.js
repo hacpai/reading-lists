@@ -12,6 +12,10 @@
  *         从一个页面切换到您一个页面时触发
  *         作用是清楚引用避免内存泄漏
  *         两种方式定义
+ *     resize事件
+ *         浏览器调整到一个新的高宽时触发
+ *         在window上触发
+ *         何时触发，不同浏览器不同机制
  */
 
 //JavaScript指定事件处理程序方式
@@ -86,4 +90,8 @@ EventUtil.addHandler(window, "unload", function(event) {
 
 </body>
 </html>
+
+EventUtil.addHandler(window, "resize", function(event) {
+    alert("Resized");
+});
 
