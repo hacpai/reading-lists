@@ -16,6 +16,10 @@
  *         浏览器调整到一个新的高宽时触发
  *         在window上触发
  *         何时触发，不同浏览器不同机制
+ *     scroll事件
+ *         混杂模式,<body>scrollLeft和scrollTop监控
+ *         标准模式,<html>反映(Safari除外)
+ *         scroll和resize一样在滚动期间重复触发
  */
 
 //JavaScript指定事件处理程序方式
@@ -93,5 +97,13 @@ EventUtil.addHandler(window, "unload", function(event) {
 
 EventUtil.addHandler(window, "resize", function(event) {
     alert("Resized");
+});
+
+EventUtil.addHandler(window, "scroll", function(event) {
+    if (document.compatMode == "CSS1Compat") {
+        alert(document.documentElement.srcollTop);
+    } else {
+        alert(document.body.scrollTop);
+        }
 });
 
