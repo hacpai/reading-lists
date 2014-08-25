@@ -5,6 +5,11 @@
  *         event.target=被移除的节点,event.relatedNode=被移除节点的父节点
  *         被移除节点的子节点触发DOMNodeRemovedFromDocument事件
  *         被移除节点的父节点触发DOMSubtreeModified事件
+ *     节点插入
+ *         首先触发DOMNodeInserted事件
+ *         event.target=被插入的节点,event.relatedNode=被插入的节点的父节点
+ *         DOMNodeInsertedIntoDocument:新插入的节点触发
+ *         DOMSubtreeModified:新插入节点的父节点触发
  *
  * 事例HTML页面
  * <html>
@@ -42,4 +47,26 @@ EventUtil.addHandler(window, "load", function(event) {
     list.parenNode.removeChild(list);
 });
 
+//验证节点插入事件的触发顺序
+EventUtil.addHandler(window, "load", function(event) {
+    var list = document.getElementById("myList");
+    var item = document.createElement("li");
+    item.appendChild(document.createTextNode("Item 4"));
+
+    EventUtil.addHandler(document, "DOMSubtreeModefied", function(event) {
+        alert(event.type);
+        alert(event.target);
+    });
+    EventUtil.addHandler(document, "DOMNodeInsertrd", function(event) {
+        alert(event.type);
+        alert(event.target);
+        alert(event.relatedNode);
+    });
+    EventUtil.addHandler(item, "DOMNodeInsertedIntoDocument", function(event) {
+        alert(event.type);
+        alert(event.target);
+    });
+
+    list.appendChild(item);
+});
 
