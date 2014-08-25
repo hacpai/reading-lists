@@ -10,6 +10,10 @@
  *         event.target=被插入的节点,event.relatedNode=被插入的节点的父节点
  *         DOMNodeInsertedIntoDocument:新插入的节点触发
  *         DOMSubtreeModified:新插入节点的父节点触发
+ *     特性变化
+ *         触发DOMAttrModified事件
+ *         relatedNode=修改特性的Attr节点，target=包含被修改特性的元素
+ *         再触发DOMSubtreeModified事件
  *
  * 事例HTML页面
  * <html>
@@ -68,5 +72,25 @@ EventUtil.addHandler(window, "load", function(event) {
     });
 
     list.appendChild(item);
+});
+
+//检验特性变化有关事件流
+EventUtil.addHandler(window, "load", function(event) {
+    var list = document.getElementById("myList");
+
+    EventUtil.addHandler(document, "DOMSubtreeModified", function(event) {
+        alert(event.type);
+        alert(event.target);
+    });
+    EventUtil.addHandler(document, "DOMAttrModified", function(event) {
+        alert(event.type);
+        alert(event.target);
+        alert(event.relatedNode);
+        alert(event.attrName);
+        alert(event.prevValue);
+        alert(event.newValue);
+    });
+
+    list.setAttribute("customname", "value");
 });
 
