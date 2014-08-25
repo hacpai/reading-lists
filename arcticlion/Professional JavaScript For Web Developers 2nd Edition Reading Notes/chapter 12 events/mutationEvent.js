@@ -1,5 +1,7 @@
 /*
  * 变动事件
+ *     事件冒泡:把事件处理程序添加到document
+ *     事件不冒泡:直接指定目标的事件处理程序
  *     节点移除
  *         先触发DOMNodeRemoved事件
  *         event.target=被移除的节点,event.relatedNode=被移除节点的父节点
@@ -14,6 +16,10 @@
  *         触发DOMAttrModified事件
  *         relatedNode=修改特性的Attr节点，target=包含被修改特性的元素
  *         再触发DOMSubtreeModified事件
+ *     文本变化
+ *         触发DOMCharacterDataModifie事件
+ *         event.target=文本节点，event.preValue=修改前的文本值,event.newValue
+ *         再触发DOMSubtreeModified事件
  *
  * 事例HTML页面
  * <html>
@@ -26,6 +32,16 @@
  *         <li>Item 2</li>
  *         <li>Item 3</li>
  *     </ul>
+ * </body>
+ * </html>
+ *
+ * 文本变化HTML页面
+ * <html>
+ * <head>
+ *     <title>Text Change Events Example</title>
+ * </head>
+ * <body>
+ *     <div id="myDiv">Hello world!</div>
  * </body>
  * </html>
  */
@@ -92,5 +108,23 @@ EventUtil.addHandler(window, "load", function(event) {
     });
 
     list.setAttribute("customname", "value");
+});
+
+//验证文本变化
+EventUtil.addHandler(window, "load", function(event) {
+    var div = document.getElementById("myDiv");
+
+    EventUtil.addHandler(document, "DOMSubtreeModified", function(event) {
+        alert(event.type);
+        alert(event.target);
+    });
+    EvnetUtil.addHandler(document, "DOMCharacterDataModified", function(event) {
+        alert(event.type);
+        alert(event.target);
+        alert(event.preValue);
+        alert(event.newValue);
+    });
+
+    div.firstChild.nodeValue = "Some new text";
 });
 
