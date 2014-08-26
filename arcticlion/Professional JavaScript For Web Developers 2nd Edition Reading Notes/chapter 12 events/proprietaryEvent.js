@@ -56,7 +56,8 @@ EventUtil.addHandler(window, "beforeunload", function(event) {
 
 EventUtil.addHandler(document, "mousewheel", function(event) {
     event = EventUtil.getEvent(event);
-    alert(event.wheelDelta);
+    var delta = (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta " event.wheelDelta);
+    alert(delta);
 });
 
 
