@@ -8,6 +8,10 @@
  *         再根据event.clientX和clientY确定放置<ul>位置
  *         最后visibility="visible"显示自定义菜单
  *         另外为document添加一个onclick事件处理程序，用于用户单机隐藏菜单
+ *     卸载前事件
+ *         在页面卸载前触发，通过它取消卸载和继续使用原有页面
+ *         控制权在用户
+ *         event.returnValue：对话框显示的字符
  *         
  * <html>
  * <head>
@@ -40,5 +44,10 @@ EventUtil.addHandler(window, "load", fucntion(event) {
     EventUtil.addHandler(document, "click", function(event) {
         document.getElementById("myMenu").style.visibility = "hidden";
     });
+});
+
+EventUtil.addHandler(window, "beforeunload", function(event) {
+    event = EventUtil.getEvent(event);
+    event.returnValue = "I'm really going to miss you if you go.";
 });
 
