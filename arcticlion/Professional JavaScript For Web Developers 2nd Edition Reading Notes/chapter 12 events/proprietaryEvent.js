@@ -13,8 +13,12 @@
  *         控制权在用户
  *         event.returnValue：对话框显示的字符
  *     鼠标滚轮事件
- *         鼠标滚动时触发mousewheel事件
- *         event.wheelDelta＝120的倍数,正负号确定方向
+ *             mousewheel事件
+ *                 鼠标滚动时触发mousewheel事件
+ *                 event.wheelDelta＝120的倍数,正负号确定方向
+ *             DOMMouseScroll事件
+ *                 类似mousewheel事件
+ *                 detail=-3倍数
  *         
  * <html>
  * <head>
@@ -31,7 +35,7 @@
  * </html>
  */
 
-EventUtil.addHandler(window, "load", fucntion(event) {
+EventUtil.addHandler(window, "load", function(event) {
     var div = document.getElementById("myDiv");
 
     EventUtil.addHandler(div, "contextmenu", function(event) {
@@ -60,4 +64,7 @@ EventUtil.addHandler(document, "mousewheel", function(event) {
     alert(delta);
 });
 
-
+EventUtil.addHandler(window, "DOMMouseScroll", function(event) {
+    event = EventUtil.getEvent(event);
+    alert(event.detail);
+});
