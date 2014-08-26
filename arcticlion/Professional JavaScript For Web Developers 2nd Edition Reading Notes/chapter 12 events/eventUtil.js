@@ -27,6 +27,11 @@
  *     跨浏览器取得字符编码
  *         检测charCode是否可用
  *         不可用使用keycode
+ * 鼠标滚轮事件
+ *     getWheelDelta()检测是否包含wheelDelta
+ *     若不存在则假设相应值在detail属性中
+ *     由于Firefox值不同，需要符号方向再乘40
+ *
  */
 var EventUtil = {
 
