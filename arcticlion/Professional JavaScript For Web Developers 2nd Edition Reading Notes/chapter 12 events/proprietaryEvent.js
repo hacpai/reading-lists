@@ -12,6 +12,9 @@
  *         在页面卸载前触发，通过它取消卸载和继续使用原有页面
  *         控制权在用户
  *         event.returnValue：对话框显示的字符
+ *     鼠标滚轮事件
+ *         鼠标滚动时触发mousewheel事件
+ *         event.wheelDelta＝120的倍数,正负号确定方向
  *         
  * <html>
  * <head>
@@ -50,4 +53,10 @@ EventUtil.addHandler(window, "beforeunload", function(event) {
     event = EventUtil.getEvent(event);
     event.returnValue = "I'm really going to miss you if you go.";
 });
+
+EventUtil.addHandler(document, "mousewheel", function(event) {
+    event = EventUtil.getEvent(event);
+    alert(event.wheelDelta);
+});
+
 
