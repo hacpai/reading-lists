@@ -102,6 +102,14 @@ var EventUtil = {
         }
     },
 
+    getWheelDelta: function(event) {
+        if (event.wheelDelta) {
+            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
+        }
+    },
+
     removeHandler: function(element, type, handler) {
         if (element.removeEventListener) {
             element.removeEventListener(type, handler, false);
