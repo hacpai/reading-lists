@@ -178,3 +178,18 @@ EventUtil.addHandle(textbox, "keypress", function(event) {
     //String.fromCharCode()将编码转化为实际字符
     alert(String.fromCharCode(EventUtil.getCharCode(event))); 
 
+//相同事件处理程序指定mousewheel和DOMMouseScroll事件
+    //将代码放进私有作用域房子新定义的函数干扰全局变量
+    //自定义的handlMouseWheel()用作2个事件处理程序
+(function() {
+
+    function handleMouseWheel(event) {
+        event = EventUtil.getEvent(event);
+        var delta = EventUtil.getWheelDelta(event);
+        alert(delta);
+    }
+
+    EventUtil.addHandler(document, "mousewheel", handleMouseWheel);
+    EventUtil.addHandler(document, "DOMMouseScroll", handleMouseWheel);
+})();
+
