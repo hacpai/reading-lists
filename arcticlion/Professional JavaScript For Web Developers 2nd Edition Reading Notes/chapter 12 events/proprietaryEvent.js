@@ -38,7 +38,33 @@
  *         pagehide:unload事件之前触发
  *             事件处理程序必须添加到window对象
  *             event.persisted:页面从bfcache加载的就会true
- 
+ *     移动Safari支持事件
+ *         方向变化事件
+ *             orientationchange:
+ *                 0, 肖像模式
+ *                 90， 左旋转横向
+ *                 -90, 右旋转横向
+ *             用户改变查看模式触发
+ *         触摸事件
+ *             touchstart:手指放在屏幕上触发
+ *             touchmove:手指在屏幕上滑动时连续触发
+ *             touchend:手机移开屏幕时触发
+ *             touchcancel:系统停止跟踪触摸时触发
+ *             触摸事件的属性
+ *                 event.touches:当前跟踪触摸操作的Touch对象的数组
+ *                 event.targetouchs:特定于事件目标的Touch对象的数组
+ *                 event.changeTouches:上次触摸以来发生了改变的数组
+ *                 Touch对象的属性
+ *                     clientX:触摸目标在视口中的X坐标
+ *                     clientY:触摸目标在视口中的Y坐标
+ *                     identifier:标示触摸的唯一ID
+ *                     pageX:触摸目标在页面中的X坐标
+ *                     pageY:触摸目标在页面中的Y坐标
+ *                     screenX
+ *                     screenY
+ *                     target:触摸的DOM节点目标
+ *
+ *
  * <html>
  * <head>
  *     <title>ContextMenu Event Example</title>
@@ -100,7 +126,7 @@ setTimeout(function() {
     //在此添加事件处理程序
 }, 0);
 
-EventUtil.addHandler(document, "readyStatechange", function(event) [
+EventUtil.addHandler(document, "readyStatechange", function(event) { 
     if (document.readyState == "interactive") {
         alert("Content loaded");
     }
@@ -172,3 +198,10 @@ EventUtil.addHandler(window, "load", function(event) {
     });
 })();
 
+EventUtil(window, "load", function(event) {
+    var div = document.getElementById("myDiv");
+    div.innerHTML = "Current orientation is " + window.orientation;
+
+    EventUtil.addHandler(window, "orientationchange", function(event) {
+        div.innerHTML = "Current orientation is " + window.orientation;
+    }
