@@ -13,12 +13,17 @@
  *         控制权在用户
  *         event.returnValue：对话框显示的字符
  *     鼠标滚轮事件
- *             mousewheel事件
- *                 鼠标滚动时触发mousewheel事件
- *                 event.wheelDelta＝120的倍数,正负号确定方向
- *             DOMMouseScroll事件
- *                 类似mousewheel事件
- *                 detail=-3倍数
+ *         mousewheel事件
+ *             鼠标滚动时触发mousewheel事件
+ *             event.wheelDelta＝120的倍数,正负号确定方向
+ *         DOMMouseScroll事件
+ *             类似mousewheel事件
+ *             detail=-3倍数
+ *     DOMContentLoaded事件
+ *         与load事件不同，支持在页面下载早期添加事件处理程序
+ *         target=document
+ *         对于不支持该事件的浏览器
+ *             设置一个事件为0ms的超时调用
  *         
  * <html>
  * <head>
@@ -60,7 +65,7 @@ EventUtil.addHandler(window, "beforeunload", function(event) {
 
 EventUtil.addHandler(document, "mousewheel", function(event) {
     event = EventUtil.getEvent(event);
-    var delta = (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta " event.wheelDelta);
+    var delta = (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
     alert(delta);
 });
 
@@ -68,3 +73,16 @@ EventUtil.addHandler(window, "DOMMouseScroll", function(event) {
     event = EventUtil.getEvent(event);
     alert(event.detail);
 });
+
+EventUtil.addHandler(document, "DOMContentLoaded", function(event) {
+    alert("Content loaded.");
+});
+
+//超时调用模拟DOMContentLoaded事件
+    //必须作为页面第一个超时调用
+    //页面下载和构建期间，只有一个JavaScript处理过程，因此超时调用会在该过程结束时触发
+    //当JavaScript处理完成后立即运行这个函数
+setTimeout(function() {
+    //在此添加事件处理程序
+}, 0);
+
