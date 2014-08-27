@@ -63,6 +63,12 @@
  *                     screenX
  *                     screenY
  *                     target:触摸的DOM节点目标
+ *         手势事件
+ *             gesturestart:一个手指放在屏幕上时另一个手指又触摸屏幕时触发
+ *             gesturechange:屏幕上手指位置变化时触发
+ *             gestureend:手指从屏幕上移开时触发
+ *             rotation:手指变化引起的旋转角度
+ *             scale:两个手指间距离的变化情况
  *
  *
  * <html>
@@ -220,7 +226,7 @@ function handlerTouchEvent(event) {
                 break;
             case "touched":    //touchend事件发生时,Touch对象转到changeTouchs
                 output.innerHTML += "<br>Touch ended (" + event.changeTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
-            break;
+                break;
             case "touchmove":
                 event.preventDefault();    //阻止滚动(触摸移动默认行为是滚动)
                 output.innerHTML += "<br>Touch moved (" + event.changeTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
@@ -232,4 +238,23 @@ function handlerTouchEvent(event) {
 EventUtil.addHandler(document, "touchstart", handleTouchEvent);
 EventUtil.addHandler(document, "touchend", handleTouchEvent);
 EventUtil.addHandler(document, "touchmove", handleTouchEvent);
+
+function handleFestureEvent(event) {
+    var output = document.getElementById("output");
+    switch(event.type) {
+        case "gesturestart":
+            output.innerHTML = "Gesture started (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+            break;
+        case "gestureend":
+            output.innerHTML += "<br>Gesture ended (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+            break;
+        case "gesturechange":
+            output.innerHTML += "<br>Gesture changed (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+            break;
+    }
+}
+
+document.addEventListener("gesturestart", handleGestureEvent, false);
+document.addEventListener("gestureend", handleGestureEvent, false);
+document.addEventListener("gesturechange", handleGestureEvent, false);
 
