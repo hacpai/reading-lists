@@ -204,4 +204,32 @@ EventUtil(window, "load", function(event) {
 
     EventUtil.addHandler(window, "orientationchange", function(event) {
         div.innerHTML = "Current orientation is " + window.orientation;
+    });
+});
+
+//触摸事件
+function handlerTouchEvent(event) {
+
+    //只跟踪一次触摸
+    if (event.touches.length == 1) {
+
+        var output = document.getElementById("output");
+        switch(event.type) {
+            case "touchstart":    //该事件发生时触摸信息输出到<div>
+                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+                break;
+            case "touched":    //touchend事件发生时,Touch对象转到changeTouchs
+                output.innerHTML += "<br>Touch ended (" + event.changeTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+            break;
+            case "touchmove":
+                event.preventDefault();    //阻止滚动(触摸移动默认行为是滚动)
+                output.innerHTML += "<br>Touch moved (" + event.changeTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+                break;
+        }
     }
+}
+
+EventUtil.addHandler(document, "touchstart", handleTouchEvent);
+EventUtil.addHandler(document, "touchend", handleTouchEvent);
+EventUtil.addHandler(document, "touchmove", handleTouchEvent);
+
