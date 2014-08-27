@@ -13,13 +13,64 @@
  *         控制权在用户
  *         event.returnValue：对话框显示的字符
  *     鼠标滚轮事件
- *             mousewheel事件
- *                 鼠标滚动时触发mousewheel事件
- *                 event.wheelDelta＝120的倍数,正负号确定方向
- *             DOMMouseScroll事件
- *                 类似mousewheel事件
- *                 detail=-3倍数
- *         
+ *         mousewheel事件
+ *             鼠标滚动时触发mousewheel事件
+ *             event.wheelDelta＝120的倍数,正负号确定方向
+ *         DOMMouseScroll事件
+ *             类似mousewheel事件
+ *             detail=-3倍数
+ *     DOMContentLoaded事件
+ *         与load事件不同，支持在页面下载早期添加事件处理程序
+ *         target=document
+ *         对于不支持该事件的浏览器
+ *             设置一个事件为0ms的超时调用
+ *     就绪状态变化事件(for IE)
+ *         readystatechange:提供与文档或元素加载状态有关的信息
+ *         document.readyState包含文档加载初始到加载完毕后的5个状态
+ *             interactive:DOM树已经加载完毕
+ *         <script>和<link>也会触发readystatechange事件
+ *             readyState="loaded"or"complete"都可表示资源可用
+ *
+ *     页面显示和页面隐藏事件
+ *         往返缓存:浏览器"后退"和“前进”加快转换速度，将整个页面保存内容中
+ *         pageshow:页面显示时触发
+ *             event.persisted检测页面是否保存在往返缓存
+ *         pagehide:unload事件之前触发
+ *             事件处理程序必须添加到window对象
+ *             event.persisted:页面从bfcache加载的就会true
+ *     移动Safari支持事件
+ *         方向变化事件
+ *             orientationchange:
+ *                 0, 肖像模式
+ *                 90， 左旋转横向
+ *                 -90, 右旋转横向
+ *             用户改变查看模式触发
+ *         触摸事件
+ *             touchstart:手指放在屏幕上触发
+ *             touchmove:手指在屏幕上滑动时连续触发
+ *             touchend:手机移开屏幕时触发
+ *             touchcancel:系统停止跟踪触摸时触发
+ *             触摸事件的属性
+ *                 event.touches:当前跟踪触摸操作的Touch对象的数组
+ *                 event.targetouchs:特定于事件目标的Touch对象的数组
+ *                 event.changeTouches:上次触摸以来发生了改变的数组
+ *                 Touch对象的属性
+ *                     clientX:触摸目标在视口中的X坐标
+ *                     clientY:触摸目标在视口中的Y坐标
+ *                     identifier:标示触摸的唯一ID
+ *                     pageX:触摸目标在页面中的X坐标
+ *                     pageY:触摸目标在页面中的Y坐标
+ *                     screenX
+ *                     screenY
+ *                     target:触摸的DOM节点目标
+ *         手势事件
+ *             gesturestart:一个手指放在屏幕上时另一个手指又触摸屏幕时触发
+ *             gesturechange:屏幕上手指位置变化时触发
+ *             gestureend:手指从屏幕上移开时触发
+ *             rotation:手指变化引起的旋转角度
+ *             scale:两个手指间距离的变化情况
+ *
+ *
  * <html>
  * <head>
  *     <title>ContextMenu Event Example</title>
@@ -60,7 +111,7 @@ EventUtil.addHandler(window, "beforeunload", function(event) {
 
 EventUtil.addHandler(document, "mousewheel", function(event) {
     event = EventUtil.getEvent(event);
-    var delta = (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta " event.wheelDelta);
+    var delta = (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
     alert(delta);
 });
 
@@ -68,3 +119,142 @@ EventUtil.addHandler(window, "DOMMouseScroll", function(event) {
     event = EventUtil.getEvent(event);
     alert(event.detail);
 });
+
+EventUtil.addHandler(document, "DOMContentLoaded", function(event) {
+    alert("Content loaded.");
+});
+
+//超时调用模拟DOMContentLoaded事件
+    //必须作为页面第一个超时调用
+    //页面下载和构建期间，只有一个JavaScript处理过程，因此超时调用会在该过程结束时触发
+    //当JavaScript处理完成后立即运行这个函数
+setTimeout(function() {
+    //在此添加事件处理程序
+}, 0);
+
+EventUtil.addHandler(document, "readyStatechange", function(event) { 
+    if (document.readyState == "interactive") {
+        alert("Content loaded");
+    }
+});
+
+//交互阶段可能晚于完成阶段
+    //为了抢占先机，有必要同时检测这2个阶段
+    //当readystatechange事件触发时
+        //检测是否进入交互阶段或完成阶段
+        //若是，这移除相应事件处理程序，以免程序再执行
+        //由于事件处理程序是匿名函数，故用arguments.callee来引用
+    //该代码和DOMContentLoaded效果相近
+EventUtil.addHandler(document, "readystatechange", function(event) {
+    if (document.readyState == "interactive" || document.readyStat == "complete") {
+        EventUtil.removeHandler(document, "readystatechange", arguments.callee);
+        alert("Content loaded");
+    }
+});
+
+EventUtil.addHandler(window, "load", function() {
+
+    var script = document.createElement("script");
+
+    EventUtil.addHandler(script, "readystatechange", function(event) {
+        event = EventUtil.getEvent(event);
+        var target = Event.getTarget(event);
+        
+        if (target.readyState == "loaded" || target.readyState == "complete") {
+            EventUtil.removeHandler(target, "readystatechange", arguments.callee);
+            alert("Script Loaded");
+        }
+    });
+    script.src = "example.js";
+    document.body.appendChind(script);
+});
+
+//同样的编码也适用于<link>加载CSS的情况
+EventUtil.addHandler(window, "load", function(event) {
+
+    var link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+
+    EventUtil.addHandler(link, "readystatechange", function(event) {
+        event = EventUtil.getEvent(event);
+        var tareget = EventUtil.getTarget(event);
+        if (target.readyState == "loaded" || target.readyState == "complete") {
+            EventUtil.removeHandler(target, "readystatechange", arguments.callee);
+            alert("CSS Loaded");
+        }
+    });
+    link.href = "example.css";
+    document.getElementByTagName("head")[0].appendChild(link);
+});
+
+//首次加载完成，showCount=0
+//"后退"后showCount++
+//"刷新"后showCount=0
+(function() {
+    var showCount = 0;
+
+    EventUtil.addHandler(window, "load", function() {
+        alert("Load fired");
+    });
+
+    EventUtil.addHandler(window, "pageshow", function(event) {
+        showCout++;
+        alert("Show has the fired " + showCount + " time. Persisted? " + event.persisted);
+    });
+})();
+
+EventUtil(window, "load", function(event) {
+    var div = document.getElementById("myDiv");
+    div.innerHTML = "Current orientation is " + window.orientation;
+
+    EventUtil.addHandler(window, "orientationchange", function(event) {
+        div.innerHTML = "Current orientation is " + window.orientation;
+    });
+});
+
+//触摸事件
+function handlerTouchEvent(event) {
+
+    //只跟踪一次触摸
+    if (event.touches.length == 1) {
+
+        var output = document.getElementById("output");
+        switch(event.type) {
+            case "touchstart":    //该事件发生时触摸信息输出到<div>
+                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+                break;
+            case "touched":    //touchend事件发生时,Touch对象转到changeTouchs
+                output.innerHTML += "<br>Touch ended (" + event.changeTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+                break;
+            case "touchmove":
+                event.preventDefault();    //阻止滚动(触摸移动默认行为是滚动)
+                output.innerHTML += "<br>Touch moved (" + event.changeTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+                break;
+        }
+    }
+}
+
+EventUtil.addHandler(document, "touchstart", handleTouchEvent);
+EventUtil.addHandler(document, "touchend", handleTouchEvent);
+EventUtil.addHandler(document, "touchmove", handleTouchEvent);
+
+function handleFestureEvent(event) {
+    var output = document.getElementById("output");
+    switch(event.type) {
+        case "gesturestart":
+            output.innerHTML = "Gesture started (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+            break;
+        case "gestureend":
+            output.innerHTML += "<br>Gesture ended (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+            break;
+        case "gesturechange":
+            output.innerHTML += "<br>Gesture changed (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+            break;
+    }
+}
+
+document.addEventListener("gesturestart", handleGestureEvent, false);
+document.addEventListener("gestureend", handleGestureEvent, false);
+document.addEventListener("gesturechange", handleGestureEvent, false);
+
