@@ -30,6 +30,15 @@
  *             interactive:DOM树已经加载完毕
  *         <script>和<link>也会触发readystatechange事件
  *             readyState="loaded"or"complete"都可表示资源可用
+ *
+ *     页面显示和页面隐藏事件
+ *         往返缓存:浏览器"后退"和“前进”加快转换速度，将整个页面保存内容中
+ *         pageshow:页面显示时触发
+ *             event.persisted检测页面是否保存在往返缓存
+ *         pagehide:unload事件之前触发
+ *             事件处理程序必须添加到window对象
+ *             event.persisted:页面从bfcache加载的就会true
+ 
  * <html>
  * <head>
  *     <title>ContextMenu Event Example</title>
@@ -147,4 +156,19 @@ EventUtil.addHandler(window, "load", function(event) {
     document.getElementByTagName("head")[0].appendChild(link);
 });
 
+//首次加载完成，showCount=0
+//"后退"后showCount++
+//"刷新"后showCount=0
+(function() {
+    var showCount = 0;
+
+    EventUtil.addHandler(window, "load", function() {
+        alert("Load fired");
+    });
+
+    EventUtil.addHandler(window, "pageshow", function(event) {
+        showCout++;
+        alert("Show has the fired " + showCount + " time. Persisted? " + event.persisted);
+    });
+})();
 
