@@ -14,6 +14,11 @@
  *     模拟HTML事件
  *         createevent("HTMLEvent")
  *         initEvent()初始化
+ *     IE中事件模拟
+ *         思路与DOM模拟相似
+ *         document.createEventObject():创建event对象，改方法不接受参数
+ *         fireEvent():触发事件，接受两个参数，事件处理程序名称和event对象,自动添加srcElement和type属性
+ *
  */
 
 var btn = document.getElementById("myBtn");
@@ -58,4 +63,31 @@ target.dispatchEvent(event);
 var event = document.createEvent("HTMLEvents");
 event.initEvent("focus", true, false);
 target.dispatchEvent(event);
+
+//模拟鼠标事件
+var btn = document.getElementById("myBtn");
+//创建事件对象
+var event = document.createEventObject();
+//初始化事件对象
+event.screenX = 100;
+event.screenY = 0;
+event.clientX = 0;
+event.clientY = 0'
+event.ctrlKey = false;
+event.altKey = false;
+event.shiftKey = false;
+event.button = 0;
+//触发事件
+btn.fireEvent("onclick", event);
+
+//模拟键盘事件
+var textbox = document.getElementById("myTextbox");
+var event = document.createEventObject();
+
+event.altKey = false;
+event.ctrlKey = false;
+event.shiftKey = false;
+event.keyCode = 65;
+
+textbox.fireEvent("onkeypress", event);
 
