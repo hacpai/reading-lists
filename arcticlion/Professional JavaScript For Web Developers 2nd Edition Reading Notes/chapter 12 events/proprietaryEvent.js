@@ -24,7 +24,12 @@
  *         target=document
  *         对于不支持该事件的浏览器
  *             设置一个事件为0ms的超时调用
- *         
+ *     就绪状态变化事件(for IE)
+ *         readystatechange:提供与文档或元素加载状态有关的信息
+ *         document.readyState包含文档加载初始到加载完毕后的5个状态
+ *             interactive:DOM树已经加载完毕
+ *         <script>和<link>也会触发readystatechange事件
+ *             readyState="loaded"or"complete"都可表示资源可用
  * <html>
  * <head>
  *     <title>ContextMenu Event Example</title>
@@ -85,4 +90,61 @@ EventUtil.addHandler(document, "DOMContentLoaded", function(event) {
 setTimeout(function() {
     //在此添加事件处理程序
 }, 0);
+
+EventUtil.addHandler(document, "readyStatechange", function(event) [
+    if (document.readyState == "interactive") {
+        alert("Content loaded");
+    }
+});
+
+//交互阶段可能晚于完成阶段
+    //为了抢占先机，有必要同时检测这2个阶段
+    //当readystatechange事件触发时
+        //检测是否进入交互阶段或完成阶段
+        //若是，这移除相应事件处理程序，以免程序再执行
+        //由于事件处理程序是匿名函数，故用arguments.callee来引用
+    //该代码和DOMContentLoaded效果相近
+EventUtil.addHandler(document, "readystatechange", function(event) {
+    if (document.readyState == "interactive" || document.readyStat == "complete") {
+        EventUtil.removeHandler(document, "readystatechange", arguments.callee);
+        alert("Content loaded");
+    }
+});
+
+EventUtil.addHandler(window, "load", function() {
+
+    var script = document.createElement("script");
+
+    EventUtil.addHandler(script, "readystatechange", function(event) {
+        event = EventUtil.getEvent(event);
+        var target = Event.getTarget(event);
+        
+        if (target.readyState == "loaded" || target.readyState == "complete") {
+            EventUtil.removeHandler(target, "readystatechange", arguments.callee);
+            alert("Script Loaded");
+        }
+    });
+    script.src = "example.js";
+    document.body.appendChind(script);
+});
+
+//同样的编码也适用于<link>加载CSS的情况
+EventUtil.addHandler(window, "load", function(event) {
+
+    var link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+
+    EventUtil.addHandler(link, "readystatechange", function(event) {
+        event = EventUtil.getEvent(event);
+        var tareget = EventUtil.getTarget(event);
+        if (target.readyState == "loaded" || target.readyState == "complete") {
+            EventUtil.removeHandler(target, "readystatechange", arguments.callee);
+            alert("CSS Loaded");
+        }
+    });
+    link.href = "example.css";
+    document.getElementByTagName("head")[0].appendChild(link);
+});
+
 
