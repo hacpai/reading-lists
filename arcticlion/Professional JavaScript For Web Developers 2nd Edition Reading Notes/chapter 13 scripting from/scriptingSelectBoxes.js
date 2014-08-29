@@ -7,6 +7,8 @@
  *         multiple:布尔值,是否允许多项选择
  *         SelectedIndex:选中项第一项的索引,只能选择一项
  *         selected:布尔值,确定用户选择的项
+ *     添加选项
+ *         DOM法:创建<option>,为其添加文本节点,设置value,再添加到选项框中
  *
  *     <select>和<option>创建
  * <select name="location" id="selLocation">
@@ -52,4 +54,10 @@ for (var i=0. len=selectedOptions.lenth; i < len; i++) {
 }
 
 alert(message);
+
+var newOption = document.createElement("Option");
+newOption.appendChild(document.createTextNode("Option text"));
+newOption.setAttribute("value", "Option value");
+
+selectbox.appendChild(newOption);
 
