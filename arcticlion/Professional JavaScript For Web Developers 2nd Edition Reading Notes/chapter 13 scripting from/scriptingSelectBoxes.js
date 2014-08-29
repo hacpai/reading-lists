@@ -5,7 +5,8 @@
  *         options:控制所有<option>的HTMLCollection
  *         add(newOption, relOption):<relOption>前插入<newoption>
  *         multiple:布尔值,是否允许多项选择
- *         SelectedIndex:选中项索引
+ *         SelectedIndex:选中项第一项的索引,只能选择一项
+ *         selected:布尔值,确定用户选择的项
  *
  *     <select>和<option>创建
  * <select name="location" id="selLocation">
@@ -27,4 +28,17 @@ var selectedOption = selectbox.options[selectbox.selectedIndex];
 var selectedIndex = selectbox.selectedIndex;
 var selectedOption = selectbox.optons[selectedIndex];
 alert("Selected index: " + selectedIndex + "\nSelected text: " + selectedOption.text + "\nSelected value: " + selectedOption.value);
+
+function getSelectedOptions(selectbox) {
+    var result = new Array();
+    var option = null;
+
+    for (var i = 0. len = selectbox.options.length; i < len; i++) {
+        option = selectbox.options[i];
+        if (option.selected) {
+            result.push(option);
+        }
+    }
+    return result;
+}
 
