@@ -16,12 +16,17 @@
  *                 IE的document.selection:保存着用户选择的文本信息
  *             选择部分文本
  *                 selectionRange():接受2个参数,要选择的第一个字符的索引何要选择的最后一个字符之后的索引
+ *                 IE的createTextRange():
+ *                     先创建一个范围
+ *                     collapse()将范围折叠到文本框开始位置
+ *                     再使用moveStart()&moveEnd()移动到位
+ *                     最后select()选择文本
+ *                 选择部分文本技术可用于提供自动完成建议的文本框
  *
  */
 
 //建议使用value设置何读取文本框的值
 var textbox = document.forms[0].elements["textbox1"];
->>>>>>> 262b7b0b5339b745e8e9ff9d52c05fd7a4400894
 alert(textbox.value);
 
 textbox.value = "Some new value";
@@ -61,3 +66,48 @@ textbox.selectionRange(0, textbox.value.length);    //"Hello world!"
 textbox.setSelectionRange(0, 3);    //"Hel"
 //选择第4个到第6个字符
 textbox.setSelectionRange(4, 7);    //"o w"
+
+textbox.value = "Hello world!";
+
+var range = textbox.createTextRange();
+
+//选择所有文本
+range.collapse(true);
+range.moveStart("character", 0);
+range.moveEnd("character", textbox.value.length);    //"Hello world!"
+range.select();
+
+//选择前3个字符
+range.collapse(true);
+range.moveStart("character", 0);
+range.moveEnd("character", 3);
+range.select();    //"Hel"
+
+//选择第4到第6个字符
+range.collapse(true);
+range.moveStart("character", 4);
+range.moveEnd("character", 3);
+range.select();    //"o w"
+
+//看到文本被选择的效果,需让文本框获得焦点
+function selectText(textbox, startIndex, stopIndex) {
+    if (textbox.setSelectionRange) {
+        textbox.setSelectionRange(startIndex, stopIndex);
+    } else if (textbox.createTextRange) {
+        var range = textbox.createTextRange();
+        range.collapse(true);
+        range.moveStart("character", startIndex);
+        range.moveEnd("character", stopIndex - startIndex);
+        range.select();
+    }
+    textbox.focus();
+}
+
+textbox.value = "Hello world!"
+//选择所有文本
+selectText(textbox, 0, textbox.value.length);    //"Hello world!"
+//选择前3个字符
+selectText(textbox, 0, 3);    //"Hel"
+//选择第4到第6个字符
+selectText(textbox, 4, 7);    //"o w"
+
