@@ -2,7 +2,10 @@
  * 过滤输入
  *     屏蔽字符
  *     操作剪贴板
- *     
+ *     自动切换焦点
+ * <input type="text" name="tel1" id="txtell" maxlength="3">
+ * <input type="text" name="tel2" id="textll" maxlength="3">
+ * <input type="text" name="tel3" id="textll" maxlength="3"> 
  */
 
 //屏蔽所有数字字符
@@ -36,4 +39,30 @@ Eventil.addHandler(textbox, "copy", function(event) {
     EventUtil.preventDefault(event);
     EventUtil.setClipboardText(event, "Hello world!");
 });
+
+//自动切换焦点
+(function() {
+
+    function tabForward(event) {
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
+
+        if (target.value.length  == target.maxLength) {
+            var form = target.form;
+            for (var i = 0, len=form.elements.length; i < len; i++) {
+                if (form.elements[i] == target) {
+                    form.elements[i+1].focus();
+                    return;
+                }
+            }
+        }
+    }
+    var textbox1 = document.getElementByName("txtTel1");
+    var textbox2 = document.getElementByName("txtTel2");
+    var textbox3 = document.getElementByName("txtTel3");
+
+    EventUtil.addHandler(textbox1, "keyup", tabForward);
+    EventUtil.addHandler(textbox2, "keyup", tabForward);
+    EventUtil.addHandler(textbox3, "keyup", tabForward);
+}();
 
