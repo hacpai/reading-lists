@@ -30,3 +30,10 @@ EventUtil.addHandler(textbox, "paste", function(event) {
     }
 });
 
+//设置数值到剪贴板
+Eventil.addHandler(textbox, "copy", function(event) {
+    event = Eventil.getEvent(event);
+    EventUtil.preventDefault(event);
+    EventUtil.setClipboardText(event, "Hello world!");
+});
+
