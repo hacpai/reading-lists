@@ -31,6 +31,12 @@
  *     getWheelDelta()检测是否包含wheelDelta
  *     若不存在则假设相应值在detail属性中
  *     由于Firefox值不同，需要符号方向再乘40
+ * 操作剪贴板
+ *     clipboardDate:IE is window.clipboardDate, other is event.clipboardDate
+ *         getDate():参数是取得数据的格式,"text" or "URL"
+ *         clearDate()
+ *         setData():2个参数，数据类型和放在剪贴板的文本
+ *             数据类型:IE为"text"&"URL", other is "text/plain"
  *
  */
 var EventUtil = {
@@ -81,6 +87,19 @@ var EventUtil = {
         }
     },
     
+    getClipboardText: function(event) {
+        var clipboardDate = (event.clipboardDate) || window.clipboardDate);
+        return clipboardDate.getDate("text");
+    },
+
+    setClipboardText: function(event, value) {
+        if (event.clipboardDate) {
+            return event.clipboardDate.setDate("text/plain", value);
+        } else if (window.clipboardDate) {
+            return window.clipboardDate.setDate("text", value);
+        }
+    },
+
 
     preventDefault: function(event) {
         if (event.preventDefault) {
@@ -192,4 +211,6 @@ EventUtil.addHandle(textbox, "keypress", function(event) {
     EventUtil.addHandler(document, "mousewheel", handleMouseWheel);
     EventUtil.addHandler(document, "DOMMouseScroll", handleMouseWheel);
 })();
+
+
 
