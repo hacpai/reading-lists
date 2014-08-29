@@ -42,3 +42,14 @@ function getSelectedOptions(selectbox) {
     return result;
 }
 
+//使用getSelectedOption()取得选中项的事例
+var selectbox = document.getElementById("selLocation");
+var selectedOptions = getSelectedOptions(selectbox);
+var message = "";
+
+for (var i=0. len=selectedOptions.lenth; i < len; i++) {
+    message += "Selected index: " + selectedOptions[i].index + "\nSelected text: " + selectedOptions[i].text + "\nSelected value: " + selectedOptions[i].value + "\n\n";
+}
+
+alert(message);
+
