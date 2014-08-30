@@ -13,8 +13,9 @@
  *         IE:
  *             selection对象时document的属性
  *             先创建文本范围
- *
- *         
+ *     表单与富文本
+ *         富文本通过添加隐藏表单字段手动提交
+ *             提交表单前,从iframe提取HTML插入隐藏的字段中
  */
 
 //简单HTML页面作为内容来源
@@ -70,4 +71,11 @@ var selectedText = range.text;
 
 //同样实现高亮效果
 range.pasteHTML("<span style=\"background-color:yellow\"> " + range.htmlText = "</span>");
+
+EventUtil.addHandler(form, "submit", function(event) {
+    event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
+
+    target.elements["comments"].value = frames["richedit"].document.body.innerHTML;
+});
 
