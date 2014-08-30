@@ -19,6 +19,8 @@
  *             利用不同的错误类型,可以获悉更多异常信息，有助于对错误做出恰当处理
  *         善用try-catch
  *             最适合处理无法控制知道会发生的错误
+ *     抛出错误
+ *         throw:代码立即停止执行,仅当try-catch捕获到抛出错误时继续
  */
 
 try {
@@ -62,4 +64,24 @@ try {
         //处理其他类型的错误
     }
 }
+
+
+//抛出通用错误,自定义错误消息
+throw new Error("Something bad happened");
+throw new SyntaxError("I don't like your syntax.");
+throw new TypeError("What type of variable do you take me for?");
+throw new RangeError("Sorry, you juse don't have the range.");
+throw new EvalError("That doesn't evaluate.");
+throw new URIError("Uri, is that you?");
+throw new ReferenceError("You didn't cite your references properly.");
+
+//自定义Error错误类型
+function CustomError(message) {
+    this.name = "CustomError";
+    this.message = message;
+}
+CustomError.prototype = new Error();
+
+throw new CustomError("My message");
+
 
