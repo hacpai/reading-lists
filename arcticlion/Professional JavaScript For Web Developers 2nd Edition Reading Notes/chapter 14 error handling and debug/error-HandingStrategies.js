@@ -1,5 +1,4 @@
-/*
- * 错误处理策略
+/*  错误处理策略
  *     错误处理核心是首先要知道代码会发生什么错误
  *     常见的错误类型
  *         类型转换错误
@@ -7,7 +6,14 @@
  *         通信错误
  *             redir=后面的所有字符调用encodeURIComponent()
  *     致命错误和非致命错误
- *
+ *     把错误记录到服务器
+ *         建立一种JavaScript错误记录系统
+ *             首先在服务器创建一个页面
+ *             从查询字符串取得数据
+ *             再将数据写入错误日记中
+ *             logError():接受2个参数
+ *                 表示严重的数值或字符串
+ *                 错误消息
  */
 
 //建议使用全等和不全等操作符,避免类型转换
@@ -68,4 +74,9 @@ for (var i = 0, len = mods.length; i < len; i++) {
     }
 }
 
+//使用Image对象发送请求非常灵活
+function logError(sev, msg) {
+    var img = new Image();
+    img.src = "log.php?sev=" + encodeURIComponent(sev) + "&msg=" + encodeURIComponent(msg);
+}
 
