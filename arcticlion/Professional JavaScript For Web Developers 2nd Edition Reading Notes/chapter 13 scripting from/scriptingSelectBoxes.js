@@ -15,6 +15,11 @@
  *         DOM法:removeChild()
  *         remove法
  *         选项设null法
+ *     移动和重排选项
+ *         都会重置每个选项的index
+ *         移动:appendChild()
+ *         重排:insertBefore(newOption, relOption)
+ *         
  *
  *     <select>和<option>创建
  * <select name="location" id="selLocation">
@@ -85,4 +90,16 @@ function clearSelectbox(selectbox) {
         selectbox.remove(0);
     }
 }
+
+//将第一个选项框的第一个选项移动到第二个选项框
+var selectbox1 = document.getElementById("selectbox1");
+var selectbox2 = document.getElementById("selectbox2");
+selectbox2.appendChild(selectbox1.options[0]);
+
+//选项向前移动一个选项的位置
+var optionToMove = selectbox.options[1];
+selectbox.insertBefore(optionToMove, selectbox.options[optionToMove.index-1]);
+
+//选项向后移动一个位置
+selectbox.insertBefore(optionToMove, selectbox.options[optionToMove.index+2]);
 
