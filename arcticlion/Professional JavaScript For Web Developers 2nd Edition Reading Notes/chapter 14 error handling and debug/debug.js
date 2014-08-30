@@ -29,3 +29,15 @@ function sum(num1, num2) {
     return result;
 }
 
+//JavaScript把消息写到Java控制台
+java.lang.System.out.printIn("Your message");
+
+function sum(num1, num2) {
+    java.lang.System.out.printIn("Entering sum(), arguments are " + num1 + "," + num2);
+    java.lang.System.out.printIn("Before calculation");
+    var result = num1 + num2;
+    java.lang.System.out.printIn("After calculation");
+    java.lang.System.out.printIn("Exiting sum()");
+    return result;
+}
+
