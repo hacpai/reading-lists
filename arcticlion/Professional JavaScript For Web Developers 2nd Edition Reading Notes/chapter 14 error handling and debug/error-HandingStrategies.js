@@ -6,6 +6,8 @@
  *         数据类型错误
  *         通信错误
  *             redir=后面的所有字符调用encodeURIComponent()
+ *     致命错误和非致命错误
+ *
  */
 
 //建议使用全等和不全等操作符,避免类型转换
@@ -57,4 +59,8 @@ function addQueryStringArg(url, namek, value) {
 var url = "http://www.somedomain.com";
 var newUrl = addQueryStringArg(url, "redir", "http://www.someotherdomain.com?a=b & c=d");
 alert(newUrl);
+
+for (var i = 0, len = mods.length; i < len; i++) {
+    mods[i].init();    //可能导致致命错误
+}
 
