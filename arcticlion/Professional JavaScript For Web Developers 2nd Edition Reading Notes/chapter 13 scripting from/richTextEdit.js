@@ -3,6 +3,10 @@
  *     嵌入包含空HTML的iframe,设置designMode使页面可编辑
  *     操作富文本
  *         document.execCommand():3个参数,命令名称,是否为命令提供用户界面,执行命令需要的一个值
+ *         queryCommandEnabled():1个参数,要检测的命令
+ *         queryCommandState():1个参数
+ *         queryCommandValue():取得执行命令时传入的值
+ *         
  */
 
 //简单HTML页面作为内容来源
@@ -32,4 +36,11 @@ frames["richedit"].document.execCommand("italic", false, null);
 frames["richedit"].document.execCommand("createlink", false, "http://www.wrox.com");
 //格式化为1级标题
 frames["richedit"].document.execCommand("formatblock", false, "<h1>");
+
+//检测编辑去是否允许传入加粗命令
+var result = frames["richedit"].document.queryCommandEnabled("bold");
+//检测当前文本是否已经转换成粗体
+var isBold = frames["richedit"].document.queryCommandState("bold");
+//检测当前文本应用"fontsize"传入的值
+var fontSize = frames["richedit"].document.queryCommandValue("fontsize");
 
