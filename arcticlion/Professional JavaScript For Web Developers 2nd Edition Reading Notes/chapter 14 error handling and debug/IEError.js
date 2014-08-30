@@ -6,6 +6,8 @@
  *         Safari报告发生语法错误
  *         Opera报告发生ReferenceError
  *         IE抛出invalid charcter错误
+ *     未找到成员
+ *         
  */
 
 //下面示例导致操作终止错误
@@ -22,4 +24,12 @@
     </div>
 </body>
 </html>
+
+//单机事件处理程序执行完后，event对象被销毁，闭包中event就不存在了
+document.onclick = function() {
+    var event = window.event;
+    setTimeout(function() {
+        event.returnValue = false;    //未找到成员错误
+    }, 1000);
+};
 
