@@ -6,6 +6,10 @@
  *         queryCommandEnabled():1个参数,要检测的命令
  *         queryCommandState():1个参数
  *         queryCommandValue():取得执行命令时传入的值
+ *     富文本选区
+ *         iframe的getSelection()确定实际选择的文本
+ *         toString:返回选区所包含的文本内容
+ *         getRangeAt(index):返回索引对应的选区的DOM范围
  *         
  */
 
@@ -43,4 +47,17 @@ var result = frames["richedit"].document.queryCommandEnabled("bold");
 var isBold = frames["richedit"].document.queryCommandState("bold");
 //检测当前文本应用"fontsize"传入的值
 var fontSize = frames["richedit"].document.queryCommandValue("fontsize");
+
+var selsection = frames["richedit"].getSelection();
+
+//取得选择的文本
+var selectedText = selsection.toString();
+//取得代表选取的范围
+var range = selsection.getRangeAt(0);
+//突出显示选择的文本
+    //为文本添加黄色的背景
+    //surroundContents()将选区添加到带有黄色背景的<span>元素中
+var span = frames["richedit"].document.createElement("span");
+span.style.backgroundColor = "yellow";
+range.surroundContents(span);
 
