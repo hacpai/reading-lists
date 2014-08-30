@@ -9,6 +9,7 @@
  *         再页面开辟一小块区域，用以显示消息
  *         这个区域是一个元素，总是出现在页面中用于调试目的
  *     抛出错误
+ *         assert():2个参数,求值结果为true的条件,条件为false时抛出的错误
  */
 
 function sum(num1, num2) {
@@ -78,5 +79,11 @@ function divide(num1, num2) {
         throw new Error("divide(): Both arguments must be number.");
     }
     return num1 / num2;
+}
+
+function assert(condition, message) {
+    if (!condition) {
+        throw new Error(message);
+    }
 }
 
