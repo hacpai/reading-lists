@@ -8,6 +8,7 @@
  *     将消息记录到当前页面
  *         再页面开辟一小块区域，用以显示消息
  *         这个区域是一个元素，总是出现在页面中用于调试目的
+ *     抛出错误
  */
 
 function sum(num1, num2) {
@@ -70,5 +71,9 @@ function log(message) {
         document.body.appendChild(console);
     }
     console.innerHTML += " <p> " + message + " </p> ";
+}
+
+function divide(num1, num2) {
+    return num1 / num2;
 }
 
