@@ -54,3 +54,7 @@ function addQueryStringArg(url, namek, value) {
     return url;
 }
 
+var url = "http://www.somedomain.com";
+var newUrl = addQueryStringArg(url, "redir", "http://www.someotherdomain.com?a=b & c=d");
+alert(newUrl);
+
