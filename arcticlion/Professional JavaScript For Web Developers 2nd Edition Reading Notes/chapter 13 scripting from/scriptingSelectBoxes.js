@@ -11,6 +11,10 @@
  *         DOM法:创建<option>,为其添加文本节点,设置value,再添加到选项框中
  *         Option构造函数法:2个参数,文本和值
  *         add():2个参数,要添加的新选项和位于新选项之后的选项
+ *     移除选项
+ *         DOM法:removeChild()
+ *         remove法
+ *         选项设null法
  *
  *     <select>和<option>创建
  * <select name="location" id="selLocation">
@@ -69,4 +73,16 @@ selectbox.appendChild(newOption);    //在IE中有问题
 将新选项插入列表最后
 var newOption = new Option("Option text", "Option value");
 selectbox.add(newOption, undefined);
+
+selectbox.removeChild(selectbox.options[0]);    //移除第一个选项
+selectbox.remove(0);    //移除第一个选项
+selectbox.options[0] = null;    //移除第一个选项
+
+//清除选择框中所有的项
+    //移除第一个选项后,后续选项自动向上移动一个位置
+function clearSelectbox(selectbox) {
+    for (var i = 0, len = selectbox.options.length; i < len; i++) {
+        selectbox.remove(0);
+    }
+}
 
