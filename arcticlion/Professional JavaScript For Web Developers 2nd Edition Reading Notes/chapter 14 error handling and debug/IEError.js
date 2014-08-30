@@ -7,7 +7,8 @@
  *         Opera报告发生ReferenceError
  *         IE抛出invalid charcter错误
  *     未找到成员
- *         
+ *     未知运行错误
+ *         innerHTML or outerHTML指定HTML时发生Unknow runtime error
  */
 
 //下面示例导致操作终止错误
@@ -32,4 +33,7 @@ document.onclick = function() {
         event.returnValue = false;    //未找到成员错误
     }, 1000);
 };
+
+//<span>不能包含<div>之类的块级元素
+span.innerHTML = "<div>Hi</div>";    //块级元素插入不恰当位置
 
