@@ -61,6 +61,11 @@ var newUrl = addQueryStringArg(url, "redir", "http://www.someotherdomain.com?a=b
 alert(newUrl);
 
 for (var i = 0, len = mods.length; i < len; i++) {
-    mods[i].init();    //可能导致致命错误
+    try {
+        mods[i].init();   
+    } catch (ex) {
+        //在这里处理错误
+    }
 }
+
 
