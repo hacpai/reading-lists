@@ -89,6 +89,9 @@ throw new CustomError("My message");
 
 //下面函数会在参数不是数组情况下失败
 function process(values) {
+    if (!(values instanceof Array)) {
+        throw new Error("process(): Argument must be an array.");
+    }
     values.sort();
 
     for (var i = 0, len = values.length; i < len; i ++) {
