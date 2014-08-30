@@ -17,3 +17,15 @@ function sum(num1, num2) {
     return result;
 }
 
+//Opera用opera.postError()访问
+function sum(num1, num2) {
+    opera.postError("Entering sum(), arguments are " + num1 + "," + num2);
+    
+    opera.postError("Before calculation");
+    var result = num1 + num2;
+    opera.postError("After calculation");
+
+    opera.postError("Exiting sum()");
+    return result;
+}
+
