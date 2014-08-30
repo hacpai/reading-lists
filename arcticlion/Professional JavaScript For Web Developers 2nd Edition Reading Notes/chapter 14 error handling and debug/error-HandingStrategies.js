@@ -22,3 +22,12 @@ function concat(str1, str2, str3) {
     return result;
 }
 
+//不安全的函数,任何非字符串值都会导致错误
+function getQueryString(url) {
+    var pos = url.indexOf("?");
+    if (pos > -1) {
+        return url.substring(pos + 1);
+    }
+    return "";
+}
+
