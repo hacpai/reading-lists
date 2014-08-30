@@ -9,6 +9,15 @@
  *     未找到成员
  *     未知运行错误
  *         innerHTML or outerHTML指定HTML时发生Unknow runtime error
+ *     语法错误
+ *         少了分号
+ *         花括号前后不对应
+ *         外部的JavaScript文件
+ *             <script>src指向HTML文件
+ *             报告语法错误的位置
+ *                 通常脚本第一行的第一个字符处
+ *                 Opera和Safari给出导致问题的外部文件信息
+ *                 Firefox忽略非JavaScript的解析错误
  */
 
 //下面示例导致操作终止错误
