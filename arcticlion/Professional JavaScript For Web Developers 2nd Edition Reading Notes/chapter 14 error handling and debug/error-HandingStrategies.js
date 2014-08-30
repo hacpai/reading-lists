@@ -33,3 +33,12 @@ function getQueryString(url) {
     return "";
 }
 
+//安全，非数组值都会忽略
+function reverseSort(values) {
+    if (values instanceof Array) {    
+        values.sort();
+        values.reverse();
+        
+    }
+}
+
