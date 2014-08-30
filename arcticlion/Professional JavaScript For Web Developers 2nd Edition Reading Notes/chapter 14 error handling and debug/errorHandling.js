@@ -117,3 +117,12 @@ window.onerror = function(message, url, line) {
     return false;    //阻止浏览器报告错误的默认行为
 };
 
+var image = new Inage();
+EventUtil.addHandler(image, "load", function(event) {
+    alert("Image loaded!");
+});
+EventUtil.addHandler(image, "error", function(event) {
+    alert("Image not loaded!");
+});
+image.src = "smilex.gif";    //指定不存在的文件
+
