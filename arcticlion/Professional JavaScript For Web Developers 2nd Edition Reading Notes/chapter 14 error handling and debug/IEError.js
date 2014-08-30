@@ -1,6 +1,11 @@
 /*
  * 常见的IE错误
  *     操作终止
+ *     无效字符
+ *         Firefox抛出illegal charcter错误
+ *         Safari报告发生语法错误
+ *         Opera报告发生ReferenceError
+ *         IE抛出invalid charcter错误
  */
 
 //下面示例导致操作终止错误
