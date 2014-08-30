@@ -6,6 +6,8 @@
  *         } catch(error) {
  *             //在错误发生时怎么处理
  *         }
+           finally子句
+               finally一定执行
  */
 
 try {
@@ -14,4 +16,16 @@ try {
     alert("An error happened!");
     alert(error.message);
 }
+
+//返回0
+function testFinally() {
+    try {
+        return 2;
+    } catch (error) {
+        return 1;
+    } finally {
+        return 0;
+    }
+}
+
 
