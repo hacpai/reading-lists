@@ -5,6 +5,7 @@
  *         类型转换错误
  *         数据类型错误
  *         通信错误
+ *             redir=后面的所有字符调用encodeURIComponent()
  */
 
 //建议使用全等和不全等操作符,避免类型转换
@@ -40,5 +41,16 @@ function reverseSort(values) {
         values.reverse();
         
     }
+}
+
+function addQueryStringArg(url, namek, value) {
+    if (url.indexOf("?") == -1) {
+        url += "?";
+    } else {
+        url += "&";
+    }
+
+    url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    return url;
 }
 
