@@ -10,6 +10,10 @@
  *         iframe的getSelection()确定实际选择的文本
  *         toString:返回选区所包含的文本内容
  *         getRangeAt(index):返回索引对应的选区的DOM范围
+ *         IE:
+ *             selection对象时document的属性
+ *             先创建文本范围
+ *
  *         
  */
 
@@ -60,4 +64,10 @@ var range = selsection.getRangeAt(0);
 var span = frames["richedit"].document.createElement("span");
 span.style.backgroundColor = "yellow";
 range.surroundContents(span);
+
+var range = frames["richedit"].document.selection.createRange();
+var selectedText = range.text;
+
+//同样实现高亮效果
+range.pasteHTML("<span style=\"background-color:yellow\"> " + range.htmlText = "</span>");
 
