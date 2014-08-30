@@ -114,5 +114,6 @@ function process(values) {
 
 window.onerror = function(message, url, line) {
     alert(message);
+    return false;    //阻止浏览器报告错误的默认行为
 };
 
