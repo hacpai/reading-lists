@@ -18,6 +18,8 @@
  *                 通常脚本第一行的第一个字符处
  *                 Opera和Safari给出导致问题的外部文件信息
  *                 Firefox忽略非JavaScript的解析错误
+ *     系统无法找到指定资源
+ *         URL超过2083字符限制
  */
 
 //下面示例导致操作终止错误
@@ -45,4 +47,17 @@ document.onclick = function() {
 
 //<span>不能包含<div>之类的块级元素
 span.innerHTML = "<div>Hi</div>";    //块级元素插入不恰当位置
+
+function createLongUrl(url) {
+    var s = "?";
+    for (var i = 0, len = 2500; i < len; i++) {
+        s += "a";
+    }
+
+    return url + s;
+}
+
+var x = new XMLHttpRequest();
+x.open("get", createLongUrl("http://www.somedomain.com"), true);
+x.send(null);
 
