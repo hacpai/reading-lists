@@ -96,7 +96,7 @@ CustomError.prototype = new Error();
 throw new CustomError("My message");
 
 
-//下面函数会在参数不是数组情况下失败
+//下面函数会在参数不是数组情况下失败(已解决)
 function process(values) {
     if (!(values instanceof Array)) {
         throw new Error("process(): Argument must be an array.");
