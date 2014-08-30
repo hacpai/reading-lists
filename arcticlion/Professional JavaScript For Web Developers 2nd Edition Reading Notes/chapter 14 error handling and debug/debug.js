@@ -5,6 +5,9 @@
  *         info(message):将信息性消息记录到控制台
  *         log(message):将一般消息记录到控制台
  *         warn(message):将警告消息记录到控制台
+ *     将消息记录到当前页面
+ *         再页面开辟一小块区域，用以显示消息
+ *         这个区域是一个元素，总是出现在页面中用于调试目的
  */
 
 function sum(num1, num2) {
@@ -50,5 +53,22 @@ function log(message) {
     } else if (typeof java == "object" && typeof java.lang == "object") {
         java.lang.System.out.printIn(message);
     }
+}
+
+function log(message) {
+    var console = document.getElementById("debuginfo");
+    if (console === null) {
+        console = document.createElement("div");
+        console.id = "debuginfo";
+        console.style.background = "#dedede";
+        console.style.border = "1px solid silver";
+        console.style.padding = "5px";
+        console.style.width = "400px";
+        console.style.position = "0px";
+        console.style.right = "0px";
+        console.style.top = "0px";
+        document.body.appendChild(console);
+    }
+    console.innerHTML += " <p> " + message + " </p> ";
 }
 
