@@ -71,6 +71,7 @@ for (var i = 0, len = mods.length; i < len; i++) {
         mods[i].init();   
     } catch (ex) {
         //在这里处理错误
+        logError("nonfatal", "Module init failed: " + ex.message);
     }
 }
 
