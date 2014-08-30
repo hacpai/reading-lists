@@ -8,12 +8,12 @@
  */
 
 function sum(num1, num2) {
-    console.log("Entering sum(), arguments are " + num1 + "," + num2);
+    log("Entering sum(), arguments are " + num1 + "," + num2);
 
-    console.log("Before calculation");
+    log("Before calculation");
     var result = num1 + num2;
-    console.log("After calculation");
-    console.log("Exiting sum()");
+    log("After calculation");
+    log("Exiting sum()");
     return result;
 }
 
