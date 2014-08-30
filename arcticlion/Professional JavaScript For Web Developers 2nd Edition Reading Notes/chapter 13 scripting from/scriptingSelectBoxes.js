@@ -9,6 +9,7 @@
  *         selected:布尔值,确定用户选择的项
  *     添加选项
  *         DOM法:创建<option>,为其添加文本节点,设置value,再添加到选项框中
+ *         Option构造函数法:2个参数,文本和值
  *
  *     <select>和<option>创建
  * <select name="location" id="selLocation">
@@ -60,4 +61,7 @@ newOption.appendChild(document.createTextNode("Option text"));
 newOption.setAttribute("value", "Option value");
 
 selectbox.appendChild(newOption);
+
+var newOption = new Option("Option text", "Option value");
+selectbox.appendChild(newOption);    //在IE中有问题
 
