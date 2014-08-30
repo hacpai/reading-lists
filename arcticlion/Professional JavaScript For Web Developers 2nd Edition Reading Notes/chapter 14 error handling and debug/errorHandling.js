@@ -22,7 +22,16 @@
  *     抛出错误
  *         throw:代码立即停止执行,仅当try-catch捕获到抛出错误时继续
  *         抛出错误时机
- *             
+ *         排除错误与使用try-catch
+ *             捕获确切知道如何处理的错误
+ *             捕获错误目的在于避免浏览器默认方式处理它们
+ *             抛出错误目的在于提供错误发生具体原因的消息
+ *     错误事件
+ *         没通过try-catch处理的错误都会触发window对象的error事件
+ *         接受3个参数:
+ *             错误消息
+ *             错误所在URL
+ *             行号
  */
 
 try {
@@ -101,4 +110,9 @@ function process(values) {
     }
     return -1;
 }
+
+
+window.onerror = function(message, url, line) {
+    alert(message);
+};
 
