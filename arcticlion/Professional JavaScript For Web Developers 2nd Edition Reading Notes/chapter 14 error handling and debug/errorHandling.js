@@ -21,6 +21,8 @@
  *             最适合处理无法控制知道会发生的错误
  *     抛出错误
  *         throw:代码立即停止执行,仅当try-catch捕获到抛出错误时继续
+ *         抛出错误时机
+ *             
  */
 
 try {
@@ -84,4 +86,16 @@ CustomError.prototype = new Error();
 
 throw new CustomError("My message");
 
+
+//下面函数会在参数不是数组情况下失败
+function process(values) {
+    values.sort();
+
+    for (var i = 0, len = values.length; i < len; i ++) {
+        if (values[i] > 100) {
+            return values[i];
+        }
+    }
+    return -1;
+}
 
