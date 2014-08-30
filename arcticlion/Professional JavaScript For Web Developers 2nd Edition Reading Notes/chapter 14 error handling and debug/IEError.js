@@ -12,7 +12,7 @@
     <p>The following code should cause an Operation Aborted error in IE versions prior to 8.</p>
     <div>
         <script type="text/javascript">
-            document.body.appendChild(document.createElement("div");
+            document.body.innerHTML(document.createElement("div"), document.body.firstChild);
         </script>
     </div>
 </body>
