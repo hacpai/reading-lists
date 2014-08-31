@@ -75,6 +75,12 @@ var parser = implementation.createLSParser(implementation.MODE_SYNCHRONOUS, null
 var input = implementation.createLSInput();
 input.stringDate = "<root><child/></root>";
 
-//解析完成都就会返回XML DOM文档对象
-var xmldom = parser.parse(input);
+//错误处理
+input.stringDate = "<root>";
+try {
+    //解析完成都就会返回XML DOM文档对象
+    xmldom = parser.parse(input);
+} catch (ex) {
+    alert("Parsing error!");
+}
 
