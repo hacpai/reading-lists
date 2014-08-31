@@ -17,6 +17,8 @@
  *             返回<parsererror>的文档
  *             Firefox,Opera返回<parsererror>文档
  *             Safari,Chrome<parsererror>是<root>第一个子元素
+ *     XMLSerializer类型
+ *         DOM文档序列化未XML字符串
  */
 
 //创建<root>XML文档
@@ -51,4 +53,8 @@ var error = xmldom.getElementsByTagName("parsererror");
 if (error.length > 0) {
     alert("Parsing error!");
 }
+
+var serializer = new XMLSerializer();
+var xml = serializer.serializerToString(xmldom);
+alert(xml);
 
