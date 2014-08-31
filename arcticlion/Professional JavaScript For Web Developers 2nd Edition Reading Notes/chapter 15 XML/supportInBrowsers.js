@@ -189,3 +189,12 @@ alert(children.length);    /2
 
 alert(xmldom.xml);
 
+//检测是否发生了解析错误
+if (xmldom.parseError != 0) {
+    alert("An error occurred:\nError Code: "
+          + xmldom.parseError.errorCode + "\n"
+          + "Line: " + xmldom.parseError.line + "\n"
+          + "Line Pos: " + xmldom.parseError.linepos + "\n"
+          + "Reason: " + xmldom.parseError.reason);
+}
+
