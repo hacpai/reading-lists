@@ -19,6 +19,8 @@
  *             Safari,Chrome<parsererror>是<root>第一个子元素
  *     XMLSerializer类型
  *         DOM文档序列化未XML字符串
+ *     DOM3级加载和保存
+ *         解析XML
  */
 
 //创建<root>XML文档
@@ -57,4 +59,22 @@ if (error.length > 0) {
 var serializer = new XMLSerializer();
 var xml = serializer.serializerToString(xmldom);
 alert(xml);
+
+//检测浏览器支持同步解析还是异步解析
+var hasLSSync = document.implementation.hasFeature("LS", "3.0");
+var hasLSAsync = document.implementation.hasFeature("LS-Async", "3.0");
+
+//createLSParser(mode, schemaType)
+    //不基于哪个模式进行验证,故schematype = null
+    //基于XML模式验证,则schematype = "http://www.w3.org/2001/XMLSchema"
+    //基于XML DTD验证：schematype="http://www.w3.ory/TR/REC-xml"
+var implementation = document.implementation;
+var parser = implementation.createLSParser(implementation.MODE_SYNCHRONOUS, null);
+
+//createLSInput()创建LSInput对象,XML字符串赋值给该对象的stringdate属性
+var input = implementation.createLSInput();
+input.stringDate = "<root><child/></root>";
+
+//解析完成都就会返回XML DOM文档对象
+var xmldom = parser.parse(input);
 
