@@ -84,3 +84,25 @@ try {
     alert("Parsing error!");
 }
 
+//异步解析
+    //addEventListener()预定load事件，以便知道何时解析完毕
+        //event.newDDocument: 包含解析得到的DOM文档
+        //event.input: 包含传到parse()中的LSInput对象
+var input = implementation.createLSParser(implementation.MODE_ASYNCHRONOUS, null);
+//预定load事件
+parser.addHandler("load", function(event) {
+    var xmldom = event.newDDocument;
+    var input = event.input;
+
+    alert(xmldom.documentElement.tagName);    //"root"
+    alert(xmldom.documentElement.firstChild.tagName);    //"child"
+    var anotherChild = xmldom.createElement("child");
+    xmldom.documentElement.appendChild(anotherChild);
+
+    var children = xmldom.getElementsByTagName("child");
+    alert(children.length);    //2
+}, false);
+
+//开始解析
+parser.parse(input);
+
