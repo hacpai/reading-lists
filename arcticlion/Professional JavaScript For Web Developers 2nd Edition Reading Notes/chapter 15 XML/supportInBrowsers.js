@@ -21,6 +21,8 @@
  *         DOM文档序列化未XML字符串
  *     DOM3级加载和保存
  *         解析XML
+ *         其他解析方式
+ *             LSParser还执行两种类型的解析:来自URI的文件和基于上下文解析
  */
 
 //创建<root>XML文档
@@ -111,4 +113,6 @@ parser.domConfig.setParameter("error-handler", function(ex) {
 //开始解析
 parser.parse(input);
 
+//URI文件解析
+parser.parseURI("example.xml");
 
