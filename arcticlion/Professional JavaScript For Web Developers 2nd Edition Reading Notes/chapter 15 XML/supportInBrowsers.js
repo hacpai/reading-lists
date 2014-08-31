@@ -40,6 +40,7 @@
  *                     onreadystatechange不需要放在load()语句前
  *         跨浏览器处理XML
  *             解析XML
+ *             序列化XML
  */
 
 //创建<root>XML文档
@@ -289,3 +290,19 @@ function parseXml(xml) {
     return xmldom;
 }
 
+//跨浏览器的序列化XML
+function serializeXml(xmldom) {
+
+    if (typeof XMLSerializer != "undefined") {
+        return (new XMLSerializer()).serializeToString(xmldom);
+    } else if (document.implementation.hasFeature("LS", "3.0")) {
+        var implementation = document.implementation;
+        var serializer = implementation.createLSSerializer();
+        return serializer.writeToString(xmldom);
+    } else if (typeof xmldom.xml != "undefined") {
+        return xmldom.xml;
+    } else {
+        throw new Error("Could not serialize XML DOM.");
+    }
+}
+ 
