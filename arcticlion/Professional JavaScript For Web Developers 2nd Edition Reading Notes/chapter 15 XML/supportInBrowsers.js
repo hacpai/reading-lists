@@ -11,7 +11,7 @@
  *             调用parseFromString()：接受2个参数
  *                 要解析的XML字符串
  *                 内容类型：始终是"text/xml"
- *                 返回Document实例 
+ *                 返回Document实例
  *         只能解析格式良好的XML字符串
  *         解析错误时
  *             返回<parsererror>的文档
@@ -35,6 +35,9 @@
  *             指定加载方式
  *                 async=true表示异步，false表示同步
  *                 确定方式后调用load()下载
+ *                 异步加载需要为XML onreadystatechange指定处理程序
+ *                     有4个就绪状态,实际开发关注状态4
+ *                     onreadystatechange不需要放在load()语句前
  */
 
 //创建<root>XML文档
@@ -174,7 +177,7 @@ function createDocument() {
             }
         }
     }
-    
+
     return new ActiveXObject(arguments.callee.activeXString);
 }
 
@@ -224,5 +227,33 @@ if (xmldom.parseError != 0) {
 //序列化XML
 alert(xmldom.xml);
 
+//以异步方式加载XML文件模式
+var xmldom = createDocument();
+xmldom.async = true;
 
+xmldom.onreadystatechange = function() {
+    if (xmldom.readyState == 4) {
+        if (xmldom.parseError != 0) {
+            alert("An error occurred:\nError Code: "
+          + xmldom.parseError.errorCode + "\n"
+          + "Line: " + xmldom.parseError.line + "\n"
+          + "Line Pos: " + xmldom.parseError.linepos + "\n"
+          + "Reason: " + xmldom.parseError.reason);
+        } else {
+
+            alert(xmldom.documentElement.tagName);    //"root"
+            alert(xmldom.documentElement.firstChild.tagName);    //"child"
+
+            var anotherChild = xmldom.createElement("child");
+            xmldom.documentElement.appendChild(anotherChild);
+
+            var children = xmldom.getElementsByTagName("child");
+            alert(children.length);    //2
+
+            alert(xmldom.xml);
+        }
+    }
+};
+
+xmldom.load("example.xml");
 
