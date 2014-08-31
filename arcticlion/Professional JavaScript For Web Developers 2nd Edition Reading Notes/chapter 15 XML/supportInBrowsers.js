@@ -31,6 +31,10 @@
  *             ActiveXObject类型创建ActiveX对象的实例
  *         序列化XML
  *             xml属性简单的序列化
+ *         加载XML文档
+ *             指定加载方式
+ *                 async=true表示异步，false表示同步
+ *                 确定方式后调用load()下载
  */
 
 //创建<root>XML文档
@@ -191,6 +195,12 @@ alert(children.length);    /2
 
 alert(xmldom.xml);
 
+//加载XML文件
+var xmldom = createDocument();
+xmldom.async = false;
+
+xmldom.load("example.xml");
+
 //检测是否发生了解析错误
 if (xmldom.parseError != 0) {
     alert("An error occurred:\nError Code: "
@@ -198,8 +208,21 @@ if (xmldom.parseError != 0) {
           + "Line: " + xmldom.parseError.line + "\n"
           + "Line Pos: " + xmldom.parseError.linepos + "\n"
           + "Reason: " + xmldom.parseError.reason);
+} else {
+
+    alert(xmldom.documentElement.tagName);    //"root"
+    alert(xmldom.documentElement.firstChild.tagName);    //"child"
+
+    var anotherChild = xmldom.createElement("child");
+    xmldom.documentElement.appendChild(anotherChild);
+
+    var children = xmldom.getElementsByTagName("child");
+
+    alert(xmldom.xml);
 }
 
 //序列化XML
 alert(xmldom.xml);
+
+
 
