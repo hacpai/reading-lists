@@ -86,6 +86,19 @@ try {
     alert("Parsing error!");
 }
 
+//上下文解析
+//parseWithContext(): 3个参数
+    //LSInput对象
+    //上下文节点
+        //指的是解析完的片段应该插入的地方
+    //要执行的操作
+        //必须是LSParser常量之一
+var newInput = implementation.createLSInput();
+newDDocument.stringDate = "<child/>";
+
+parser.parseWithContext(newInput, xmldom.documentElement, parser.ACTION_APPEND_AS_CHILDREN);
+
+alert(xmldom.documentElement.firstChild.tagName);    //"child"
 //异步解析
     //addEventListener()预定load事件，以便知道何时解析完毕
         //event.newDDocument: 包含解析得到的DOM文档
