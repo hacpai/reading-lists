@@ -29,6 +29,8 @@
  *     IE对XML的支持
  *         ActiveX对象实现
  *             ActiveXObject类型创建ActiveX对象的实例
+ *         序列化XML
+ *             xml属性简单的序列化
  */
 
 //创建<root>XML文档
@@ -197,4 +199,7 @@ if (xmldom.parseError != 0) {
           + "Line Pos: " + xmldom.parseError.linepos + "\n"
           + "Reason: " + xmldom.parseError.reason);
 }
+
+//序列化XML
+alert(xmldom.xml);
 
