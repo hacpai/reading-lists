@@ -152,6 +152,7 @@ try {
 
 alert(xml);
 
+//IE对XML的支持
 function createDocument() {
     if (typeof arguments.callee.activeXString != "string") {
         //三个稳定的版本
@@ -170,4 +171,21 @@ function createDocument() {
     
     return new ActiveXObject(arguments.callee.activeXString);
 }
+
+//解析XML字符串
+    //创建DOM文档
+    //调用loadXML()传入XML字符串经解析之后填充到DOM文档中
+var xmldom = createDocument();
+xmldom.loadXML("<root><child/></root>");
+
+alert(xmldom.documentElement.tagName);    //"root"
+alert(xmldom.documentElement.firstChild.tagName);    //"child"
+
+var anotherChild = xmldom.createElement("child");
+xmldom.documentElement.appendChild(anotherChild);
+
+var children = xmldom.getElementsByTagName("child");
+alert(children.length);    /2
+
+alert(xmldom.xml);
 
