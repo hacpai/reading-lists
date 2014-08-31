@@ -103,6 +103,12 @@ parser.addHandler("load", function(event) {
     alert(children.length);    //2
 }, false);
 
+//捕获异步解析的错误用LSParser对象上domConfig定义的错误处理程序
+parser.domConfig.setParameter("error-handler", function(ex) {
+    alert("Parsing error!");
+});
+
 //开始解析
 parser.parse(input);
+
 
