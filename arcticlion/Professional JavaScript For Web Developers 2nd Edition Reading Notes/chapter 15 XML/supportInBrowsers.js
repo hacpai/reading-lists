@@ -23,6 +23,10 @@
  *         解析XML
  *         其他解析方式
  *             LSParser还执行两种类型的解析:来自URI的文件和基于上下文解析
+ *         序列化XML
+ *             创建LSSerializer对象
+ *             LSSerializer.writeToString():接受节点类型的参数返回该节点的XML代码
+ *
  */
 
 //创建<root>XML文档
@@ -128,4 +132,21 @@ parser.parse(input);
 
 //URI文件解析
 parser.parseURI("example.xml");
+
+//序列化XML
+var serializer = document.implementation.createLSSerializer();
+
+//domConfig设置适合打印输出的XML字符串格式
+serializer.domConfig.setParameter("format-pretty-print", true);
+
+var xml = "";
+
+try {
+    var xml = serializer.writeToString(xmldom);
+} catch (ex) {
+    //一般出错是因为传入到writeToString()方法中的参数不是DOM节点
+    alert("Serialization error occurred.");
+}
+
+alert(xml);
 
