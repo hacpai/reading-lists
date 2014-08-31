@@ -305,4 +305,11 @@ function serializeXml(xmldom) {
         throw new Error("Could not serialize XML DOM.");
     }
 }
- 
+
+var xmldom = null;
+
+try {
+    xmldom = parseXml("<root><child/></root>");
+} catch (ex) {
+    alert(ex.message);
+}
