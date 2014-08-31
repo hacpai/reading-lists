@@ -313,3 +313,6 @@ try {
 } catch (ex) {
     alert(ex.message);
 }
+//一般来说只要针对浏览器使用适当的XML DOM对象就不会出现无法序列化的情况
+var xml = serializeXml(xmldom);
+
