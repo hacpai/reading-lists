@@ -26,7 +26,9 @@
  *         序列化XML
  *             创建LSSerializer对象
  *             LSSerializer.writeToString():接受节点类型的参数返回该节点的XML代码
- *
+ *     IE对XML的支持
+ *         ActiveX对象实现
+ *             ActiveXObject类型创建ActiveX对象的实例
  */
 
 //创建<root>XML文档
@@ -149,4 +151,23 @@ try {
 }
 
 alert(xml);
+
+function createDocument() {
+    if (typeof arguments.callee.activeXString != "string") {
+        //三个稳定的版本
+        var versions = ["MSXML2.DOMDocument.6.0", "MSXML2.DOMDocument.3.0", "MSXML2.DOMDocument"];
+
+        for (var i = 0. len = versions.length; i < len; i++) {
+            try {
+                var xmldom = new ActiveXObject(versions[i]);
+                arguments.callee.activeXString = versions[i];
+                return xmldom;
+            } catch (ex) {
+                //跳过
+            }
+        }
+    }
+    
+    return new ActiveXObject(arguments.callee.activeXString);
+}
 
