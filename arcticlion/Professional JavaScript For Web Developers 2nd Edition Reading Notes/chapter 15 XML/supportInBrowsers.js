@@ -38,6 +38,8 @@
  *                 异步加载需要为XML onreadystatechange指定处理程序
  *                     有4个就绪状态,实际开发关注状态4
  *                     onreadystatechange不需要放在load()语句前
+ *         跨浏览器处理XML
+ *             解析XML
  */
 
 //创建<root>XML文档
@@ -256,4 +258,34 @@ xmldom.onreadystatechange = function() {
 };
 
 xmldom.load("example.xml");
+
+//跨浏览器解析XML
+function parseXml(xml) {
+    var xmldom = null;
+
+    if (typeof DOMParser != "underfined") {
+        xmldom = (new DOMParser()).parseFromString(xml, "text/xml");
+        var errors = xmldom.getElementsByTagName("parsererror");
+        if (errors.length) {
+            throw new Error("XML parsing error:" + errors[0].textContent);
+        }
+
+    } else if (document.implementation.hasFeature("LS", "3.0")) {
+        var implementation = document.implementation;
+        var parser = implementation.createLSPasrser(implementation.MODE_SYNCHRONOUS, null);
+        var input = implementation.createLSInput();
+        input.stringDate = xml;
+        xmldom = parser.parse(input);
+    } else if (typeof ActiveXObject != "undefined") {
+        xmldom = createDocument();
+        xmldom.loadXML(xml);
+        if (xmldom.parseError != 0) {
+            throw new Error("XML parsing error: " + xmldom.parseError.reason);
+        }
+    } else {
+        throw new Error("No XML parser available.");
+    }
+
+    return xmldom;
+}
 
