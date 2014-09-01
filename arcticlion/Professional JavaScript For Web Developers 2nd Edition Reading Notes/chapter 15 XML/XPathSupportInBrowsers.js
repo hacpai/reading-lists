@@ -187,3 +187,6 @@ function selectSingleNode(context, expression, namespaces) {
         }
     }
 
+var result = selectSingleNode(xmldom.documentElement, "wrox:book/wrox:author", { wrox: "http://www.wrox.com/" });
+alert(serializeXml(result));
+
