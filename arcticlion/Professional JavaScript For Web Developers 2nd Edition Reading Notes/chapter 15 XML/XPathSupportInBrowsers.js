@@ -9,8 +9,11 @@
  *             返回结果的类型
  *                 ORDERED_NODE_ITERATOR_TYPE:返回匹配的节点集合，节点持续于文档中的次序一致，最常见的结果类型。
  *                 ORDERED_NODE_SPAPSHOT_TYPE:返回节点集合快照
+ *                 单节点结果
+ *                     FIRST_ORDERED_NODE_TYPE:返回第一个匹配节点
+ *                     singleNodeValue访问该节点
  *             保存结果的XPathResult对象(通常为null)
- *
+ *         
  */
 
 var supportsXPath = document.implementation.hasFeature("XPath", "3.0");
@@ -33,5 +36,11 @@ if (result !== null) {
     for (var i = 0, len = result.snapshotLength; i < len; i++) {
         alert(result.snapshotItem(i).tagName);
     }
+}
+
+var result = xmldom.evaluate("employee/name", xmldom.documentElement, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+
+if (result != null) {
+    alert(result.singleNodeValue.tagName);
 }
 
