@@ -20,6 +20,7 @@
  *                          mode特性为模版定义模式
  *                          setStartMode()只接受一个参数
  *                              即要为处理器设置的模式
+ *                          reset():同一样式表进行多次转换，可在每次转换后充值处理器
  */
 
 //加载XML和XSLT（IE）
@@ -150,4 +151,7 @@ processor.input = xmldom;
 processor.addParameter("message", "Hello World!");
 processor.setStartMode("title-first");
 processor.transform();
+
+//由于处理器已经编译了XSLT样式表，与使用teansformNode()相比，进行重复转换速度更快一些
+processor.reset();    //准备下一次转换
 
