@@ -11,6 +11,11 @@
  *                     MSXML2.FreeThreadedDOMDocument
  *                 创建XSL处理器对象的模版
  *                     XSL处理器对象事用来转换XML文档
+ *                 更多控制
+ *                     接受传入参数
+ *                         addParameter():2个参数
+ *                             要设置的参数名称(与<xsl:param>的name特性一样
+ *                             要指定的值(多数情况是字符串，也可以是数值或布尔值）
  * 
  */
 
@@ -103,4 +108,8 @@ var result = processor.output;
     </xsl:template>
 
 </xsl:stylesheet>
+
+processor.input = xmldom.documentElement;
+processor.addParameter("message", "Hello World!");
+processor.transform();
 
