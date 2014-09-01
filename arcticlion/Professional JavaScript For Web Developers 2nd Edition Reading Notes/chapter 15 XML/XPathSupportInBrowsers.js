@@ -31,6 +31,13 @@
  *         selectNodes()
  *             接受一个XPath模式作为参数
  *             返回与模式匹配的所有节点
+ *         IE对命名空间的支持
+ *             按照下列格式创建字符串
+ *                 "xmlns:prefix1='uri1' xmlns:prefix2='uri2' xmlns:prefix3='uri3'"
+ *                 setProperty():接受2个参数
+ *                      属性名: SelectionNamespaces
+ *                      属性值: 前面格式的字符串
+ *                      
  *
  * <?xml version="1.0" ?>
  * <wrox:books xmlns:wrox="http://www.wrox.com/">
@@ -133,4 +140,9 @@ if (element !== null) {
 
 var elements = xmldom.documentElement.selectNodes("employee/name");
 alert(elements.length);
+
+xmldom.setProperty("SelectionNamespaces", "xmlns:wrox='http://www.wrox.com/'");
+
+var result = xmldom.documentElement.selectNodes("wrox:book/wrox:author");
+alert(result.length);
 
