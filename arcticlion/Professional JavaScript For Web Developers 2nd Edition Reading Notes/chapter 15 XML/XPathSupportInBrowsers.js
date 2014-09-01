@@ -22,7 +22,21 @@
  *                     ANY_TYPE
  *                         自动确定返回结果的类型
  *             保存结果的XPathResult对象(通常为null)
- *         
+ *         createNSResolver(node):接受一个参数
+ *             包含命名空间定义的节点
+ * 
+ * <?xml version="1.0" ?>
+ * <wrox:books xmlns:wrox="http://www.wrox.com/">
+ *     <wrox:book>
+ *         <wrox:title>Professional JavaScript for Web Developers</wrox:title>
+ *     </wrox:book>
+ *     <wrox:book>
+ *         <wrox:title>Professional Ajax</wrox:title>
+ *         <wrox:author>Nicholas C. Zakas</wrox:author>
+ *         <wrox:author>Jeremy McPeak</wrox:author>
+ *         <wrox:author>Joe Fawcett</wrox:author>
+ *     </wrox:book>
+ * </wrox:books>
  */
 
 var supportsXPath = document.implementation.hasFeature("XPath", "3.0");
@@ -87,3 +101,10 @@ if (result != null) {
     }
 }
         
+
+var nsresolver = xmldom.createNSResolver(xmldom.documentElement);
+
+var result = xmldom.evaluate("wrox:book/wrox:auther", xmldom.documentElement, nsresolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+
+alert(result.snapshotLength);
+
