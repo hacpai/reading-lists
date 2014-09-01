@@ -12,6 +12,12 @@
  *                 单节点结果
  *                     FIRST_ORDERED_NODE_TYPE:返回第一个匹配节点
  *                     singleNodeValue访问该节点
+ *                 简单类型结果
+ *                     booleanValue
+ *                     numberValue
+ *                         XPath表达式需要加上能够返回数值的XPath函数
+ *                     stringValue
+ *                         返回匹配的第一个子节点的值
  *             保存结果的XPathResult对象(通常为null)
  *         
  */
@@ -43,4 +49,14 @@ var result = xmldom.evaluate("employee/name", xmldom.documentElement, null, XPat
 if (result != null) {
     alert(result.singleNodeValue.tagName);
 }
+
+var result = xmldom.evaluate("employee/name", xmldom.documentElement, null, XPathResult.NUMBER_TYPE, null);
+alert(result.booleanValue);    //有节点匹配"employee/name", true
+
+var result = xmldom.evaluate("count(employee/name", xmldom.documentElement, null, XPathResult.NUMBER_TYPE, null);
+alert(result.numberValue);    //输出匹配节点数量
+
+var result = xmldom.evaluate("employee/name", xmldom.documentElement, null, XPath.STRING_TYPE, null);
+alert(result.stringValue);    //输出与"element/name"匹配的第一个元素的第一个子节点包含的字符串
+
 
