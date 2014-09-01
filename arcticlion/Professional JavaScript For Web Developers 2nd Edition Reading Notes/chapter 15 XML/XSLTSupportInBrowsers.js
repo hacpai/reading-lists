@@ -39,3 +39,7 @@ function createThreadSafeDocument() {
     return new ActiveXObject(arguments.callee.activeXString);
 }
 
+var xsltdom = createThreadSafeDocument();
+xsltdom.async = false;
+xsltdom.load("employees.xslt");
+
