@@ -28,6 +28,9 @@
  *         selectSingleNode()
  *             接受一个XPath模式
  *             返回第一个匹配节点
+ *         selectNodes()
+ *             接受一个XPath模式作为参数
+ *             返回与模式匹配的所有节点
  *
  * <?xml version="1.0" ?>
  * <wrox:books xmlns:wrox="http://www.wrox.com/">
@@ -127,4 +130,7 @@ var element = xmldom.documentElement.selectSingleNode("employee/name");
 if (element !== null) {
     alert(element.xml);
 }
+
+var elements = xmldom.documentElement.selectNodes("employee/name");
+alert(elements.length);
 
