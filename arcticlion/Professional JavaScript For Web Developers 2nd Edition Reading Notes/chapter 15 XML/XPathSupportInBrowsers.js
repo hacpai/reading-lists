@@ -101,8 +101,16 @@ if (result != null) {
     }
 }
         
-
+//处理命名空间的XML
 var nsresolver = xmldom.createNSResolver(xmldom.documentElement);
+
+//第二种定义nsresolver
+var nsresolver = function(prefix) {
+    switch (prefix) {
+        case "wrox": return "http://www.wrox.com/";
+        //其他前缀
+    }
+};
 
 var result = xmldom.evaluate("wrox:book/wrox:auther", xmldom.documentElement, nsresolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
