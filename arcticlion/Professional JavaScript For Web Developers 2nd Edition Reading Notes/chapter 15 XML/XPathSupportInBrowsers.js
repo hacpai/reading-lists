@@ -18,6 +18,9 @@
  *                         XPath表达式需要加上能够返回数值的XPath函数
  *                     stringValue
  *                         返回匹配的第一个子节点的值
+ *                 默认类型结果
+ *                     ANY_TYPE
+ *                         自动确定返回结果的类型
  *             保存结果的XPathResult对象(通常为null)
  *         
  */
@@ -59,4 +62,28 @@ alert(result.numberValue);    //输出匹配节点数量
 var result = xmldom.evaluate("employee/name", xmldom.documentElement, null, XPath.STRING_TYPE, null);
 alert(result.stringValue);    //输出与"element/name"匹配的第一个元素的第一个子节点包含的字符串
 
+var result = xmldom.evaluate("employee/name", xmldom.documentElement, null, XPathResult.ANY_TYPE, null);
 
+if (result != null) {
+    switch(result.resultType {
+        case XPathResult.STRING_TYPE:
+            //处理字符串类型
+            break;
+
+        case XPathResult.NUMBER_TYPE:
+            //处理数值类型
+            break;
+
+        case XPathResult.BOOLEAN_TYPE:
+            //处理布尔值类型
+            break;
+
+        case XPathResult.UNORDERED_NODE_ITERATOR_TYPE:
+            //处理次序不一致的节点迭代器类型
+            break;
+
+        default:
+            //处理其他可能的结果类型
+    }
+}
+        
