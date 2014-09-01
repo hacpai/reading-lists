@@ -238,3 +238,6 @@ function selectNodes(context, expression, namespaces) {
     }
 }
 
+var result = selectNodes(xmldom.documentElement, "wrox:book/wrox:author", { wrox: "http://www.wrox.com/" });
+alert(result.length);
+
