@@ -47,6 +47,8 @@
  *                     prefix2: "uri2",
  *                     prefix3: "uri3"
  *                 }
+ *         重创selectNodes():3个参数
+ *             
  *
  * <?xml version="1.0" ?>
  * <wrox:books xmlns:wrox="http://www.wrox.com/">
@@ -189,4 +191,50 @@ function selectSingleNode(context, expression, namespaces) {
 
 var result = selectSingleNode(xmldom.documentElement, "wrox:book/wrox:author", { wrox: "http://www.wrox.com/" });
 alert(serializeXml(result));
+
+
+function selectNodes(context, expression, namespaces) {
+    var doc = (context.nodeType != 9 ? context.ownerDocument : context);
+
+    if (typeof doc.evaluate != "undefined") {
+        var nsresolver = null;
+        if (namespaces instanceof Object) {
+            nsresolver = function(prefix) {
+                return namespaces[prefix];
+            };
+        }
+
+        var result = doc.evaluate(expression, context, nsresolver, 
+                                  CPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+                                  null);
+        var nodes = new Array();
+
+        if (result !== null) {
+            for (var i = 0, len = result.snapshotLength; i < len; i++) {
+                nodes.push(result.snapshotItem(i));
+            }
+        }
+
+        return nodes;
+    } else if (typeof context.selectNodes != "undefined") {
+
+        //创建命名空间
+        if (namespaces instanceof Object) {
+            if (namespaces.hasOwnProperty(prefix)) {
+                ns += "xmlns:" + prefix + "='" + namespaces[prefix] + "' ";
+            }
+            doc.setProperty("SelectionNamespaces", ns);
+        }
+        var result = context.selectNodes(expression);
+        var nodes = new Array();
+
+        for (var i = 0, len = result.length; i < len; i++) {
+            nodes.push(result[i]);
+        }
+
+        return nodes;
+    } else {
+        throw new Error("No XPath engine found.");
+    }
+}
 
