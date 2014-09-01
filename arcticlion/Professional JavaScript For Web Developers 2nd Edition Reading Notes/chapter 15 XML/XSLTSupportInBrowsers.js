@@ -9,7 +9,8 @@
  *                 XSL处理器
  *                 第一步把XSLT样式表加载到线程安全的XML文档中
  *                     MSXML2.FreeThreadedDOMDocument 
- *
+ *                 创建XSL处理器对象的模版
+ *                     XSL处理器对象事用来转换XML文档
  */
 
 //加载XML和XSLT（IE）
@@ -42,4 +43,24 @@ function createThreadSafeDocument() {
 var xsltdom = createThreadSafeDocument();
 xsltdom.async = false;
 xsltdom.load("employees.xslt");
+
+function createXSLTemplate() {
+    if (typeof arguments.callee.activeXString != "string") {
+        var versions = ["MSXML2.XSLTemplate.6.0",
+                        "MSXML2.XSLTemplate.3.0",
+                        "MSXML2.XSLTemplate"];
+
+        for (var i = 0, len = versions.length; i < len; i++) {
+            try {
+                var template = new ActiveXObject(versions[i]);
+                arguments.callee.activeXString = versions[i];
+                return template;
+            } catch (ex) {
+                //跳过
+            }
+        }
+    }
+
+    return new ActiveXObject(arguments.callee.activeXString);
+}
 
