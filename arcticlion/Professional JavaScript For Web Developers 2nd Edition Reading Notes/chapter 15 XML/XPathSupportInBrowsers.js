@@ -37,7 +37,16 @@
  *                 setProperty():接受2个参数
  *                      属性名: SelectionNamespaces
  *                      属性值: 前面格式的字符串
- *                      
+ *     跨浏览器使用XPath
+ *         重创selectSingleNode():三个参数j
+ *             上下文节点
+ *             XPath表达式
+ *             可选的命名空间对象
+ *                 {
+ *                     prefix1: "uri1",
+ *                     prefix2: "uri2",
+ *                     prefix3: "uri3"
+ *                 }
  *
  * <?xml version="1.0" ?>
  * <wrox:books xmlns:wrox="http://www.wrox.com/">
@@ -145,4 +154,36 @@ xmldom.setProperty("SelectionNamespaces", "xmlns:wrox='http://www.wrox.com/'");
 
 var result = xmldom.documentElement.selectNodes("wrox:book/wrox:author");
 alert(result.length);
+
+
+function selectSingleNode(context, expression, namespaces) {
+    var doc = (context.nodeType != 9 ? context.ownerDocument : context);
+
+    if (typeof doc.evalute != "undefined") {
+        var nsresolver = null;
+        if (namespaces instanceof Object) {
+            nsresolver = function(prefix) {
+                return namespaces[prefix];
+            };
+        }
+
+    var result = doc.evaluate(expression, context, nsresolver, XPathResult.FIRST_CROERED_NODE_TYPE, null);
+    return (result !== null ? result.singleNodeValue : null);
+    } else if (typeof context.selectSingleNode != "undefined") {
+        
+        //创建命名空间字符串
+        if (namespaces instandof Object) {
+            var ns = "";
+            for (var prefix in namespaces) {
+                if (namespaces.hasOwnProperty(prefix) ) {
+                    ns += "xmlns:" + prefix + " ='" + namespaces[prefix] +
+                        "' ";
+                }
+                doc.setProperty("SelectionNamespace", ns);
+            }
+            return context.selectSingleNode(expression);
+        } else {
+            throw new Error("No XPath engine found.");
+        }
+    }
 
