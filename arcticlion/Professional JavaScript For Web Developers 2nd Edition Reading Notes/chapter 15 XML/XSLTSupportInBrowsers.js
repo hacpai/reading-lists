@@ -18,6 +18,8 @@
  *                             要指定的值(多数情况是字符串，也可以是数值或布尔值）
  *                      设置操作模式
  *                          mode特性为模版定义模式
+ *                          setStartMode()只接受一个参数
+ *                              即要为处理器设置的模式
  */
 
 //加载XML和XSLT（IE）
@@ -143,4 +145,9 @@ processor.transform();
     </xsl:template>
 
 </xsl:stylesheet>
+
+processor.input = xmldom;
+processor.addParameter("message", "Hello World!");
+processor.setStartMode("title-first");
+processor.transform();
 
