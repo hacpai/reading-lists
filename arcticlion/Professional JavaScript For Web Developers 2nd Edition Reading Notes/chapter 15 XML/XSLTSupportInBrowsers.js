@@ -16,7 +16,8 @@
  *                         addParameter():2个参数
  *                             要设置的参数名称(与<xsl:param>的name特性一样
  *                             要指定的值(多数情况是字符串，也可以是数值或布尔值）
- * 
+ *                      设置操作模式
+ *                          mode特性为模版定义模式
  */
 
 //加载XML和XSLT（IE）
@@ -112,4 +113,34 @@ var result = processor.output;
 processor.input = xmldom.documentElement;
 processor.addParameter("message", "Hello World!");
 processor.transform();
+
+//这个样式表定义一个模版
+//将mode特性设置为“title-first"(即“先显示职位”）
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:param name="message"/>
+
+    <xsl:template match="/">
+        <html>
+            <head>
+                <title>Employees</title>
+            </head>
+            <body>
+                <ul>
+                    <xsl:apply-templates select="*"/>
+                </ul>
+                <p>Message: <xsl:value-of select="$message"/></p>
+            </body>
+        </html>
+    </xsl:template>
+    <xsl:template match="employee">
+        <li><xsl:value-of select="name"/>
+            <em><xsl:value-of select="@title"/><em></li>
+    </xsl:template>
+
+<xsl:template match="employee" mode="title-first"?
+        <li><em><xsl:value-of select="@title"/></em>
+            <xsl:value-of select-"name"/></li>
+    </xsl:template>
+
+</xsl:stylesheet>
 
