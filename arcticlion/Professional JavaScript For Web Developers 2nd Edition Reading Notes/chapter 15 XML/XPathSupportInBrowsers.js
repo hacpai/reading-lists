@@ -24,7 +24,11 @@
  *             保存结果的XPathResult对象(通常为null)
  *         createNSResolver(node):接受一个参数
  *             包含命名空间定义的节点
- * 
+ *     IE中的XPath
+ *         selectSingleNode()
+ *             接受一个XPath模式
+ *             返回第一个匹配节点
+ *
  * <?xml version="1.0" ?>
  * <wrox:books xmlns:wrox="http://www.wrox.com/">
  *     <wrox:book>
@@ -105,6 +109,7 @@ if (result != null) {
 var nsresolver = xmldom.createNSResolver(xmldom.documentElement);
 
 //第二种定义nsresolver
+//用于不确定哪个节点包含命名空间定义的情况
 var nsresolver = function(prefix) {
     switch (prefix) {
         case "wrox": return "http://www.wrox.com/";
@@ -115,4 +120,11 @@ var nsresolver = function(prefix) {
 var result = xmldom.evaluate("wrox:book/wrox:auther", xmldom.documentElement, nsresolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
 alert(result.snapshotLength);
+
+//IE中的XPath
+var element = xmldom.documentElement.selectSingleNode("employee/name");
+
+if (element !== null) {
+    alert(element.xml);
+}
 
