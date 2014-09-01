@@ -64,3 +64,14 @@ function createXSLTemplate() {
     return new ActiveXObject(arguments.callee.activeXString);
 }
 
+var template = createXSLTemplate();
+template.stylesheet = xsltdom;
+
+var processor = template.cteateProcessor();
+//节点保存在input才能转换
+processor.input = xmldom;
+//转换并保存在output属性中
+processor.transform();
+
+var result = processor.output;
+
