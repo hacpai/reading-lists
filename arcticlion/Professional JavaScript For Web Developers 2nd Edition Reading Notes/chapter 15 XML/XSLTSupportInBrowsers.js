@@ -21,6 +21,20 @@
  *                          setStartMode()只接受一个参数
  *                              即要为处理器设置的模式
  *                          reset():同一样式表进行多次转换，可在每次转换后充值处理器
+ *     XSLTProcessor类型
+ *         Firefox创建用于XSLT转换XML文档
+ *         第一步加载两个DOM文档
+ *             一个基于XML
+ *             一个基于XSLT
+ *         然后创建XSLTProcessor对象
+ *         importStylesheet()指定一个XSLT
+ *         最后执行转换
+ *             两种方式
+ *                 transformToDocument(): 返回完整DOM文档
+ *                 transformToFragment():返回一个文档片段对象
+ *                     2个参数
+ *                         替换的XML DOM
+ *                         插入的文档
  */
 
 //加载XML和XSLT（IE）
@@ -154,4 +168,14 @@ processor.transform();
 
 //由于处理器已经编译了XSLT样式表，与使用teansformNode()相比，进行重复转换速度更快一些
 processor.reset();    //准备下一次转换
+
+var processor = new XSLTProcessor();
+processor.importStylesheet(xsltdom);
+
+var result = processor.transformToDocument(xmldom);
+alert(serializeXml(result);
+
+var fragment = processor.transformToDocument(xmldom, document);
+var div = document.getElementById("divResult");
+div.appendChild(fragment);
 
