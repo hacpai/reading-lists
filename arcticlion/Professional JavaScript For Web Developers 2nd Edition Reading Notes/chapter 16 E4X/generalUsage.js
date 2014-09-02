@@ -6,7 +6,12 @@
  *     其他节点类型
  *         nodeKind():得到XML对象表示的类型
  *     查询
- *          取得元素或特性值的简单操作是最基本的查询
+ *         取得元素或特性值的简单操作是最基本的查询
+ *     构建和操作XML
+ *         将XML数据转换成XML对象的方式有很多种
+ *             将XML字符串传递到XML构造函数
+ *             使用XML字面量
+ *                 字面量中嵌入JavaScript变量用“｛｝”
  */
 
 var employee = <employee position="Software Engineer">
@@ -106,4 +111,40 @@ employees.employee.(@position == "Salesperson")[0].@position = "Senior Salespers
 //这里的employee2保存employees同样的值
 //处理来源未知的XML对象时经常用到
 var employee2 = employees.employee.parent();
+
+//用这个语法省去构建XML结构时拼接字符串的麻烦
+var tagName = "color";
+var color = "red";
+var xml = <{tagName}>{color}</{tagName}>;
+alert(xml.toXMLString());    //"<color>red</color>
+
+//JavaScript构建完整的XML结构
+var employees = <employees/>;
+employees.employee.name = "Nicholas C. Zakas";
+employees.employee.@position = "Software Engineer";
+
+//DOM方法构建XML结构
+//insertChildBeforehild(refNode, child)
+//prependChild(child):child作为子节点添加到XMLList开始位置
+//setChildren(children):用children替换当前所有的子元素
+employees.appendChild(<employee position="Vice President">
+                      <name>Benjamin Anderson</name>
+                    </employee>);
+
+employees.prependChild(<employee position="User Interface Designer">
+                       <name>Michael Johnson</name>
+                    </employee>);
+
+employees.insertChildBefore(employees.child(2), <employee position="Human Resources Manager">
+                            <name>Margaret Jones</name>
+                        </employee>);
+
+employees.setChildren(<employee position="President">
+                        <name>Richard Mcmichael</name>
+                    </employee> +
+                    <employee position="Vice President">
+                        <name>Rebecca Smith</name>
+                    </employee>);
+
+alert(employees.toXMLString());
 
