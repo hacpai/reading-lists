@@ -1,6 +1,7 @@
 /*
  * 其他变化
  *     for-each-in:迭代便利每一个属性并返回属性值
+ *     isXMLName():接受一个字符串，检测字符串是否时元素内部名称
  */
 
 var employees = <employees>
@@ -28,4 +29,6 @@ var colors = ["red", "green", "blue"];
 for each(var color in colors) {
     alert(color);
 }
+
+alert(isXMLName("color");    //true
 
