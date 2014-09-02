@@ -35,6 +35,14 @@
  *                     2个参数
  *                         替换的XML DOM
  *                         插入的文档
+ *         setParameter()：接受3个参数
+ *             命名空间, 一般为null
+ *             参数名称
+ *             要设置的值
+ *         getParameter()
+ *             命名空间，一般为null
+ *             参数名称
+ *         removeParameter()
  */
 
 //加载XML和XSLT（IE）
@@ -182,4 +190,12 @@ div.appendChild(fragment);
 //取得文本
 var text = fragment.firstChild.nodeValue;
 alert(text);
+
+
+var processor = new XSLTProcessor();
+processor.setParameter(null, "message", "Hello world!");
+var result = processor.transformToDocument(xmldom);
+alert(processor.getParameter(null, "message");    //输出"Hello world!"
+processor.removeParameter(null, "message");
+var result = processor.transformToDocument(xmldom);
 
