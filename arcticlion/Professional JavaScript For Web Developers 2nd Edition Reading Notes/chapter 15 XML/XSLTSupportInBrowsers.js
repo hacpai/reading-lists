@@ -179,3 +179,7 @@ var fragment = processor.transformToDocument(xmldom, document);
 var div = document.getElementById("divResult");
 div.appendChild(fragment);
 
+//取得文本
+var text = fragment.firstChild.nodeValue;
+alert(text);
+
