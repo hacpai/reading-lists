@@ -19,6 +19,16 @@
      *         ignoreWhitespace
      *         prettyIndent:设置缩进空格，默认2
      *         prettyPrinting
+ *     命名空间
+ *         namespace()取得特定前缀对象的Namespace对象
+ *         setNamespace()传入Namespace对象为给丁元素设置命名空间
+ *         addNamespace():只添加命名空间声明，而不改变元素
+ *         removeNamespace()
+ *         namespaceDeclarations():返回一个命名空间数组
+ *         inScopeNamespaces():返回两个命名空间数组
+ *             默认的命名数组（由空字符串表示）
+ *             有前缀的命名空间
+ *         双冒号查询特定命名空间元素
  */
 
 var employee = <employee position="Software Engineer">
@@ -162,4 +172,34 @@ XML.prettyIndent = 8;
 XML.ignoreComments = false;
 XML.setSettings(setting);    //重置前面的设置
 XML.setSettings(XML.defaultSettings());    //重置默认设置
+
+//序列化如下结构
+//<wrox:messages xmlns:wrox="http://www.wrox.com/">
+//    <message>Hello world!</message>
+//</wrox:messages>
+var messages = <message>
+    <message>Hello world!</message>
+</message>;
+messages.setNamespace(new Namespace("wrox", "http://www.wrox.com/"));
+
+//序列化如下结构
+//<message xmlns:wrox="http://www.wrox.com/">
+//    <message>Hello world!</message>
+//</message>
+messages.addNamespace(new Namespace("wrox", "http://www.wrox.com/"));
+//移除命名空间
+messages.removeNamespace(new Namespace("wrox", "http://www.wrox.com/"));
+
+alert(messages.namespaceDeclarations());    //"http://www.wrox.com"
+alert(messages.inScopeNamespaces());    //",http://www.wrox.com/"
+
+alert(messages.message.namespaceDeclarations());    //""
+alert(messages.message.inScopeNamespaces());    //",http://www.wrox.com"
+
+//双冒号表示返回的元素应该位于其中的命名空间
+var wroxNS = new Namespace("wrox", "http://www.wrox.com/");
+var wroxMessages = messages.wroxNS::message;
+
+//设置默认的命名空间
+default xml namespace = "http:///www.wrox.com/";
 
