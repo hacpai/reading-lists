@@ -1,6 +1,8 @@
 /*
  * 一般用法
  *     点号——特性或标签名访问不同的层次和结构
+ *     访问特性
+ *         @符号区分
  */
 
 var employee = <employee position="Software Engineer">
@@ -39,4 +41,19 @@ var allChildren = employees.elements("*");    //与employees.*相同
 //删除子元素
 delete employees.employee[0];
 alert(employees.employee.length());    //1
+
+alert(employees.employee[0].@position);    //"Software Engineer"
+alert(employees.employee[0].child(@position));    //"Software Engineer"
+alert(employees.employee[0].attribute("position"));    //"Software Engineer"
+
+//下面两种方式都会取得所有特性
+var atts1 = employees.employee[0].@*;
+var atts2 = employees.employee[0].attributes();
+
+employees.employee[0].@position = "Author";    //修改position特性
+//也可这样添加新的特性
+employees.employee[0].@experience = "8 years";    //添加"experience"特性
+employees.employee[0].@manager = "Jim Smith";    //添加manager特性
+
+delete employees.employee[0].@position;    //删除position特性
 
