@@ -5,6 +5,8 @@
  *         @符号区分
  *     其他节点类型
  *         nodeKind():得到XML对象表示的类型
+ *     查询
+ *          取得元素或特性值的简单操作是最基本的查询
  */
 
 var employee = <employee position="Software Engineer">
@@ -77,4 +79,31 @@ alert(employees.employee[0].hasComplexContent());    //true
 alert(employees.employee[0].hasSimpleContent());    //false
 alert(employees.employee[0].name.hasComplexContent());    //false
 alert(employees.employee[0].name.hasSimpleContent());    //true
+
+//查找<employees/>中的<cat/>元素
+var cats = employees.cat;
+alert(cats.length());    //0
+
+//两个点访问后代节点
+var allNames = employees..name;    //取得<employees/>后代的所有<name/>节点
+//descendants()类似..*
+var allDescendants = employees.descendants();    //所有后代节点
+var allNames = employees.descendants("name");    //后代中的所有<name/>元素
+var allAttributes = employees..@*;    //取得所有后代元素中的所有特性
+var allAttributes2 = employees.descendants("@*");    //同上
+var allAttributes = employees..@position;    //取得所有position特性
+var allAttributes2 = employees.descendants("@position");     //同上
+
+//指定查询条件
+//返回position特性值为"Salesperson"所有<employee/>元素
+var salespeople = employees.employee.(@position == "Salesperson");
+
+//修改XML结构中的某一部分
+//重写了@position属性的第一项
+employees.employee.(@position == "Salesperson")[0].@position = "Senior Salespersopn";
+
+//parent()返回公共夫元素
+//这里的employee2保存employees同样的值
+//处理来源未知的XML对象时经常用到
+var employee2 = employees.employee.parent();
 
