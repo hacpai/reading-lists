@@ -12,6 +12,13 @@
  *             将XML字符串传递到XML构造函数
  *             使用XML字面量
  *                 字面量中嵌入JavaScript变量用“｛｝”
+ *     解析和序列化
+ *         settings对象
+     *         ignoreComments
+     *         ignoreProcessingInstructions
+     *         ignoreWhitespace
+     *         prettyIndent:设置缩进空格，默认2
+     *         prettyPrinting
  */
 
 var employee = <employee position="Software Engineer">
@@ -147,4 +154,12 @@ employees.setChildren(<employee position="President">
                     </employee>);
 
 alert(employees.toXMLString());
+
+var setting = new setting();
+alert(setting.ignoreWhitespace);    //true
+alert(setting.ignoreComments);    //true
+XML.prettyIndent = 8;
+XML.ignoreComments = false;
+XML.setSettings(setting);    //重置前面的设置
+XML.setSettings(XML.defaultSettings());    //重置默认设置
 
