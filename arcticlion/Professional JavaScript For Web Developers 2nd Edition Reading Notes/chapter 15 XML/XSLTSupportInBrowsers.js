@@ -227,3 +227,5 @@ function transform(context, xslt) {
         throw new Error("No XSLT processor available.");
     }
 
+var result = transform(xmldom, xmltdom);
+
