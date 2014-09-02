@@ -82,3 +82,15 @@ var wrox = xml.Namespace("wrox");
 alert(wrox.uri);
 alert(wrox.prefix);
 
+//创建QName对象
+var message = new QName("message");    //表示"message"
+
+var wrox = new Namespace("wrox", "http://www.wrox.com/");
+var wroxMessage = new QName(wrox, "message");    //表示"wrox:message"
+//解析XML结构时，自动创建QName对象
+var xml = < wrox:root xmlns:wrox="http://www.wrox.com/">
+            <wrox:message>Hello World!</wrox:message>
+          </wrox:root>;
+//name()取得XML对象关联的QName对象
+var wroxRoot = xml.name();
+
