@@ -3,6 +3,8 @@
  *     点号——特性或标签名访问不同的层次和结构
  *     访问特性
  *         @符号区分
+ *     其他节点类型
+ *         nodeKind():得到XML对象表示的类型
  */
 
 var employee = <employee position="Software Engineer">
@@ -11,9 +13,11 @@ var employee = <employee position="Software Engineer">
 alert(employee.name);    //"Nicholas C. Zakas"
 
 var employees = <employees>
+        <?Dont forget the donuts?>
         <employee position="Software Engineer">
             <name>Nicholas C. Zakas</name>
         </employee>
+        <!--just added-->
         <employee position="Salesperson">
             <name>Jim Smith</name>
         </employee>
@@ -56,4 +60,21 @@ employees.employee[0].@experience = "8 years";    //添加"experience"特性
 employees.employee[0].@manager = "Jim Smith";    //添加manager特性
 
 delete employees.employee[0].@position;    //删除position特性
+
+//设置属性支持注释和处理指令解析到XML结构
+XML.ignoreComments = false;
+XML.ignoreProcessingInstructions =false;
+
+alert(employees.nodeKind());    //"element"
+alert(employees.*[0].nodeKind());    //"processing-instruction"
+alert(employees.employee[0].@position.nodeKind());    //"attribute"
+alert(employees.employee[0].nodeKind());    //"element"
+alert(employees.*[2].nodeKind());    //"comment"
+alert(employees.employee[0].name.*[0].nodeKind());    //"text"
+
+//hasSimpleContent()和hasComplexContent()确定XML只包含文本还是包含更复杂内容
+alert(employees.employee[0].hasComplexContent());    //true
+alert(employees.employee[0].hasSimpleContent());    //false
+alert(employees.employee[0].name.hasComplexContent());    //false
+alert(employees.employee[0].name.hasSimpleContent());    //true
 
