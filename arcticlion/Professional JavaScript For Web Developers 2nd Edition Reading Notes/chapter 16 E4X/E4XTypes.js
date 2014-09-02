@@ -66,10 +66,19 @@ alert(employees[0] === employees);    //true
 var ns = new Namespace();
 var ns = new Namespace("http://www.wrox.com/");    //没有前缀的命名空间
 var wrox = new Namespace("wrox", "http://www.wrox.com/");    //wrox命名空间
+
+alert(ns.uri);    //"http://www.wrox.com/"
+alert(ns.prefix);    //undefined
+alert(wrox.uri);    //"http://www.wrox.com/"
+alert(wrox.prefix);    //"wrox"
+
 //XML字面量包含命名空间时自动创建Namespace对象
 var xml = <wrox:root xmlns:wrox="http://www.wrox.com/">
             <wrox:message>Hello World!</wrox:message>
           </wrox:root>;
 //namespace取得对命名空间的引用
 var wrox = xml.Namespace("wrox");
+
+alert(wrox.uri);
+alert(wrox.prefix);
 
