@@ -99,7 +99,8 @@ var wroxRoot = xml.name();
 alert(wroxRoot.uri);    //"http://www.wrox.com/"
 alert(wroxRoot.localName);    //"root"
 
-//setName()传入新的QName对象
+//setName()传入新的QName对象,修改XML对象的限定名
 xml.setName(new QName("newroot");
+//setLocalName()修改内部名称
 xml.setLocalName("newtagname");
 
