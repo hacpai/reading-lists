@@ -9,6 +9,7 @@
  *             文本节点
  *         最强大的是直接将XML字面量赋值给变量
  *     XNLList：XML对象的集合
+ *         XML对象的有序集合
  *     Namespace：命名空间的前缀与空间URI之间的映射
  *     QName：内部名称和命名空间URI组成的一个限定名
  */
@@ -31,4 +32,11 @@ var employee = <employee position="Software Engineer">
 var data = <name>Nicholas C. Zakas</name>
 alert(data.toString());    //"Nicholas C. Zakas"
 alert(data.toXMLString());     //"<name>Nicholas C. Zakas</name>"
+
+//创建XMLList对象
+var list = new XMLList();
+//也可传入待解析的XML字符串
+var list = new XMLList("<item/><item/>");   //两个XML对象，两个</item>元素
+var list = <item/> + <item/>;
+var list = <><item/><item/></>;
 
