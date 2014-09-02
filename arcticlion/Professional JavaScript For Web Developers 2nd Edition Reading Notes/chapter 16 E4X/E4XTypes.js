@@ -10,6 +10,7 @@
  *         最强大的是直接将XML字面量赋值给变量
  *     XNLList：XML对象的集合
  *         XML对象的有序集合
+ *         通常是在解析较大的XML结构的过程中捎带着被创建的
  *     Namespace：命名空间的前缀与空间URI之间的映射
  *     QName：内部名称和命名空间URI组成的一个限定名
  */
@@ -39,4 +40,24 @@ var list = new XMLList();
 var list = new XMLList("<item/><item/>");   //两个XML对象，两个</item>元素
 var list = <item/> + <item/>;
 var list = <><item/><item/></>;
+
+var employees = <employees>
+    <employee position="Software Engineer">
+        <name>Nicholas C. Zakas</name>
+    </employee>
+    <employee position="Salesperson">
+        <name>Jim Smith</name>
+    </employee>
+</employees>;
+
+//以上代码定义employees变量包含一个XML对象，表示<employees/>元素
+    //这个元素包含两个<employee/>元素，因为创建相应的XMLList对象
+var firstEmployee = employees.employee[0];
+var secondEmployee = employees.employee[1];
+
+alert(employees.employee.length());    //2
+
+//一个XML对象和只包含一个XML对象的XMLList是没有太大区别
+alert(employees.length());    //1
+alert(employees[0] === employees);    //true
 
