@@ -39,10 +39,16 @@
  *             命名空间, 一般为null
  *             参数名称
  *             要设置的值
- *         getParameter()
- *             命名空间，一般为null
- *             参数名称
- *         removeParameter()
+ *         使用参数
+ *             getParameter()
+ *                 命名空间，一般为null
+ *                 参数名称
+ *             removeParameter()
+ *         重置处理器
+ *             每个XSLTProcessor实例都可以重用，以便使用不同的XSLT样式表执行不同的转换。
+ *             reset():从处理器移除所有参数和样式表
+ *             然后就可以再次调用importStylesheet()
+ *
  */
 
 //加载XML和XSLT（IE）
@@ -193,9 +199,14 @@ alert(text);
 
 
 var processor = new XSLTProcessor();
+processor.importStylesheet(xsltdom);
 processor.setParameter(null, "message", "Hello world!");
+//执行转换
 var result = processor.transformToDocument(xmldom);
 alert(processor.getParameter(null, "message");    //输出"Hello world!"
 processor.removeParameter(null, "message");
+processor.reset();
+processor.importStylesheet(xsltdom2);
+//再次执行转换
 var result = processor.transformToDocument(xmldom);
 
