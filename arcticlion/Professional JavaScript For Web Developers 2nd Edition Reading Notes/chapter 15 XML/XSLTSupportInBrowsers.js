@@ -48,7 +48,10 @@
  *             每个XSLTProcessor实例都可以重用，以便使用不同的XSLT样式表执行不同的转换。
  *             reset():从处理器移除所有参数和样式表
  *             然后就可以再次调用importStylesheet()
- *
+ *     跨浏览器使用XSLT
+ *         transform():接受两个参数
+ *             执行转换的上下文节点
+ *             XSLT文档对象
  */
 
 //加载XML和XSLT（IE）
@@ -209,4 +212,18 @@ processor.reset();
 processor.importStylesheet(xsltdom2);
 //再次执行转换
 var result = processor.transformToDocument(xmldom);
+
+
+function transform(context, xslt) {
+    if (typeof XSLTProcessor != "undefined") {
+        var processor = new XSLTProcessor();
+        processor.importStylesheet(xslt);
+
+        var result = processor.transformToDocument(context);
+        return (new XMLSerializer()).serializerToString(result);
+    } else if (typeof context.transformNode != "undefined") {
+        return context.transformNode(xslt);
+    } else {
+        throw new Error("No XSLT processor available.");
+    }
 
