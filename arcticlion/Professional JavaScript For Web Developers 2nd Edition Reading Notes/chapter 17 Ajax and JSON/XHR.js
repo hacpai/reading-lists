@@ -35,6 +35,11 @@
  *         常用于向服务器查询某些信息
  *         open()URL末尾的查询字符串需要经过正确编码
  *             名和值对之间用&分隔
+ *     POST请求
+ *         常用于向服务器发送应该被保存的数据
+ *         将数据作为请求的主体提交
+ *         XHR模拟表单提交
+ *             Content-Type = application/x-www-form-urlencoded
  */
 
 //适用于IE7之前的版本
@@ -100,4 +105,10 @@ url = addURLParam(url, "book", "Professional JavaScript");
 
 //初始化请求
 xhr.open("get", url, false);
+
+xhr.open("post", "example.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+var form = document.getElementById("user-info");
+//将ID为"user=info"的表单中的数据序列化之后发送给服务器
+xhr.send(serialize(form));
 
