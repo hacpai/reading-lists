@@ -37,3 +37,14 @@ var person = {
     }
 ]
 
+//这些定义都是纯文本，传递给eval()解析返回实例
+//求值为一个数组
+var people = eval(jsonText);
+
+//访问数据
+alert(people[0].name);
+people[1].age = 36;
+if (people[0].author) {
+    alert(people[0].name + " is an author");
+}
+
