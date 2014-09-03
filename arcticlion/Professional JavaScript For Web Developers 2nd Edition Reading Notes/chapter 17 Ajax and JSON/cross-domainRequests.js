@@ -10,6 +10,9 @@ var xdr = new XDomainRequest();
 xdr.onload = function () {
     alert(xdr.responseText);
 };
+xhr.onerror = function() {
+    alert("An error occurred.");
+};
 xdr.open("get", "http://www.somewhere-else.com/page/");
 xdr.send(null);
 
