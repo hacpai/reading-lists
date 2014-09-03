@@ -48,6 +48,9 @@
  *         响应接受完毕后出发load事件，因此没必要检查readyState属性
  *         只要浏览器接受到服务器的响应，不管状态如何都会出发load事件
  *         这意味着你必须要检查status属性
+ *     进度事件，每次触发progress事件，新状态信息更新HTML元素内容
+ *         position:表示已接受的字节数
+ *         totalSize:表示根据Content-Length响应头部确定的预期字节数
  */
 
 //适用于IE7之前的版本
@@ -91,7 +94,11 @@ xhr.onreadystatechange = function() {
         //假设由ontimeout事件处理程序处理
     }
 };
-
+//创建进度指示器
+xhr.onprocess = function(event) {
+    var divStatus = document.getElementById("status");
+    divStatus.innerHTML = "Received" + event.position + "of" + event.totalSize + " bytes";
+};
 xhr.open("get", "example.php", true);
 xhr.setRequestHeader("MyHeader", "MyValue");
 xhr.timeout = 1000;
@@ -135,4 +142,5 @@ xhr.onload = function(event) {
         alert("Request was unsuccessful: " + xhr.status);
     }
 };
+
 
