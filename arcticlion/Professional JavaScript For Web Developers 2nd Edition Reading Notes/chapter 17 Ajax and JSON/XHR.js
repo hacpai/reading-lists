@@ -92,3 +92,12 @@ function addURLParam(url, name, value) {
     return url;
 }
 
+var url = "example.php";
+
+//添加参数
+url = addURLParam(url, "name", "Nicholas");
+url = addURLParam(url, "book", "Professional JavaScript");
+
+//初始化请求
+xhr.open("get", url, false);
+
