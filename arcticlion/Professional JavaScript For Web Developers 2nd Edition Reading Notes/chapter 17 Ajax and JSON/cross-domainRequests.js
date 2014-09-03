@@ -6,6 +6,7 @@
  *         responseText:保存响应的数据
  *         open():由于都是异步执行，省去第三个参数
  *         timeout and ontimeout事件处理
+ *         为支持POST，提供contentType表示发送数据的格式
  */
 
 var xdr = new XDomainRequest();
@@ -23,4 +24,8 @@ xdr.ontimeout = function() {
 xdr.open("get", "http://www.somewhere-else.com/page/");
 xdr.send(null);
 xdr.abort();    //终止请求
+
+xdr.open("post", "http://www.somewhere-else.com/page/");
+xdr.contentType = "application/x-www.from-urlencoded";
+xdr.send("name1=value1 & name2 = value2");
 
