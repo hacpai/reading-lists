@@ -48,3 +48,6 @@ if (people[0].author) {
     alert(people[0].name + " is an author");
 }
 
+//将输入的文本放在圆括号中，防止出错
+var object = eval("(" + jsonText + ")");
+
