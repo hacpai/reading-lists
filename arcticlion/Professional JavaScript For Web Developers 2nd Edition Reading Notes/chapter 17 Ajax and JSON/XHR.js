@@ -43,6 +43,11 @@
  *     超时设定（IE）
  *         timeout设置事件
  *         ontimeout事件处理程序：超时时调用
+ *     加载事件（Firefox）
+ *         引入load事件替代readystatechange事件
+ *         响应接受完毕后出发load事件，因此没必要检查readyState属性
+ *         只要浏览器接受到服务器的响应，不管状态如何都会出发load事件
+ *         这意味着你必须要检查status属性
  */
 
 //适用于IE7之前的版本
@@ -123,4 +128,11 @@ var form = document.getElementById("user-info");
 //将ID为"user=info"的表单中的数据序列化之后发送给服务器
 xhr.send(serialize(form));
 
+xhr.onload = function(event) {
+    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+        alert(xhr.responseText);
+    } else {
+        alert("Request was unsuccessful: " + xhr.status);
+    }
+};
 
