@@ -30,3 +30,5 @@ function createXHR() {
 
 }
 
+var xhr = createXHR();
+
