@@ -6,6 +6,10 @@
  *             可选的过滤函数
  *                 JSON键和值为参数
  *                 返回值为结果对象关联的值，为重写默认的解析机制提供机会
+ *         stringify():接受3个参数
+ *             要序列化的对象
+ *             可选的替换函数(用于替换未受支持的JSON值)
+ *             可选的缩进说明符
  */
 
 //对象字面量表示对象
@@ -87,4 +91,11 @@ xhr.onreadystatechange = function() {
 };
 xhr.open("get", "addressbook.php", true);
 xhr.send(null);
+
+var contacts = {
+    name: "Nicholas C. Zakas",
+    email: "nicholas@some-domain-name.com"
+};
+var jsonText = JSON.stringify(contacts);
+alert(jsonText);    //{\"name\":\"Nicholas C. Zakas\",\"email......
 
