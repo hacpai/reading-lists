@@ -99,3 +99,13 @@ var contacts = {
 var jsonText = JSON.stringify(contacts);
 alert(jsonText);    //{\"name\":\"Nicholas C. Zakas\",\"email......
 
+//stringify()第二个参数序列化不支持的数据类型
+var jsonText = JSON.stringify([new Function()], function(key, value) {
+    if (value instanceof Function) {
+        return "(function)";
+    } else {
+        return value;
+    }
+});
+alert(jsonText);    //"[(functin)]"
+
