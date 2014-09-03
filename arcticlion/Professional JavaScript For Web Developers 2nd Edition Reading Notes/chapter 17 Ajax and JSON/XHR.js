@@ -24,6 +24,13 @@
  *                 DOM0级方法添加，为兼容所有浏览器
  *                 作用域问题,使用实际的XHR对象实例变量更可靠
  *             abort():取消异步请求
+ *     HTTP头部信息
+ *         setRequestHeader():2个参数
+ *             头部字段名
+ *             头部字段值 
+ *             open()后send()前调用
+ *             getAllResponseHeaders():取得包含所有头部信息的长字符串
+ *             getResponseHeader():传入头部字段名称，取得相应的响应头部名称
  */
 
 //适用于IE7之前的版本
@@ -65,7 +72,11 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.open("get", "example.php", true);
+xhr.setRequestHeader("MyHeader", "MyValue");
 xhr.send(null);
 
 xhr.abort();
+
+var myHeader = xhr.getResponseHeader("MyHeader");
+var allHeaders = xhr.getAllResponseHeaders();
 
