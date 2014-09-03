@@ -17,6 +17,12 @@
  *             状态码200:成功的标识
  *             状态码304:请求资源未被修改，可直接使用缓存版本
  *         statusText;HTTP状态的说明
+ *         异步请求
+ *             检测XHR的readyState
+ *                 4:表示完成
+ *             readyStatechange事件
+ *                 DOM0级方法添加，为兼容所有浏览器
+ *                 作用域问题,使用实际的XHR对象实例变量更可靠
  */
 
 //适用于IE7之前的版本
@@ -47,12 +53,16 @@ function createXHR() {
 
 var xhr = createXHR();
 
-xhr.open("get", "example.php", false);
-xhr.send(null);
+xhr.onreadystatechange = function() {
+    if (xhr,readyState == 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            alert(xhr.statusText);
+        } else {
+            alert("Request was unsuccessful: " + xhr.status);
+        }
+    }
+};
 
-if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-    alert(xhr.statusText);
-} else {
-    alert("Request was unsuccessful: " + xhr.status);
-}
+xhr.open("get", "example.php", true);
+xhr.send(null);
 
