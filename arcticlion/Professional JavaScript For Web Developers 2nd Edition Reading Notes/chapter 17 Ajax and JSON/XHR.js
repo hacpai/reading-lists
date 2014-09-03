@@ -23,6 +23,7 @@
  *             readyStatechange事件
  *                 DOM0级方法添加，为兼容所有浏览器
  *                 作用域问题,使用实际的XHR对象实例变量更可靠
+ *             abort():取消异步请求
  */
 
 //适用于IE7之前的版本
@@ -65,4 +66,6 @@ xhr.onreadystatechange = function() {
 
 xhr.open("get", "example.php", true);
 xhr.send(null);
+
+xhr.abort();
 
