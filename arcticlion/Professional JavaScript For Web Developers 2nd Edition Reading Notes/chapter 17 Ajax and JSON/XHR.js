@@ -31,6 +31,10 @@
  *             open()后send()前调用
  *             getAllResponseHeaders():取得包含所有头部信息的长字符串
  *             getResponseHeader():传入头部字段名称，取得相应的响应头部名称
+ *     GET请求
+ *         常用于向服务器查询某些信息
+ *         open()URL末尾的查询字符串需要经过正确编码
+ *             名和值对之间用&分隔
  */
 
 //适用于IE7之前的版本
@@ -79,4 +83,12 @@ xhr.abort();
 
 var myHeader = xhr.getResponseHeader("MyHeader");
 var allHeaders = xhr.getAllResponseHeaders();
+
+xhr.open("get", "example.php?name1=value1& name2=value2", true);
+
+function addURLParam(url, name, value) {
+    url += (url.indexOf("?") == -1 ? "?" : "&");
+    url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    return url;
+}
 
