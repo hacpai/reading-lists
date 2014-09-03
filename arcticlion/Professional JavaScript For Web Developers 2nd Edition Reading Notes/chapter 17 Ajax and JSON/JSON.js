@@ -71,3 +71,20 @@ var object = JSON.parse(jsonText, function(key, value) {
 alert(object.age);    //30
 alert(object.author);    //undefined
 
+//发送Ajax请求取得数据，并在客户端生成相应的<ul/>元素
+var xhr = createXHR();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+        if (xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            var contacts = JSON.parse(xhr.responseText);
+            var list = document.getElementById("contacts");
+            for (var i = 0, len = contacts.length; i <len; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = "<a href=\"milto:" + contacts[i].email + "\">" + list.appendChild(li);
+            }
+        }
+    }
+};
+xhr.open("get", "addressbook.php", true);
+xhr.send(null);
+
