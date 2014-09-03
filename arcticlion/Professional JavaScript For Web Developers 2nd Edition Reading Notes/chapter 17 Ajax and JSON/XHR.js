@@ -40,6 +40,9 @@
  *         将数据作为请求的主体提交
  *         XHR模拟表单提交
  *             Content-Type = application/x-www-form-urlencoded
+ *     超时设定（IE）
+ *         timeout设置事件
+ *         ontimeout事件处理程序：超时时调用
  */
 
 //适用于IE7之前的版本
@@ -71,17 +74,25 @@ function createXHR() {
 var xhr = createXHR();
 
 xhr.onreadystatechange = function() {
-    if (xhr,readyState == 4) {
-        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-            alert(xhr.statusText);
-        } else {
-            alert("Request was unsuccessful: " + xhr.status);
+    try {
+        if (xhr,readyState == 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                alert(xhr.statusText);
+            } else {
+                alert("Request was unsuccessful: " + xhr.status);
+            }
         }
+    } catch (ex) {
+        //假设由ontimeout事件处理程序处理
     }
 };
 
 xhr.open("get", "example.php", true);
 xhr.setRequestHeader("MyHeader", "MyValue");
+xhr.timeout = 1000;
+xhr.ontime = function() {
+    alert("Request did not return in a second.");
+};
 xhr.send(null);
 
 xhr.abort();
@@ -111,4 +122,5 @@ xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 var form = document.getElementById("user-info");
 //将ID为"user=info"的表单中的数据序列化之后发送给服务器
 xhr.send(serialize(form));
+
 
