@@ -109,3 +109,19 @@ var jsonText = JSON.stringify([new Function()], function(key, value) {
 });
 alert(jsonText);    //"[(functin)]"
 
+//POST请求将JSON传递给send()，可以将JSON数据发送给服务器
+var xhr = createXHR();
+var contact = {
+    name: "Ted Jones",
+    email: "tedjones@some-other-domain.com"
+};
+xhr.onreadystatechange = functin() {
+    if (xhr.readyState == 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            alert(xhr.responseText);
+        }
+    }
+};
+xhr.open("post", "addcontact.php", true);
+xhr.send(JSON.stringify(contact));
+
