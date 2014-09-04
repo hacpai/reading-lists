@@ -11,6 +11,9 @@
  *        创建一个函数，在特定环境中指定参数调用另一个函数
  *        常常和回调函数与事件处理程序一起使用
  *        以便于将函数作为变量传递的同时保留代码执行环境
+ *        bind():接受一个函数和一个环境
+ *            返回给定环境调用给定函数的函数
+ *            参数全部传递过去
  */
 
 function Person(name, age, job) {
@@ -103,4 +106,12 @@ EventUtil.addHandler(btn, "click", function(event) {
                     handler.handleClick(event);
 });
 
+//bind()创建一个闭包
+//闭包使用apply90调用传入的函数
+//arguments对象是内部函数而非bind()
+function bind(fn, context) {
+    return function() {
+        return fn.apply(context, arguments);
+    };
+}
 
