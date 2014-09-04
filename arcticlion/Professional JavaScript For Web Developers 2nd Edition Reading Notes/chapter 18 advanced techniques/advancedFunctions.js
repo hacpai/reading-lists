@@ -7,6 +7,10 @@
  *        优点
  *            只有当实际调用时才进行，保证恰当功能又不影响执行时间
  *            避免了多重if条件
+ *    函数绑定
+ *        创建一个函数，在特定环境中指定参数调用另一个函数
+ *        常常和回调函数与事件处理程序一起使用
+ *        以便于将函数作为变量传递的同时保留代码执行环境
  */
 
 function Person(name, age, job) {
@@ -85,4 +89,15 @@ function createXHR() {
     }
     return createXHR();
 }
+
+var handler = {
+    message: "Event handler",
+    handleClick: function(event) {
+        alert(this.message);
+    }
+};
+
+var btn = document.getElementById("my-btn");
+//没有保存handler.handleclick()环境，this对象指向了DOM按钮
+EventUtil.addHandler(btn, "click", handler.handleClick);
 
