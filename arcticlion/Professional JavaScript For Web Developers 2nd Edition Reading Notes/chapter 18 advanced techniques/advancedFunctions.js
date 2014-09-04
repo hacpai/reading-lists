@@ -20,3 +20,25 @@ alert(person1.name);    //"Nicholas"
 var Person2 = new Person("Nicholas", 29, "Software Engineer");
 alert(Person2.name);    //"Nicholas"
 
+//构造函数继承不用原型鲢问题
+function Polygon(sides) {
+    if (this instanceof Polygon) {
+        this.sides = sides;
+        this.getArea = function() {
+            return 0;
+        };
+    } else {
+        return new Polygon(sides);
+    }
+}
+
+//由于Polygon是作用域安全，this对象不是Polygon实例，创建了新的Polygon对象
+function Rectangle(width, height) {
+    Polygon.call(this, 2);
+    this.width = width;
+    this.height = height;
+    this.getArea = function() {
+        return this.width * this.height;
+    };
+}
+
