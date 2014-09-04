@@ -143,3 +143,6 @@ function curry(fn) {
     };
 }
 
+var curriedAdd = curry(add ,5);
+alert(curriedAdd(3));    //8
+
