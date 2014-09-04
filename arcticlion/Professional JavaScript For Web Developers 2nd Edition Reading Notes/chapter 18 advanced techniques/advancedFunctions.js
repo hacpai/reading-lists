@@ -146,3 +146,13 @@ function curry(fn) {
 var curriedAdd = curry(add ,5);
 alert(curriedAdd(3));    //8
 
+//函数柯里化作为函数绑定的一部分包含其中，构造出更为复杂的bund()
+function bind(fn, context) {
+    var args = Array.prototype.slice.call(arguments, 2);
+    return function() {
+        var innerArgs = Array.prototype.slice.call(arguments);
+        var finalArgs = args.concat(innerArgs);
+        return fn.apply(context, finalArgs);
+    };
+}
+
