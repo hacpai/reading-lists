@@ -12,3 +12,6 @@ function Person(name, age, job) {
 var person = new Person("Nicholas", 29, "Software Engineer");
 alert(person.name);    //"Nicholas"
 
+//出错的调用
+var Person = Person("Nicholas", 29, "Software Engineer");
+
