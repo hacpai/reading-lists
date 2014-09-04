@@ -115,3 +115,5 @@ function bind(fn, context) {
     };
 }
 
+EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler));
+
