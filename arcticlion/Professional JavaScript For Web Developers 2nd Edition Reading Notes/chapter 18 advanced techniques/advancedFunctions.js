@@ -42,3 +42,9 @@ function Rectangle(width, height) {
     };
 }
 
+//通过使用原型链解决这个问题
+Rectangle.prototype = new Polygon();
+
+var rect = new Rectangle(5, 10);
+alert(rect.sides);    //2
+
