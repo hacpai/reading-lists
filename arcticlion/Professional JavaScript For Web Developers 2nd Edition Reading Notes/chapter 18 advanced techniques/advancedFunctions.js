@@ -98,6 +98,9 @@ var handler = {
 };
 
 var btn = document.getElementById("my-btn");
-//没有保存handler.handleclick()环境，this对象指向了DOM按钮
-EventUtil.addHandler(btn, "click", handler.handleClick);
+//没有保存handler.handleclick()环境，this对象指向了DOM按钮(已用闭包修正)
+EventUtil.addHandler(btn, "click", function(event) {
+                    handler.handleClick(event);
+});
+
 
