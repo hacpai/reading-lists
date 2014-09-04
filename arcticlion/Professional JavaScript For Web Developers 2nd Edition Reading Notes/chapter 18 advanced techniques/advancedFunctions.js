@@ -1,6 +1,9 @@
 /*
  * 高级函数
  *    作用域安全的构造函数
+ *    惰性载入函数
+ *        表示函数执行的分支执行仅发生1次
+ *        第一次调用时，函数会覆盖您外一个按合适方式执行的函数
  */
 
 function Person(name, age, job) {
@@ -47,4 +50,28 @@ Rectangle.prototype = new Polygon();
 
 var rect = new Rectangle(5, 10);
 alert(rect.sides);    //2
+
+function createXHR() {
+    if (typeof XMLHttpRequest != "undefined") {
+        return new XMLHttpRequest();
+    } else if (typeof ActiveXObject != "undefined") {
+        if (typeof arguments.callee.ActiveXString != "string") {
+            var versions = ["MSXML2.XHLHttp.6.0", "MSXML2.XMLHttp.3.0",
+                           "MSXML2.XMLHttp"];
+            for (var i = 0, len = versions.length; i < len; i++) {
+                try {
+                    var xhr = new ActiveXObject(versions[i]);
+                    arguments.callee.ActiveXString = versions[i];
+                    break;
+                } catch(ex) {
+                    //跳过
+                }
+            }
+        }
+
+        return new ActiveXObject(argumens.callee.ActiveXString);
+    } else {
+        throw new Error("No XHR object acailable.");
+    }
+}
 
