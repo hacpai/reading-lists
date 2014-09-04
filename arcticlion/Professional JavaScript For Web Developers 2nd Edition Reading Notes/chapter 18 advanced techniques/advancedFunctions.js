@@ -133,3 +133,13 @@ function curriedAdd(num2) {
 alert(add(2, 3));    //5
 alert(curriedAdd(3));    //8
 
+//创建柯里化通用方式
+function curry(fn) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return function() {
+        var innerArgs = Array.prototype.slice.call(arguments);
+        var finalArgs = args.concat(innerArgs);
+        return fn.apply(null, finalArgs);
+    };
+}
+
