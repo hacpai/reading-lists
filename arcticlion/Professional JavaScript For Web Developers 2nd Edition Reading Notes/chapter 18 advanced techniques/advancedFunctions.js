@@ -14,6 +14,10 @@
  *        bind():接受一个函数和一个环境
  *            返回给定环境调用给定函数的函数
  *            参数全部传递过去
+ *    函数柯里化
+ *        用于已经设置好了一个或多个参数的函数
+ *        基本方法和函数绑定一样：使用一个闭包返回一个函数
+ *        区别是，柯里化函数被调用时，返回的函数还需要设置一些传入的参数
  */
 
 function Person(name, age, job) {
@@ -116,4 +120,16 @@ function bind(fn, context) {
 }
 
 EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler));
+
+//下面代码展示了柯里化的概念
+function add(num1, num2){
+    return num1 + num2;
+}
+
+function curriedAdd(num2) {
+    return add(5, num2);
+}
+
+alert(add(2, 3));    //5
+alert(curriedAdd(3));    //8
 
