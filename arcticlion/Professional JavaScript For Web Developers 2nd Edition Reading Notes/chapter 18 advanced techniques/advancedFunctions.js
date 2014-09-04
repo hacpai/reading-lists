@@ -4,6 +4,9 @@
  *    惰性载入函数
  *        表示函数执行的分支执行仅发生1次
  *        第一次调用时，函数会覆盖您外一个按合适方式执行的函数
+ *        优点
+ *            只有当实际调用时才进行，保证恰当功能又不影响执行时间
+ *            避免了多重if条件
  */
 
 function Person(name, age, job) {
@@ -51,27 +54,35 @@ Rectangle.prototype = new Polygon();
 var rect = new Rectangle(5, 10);
 alert(rect.sides);    //2
 
+//惰性载入createXHR
 function createXHR() {
     if (typeof XMLHttpRequest != "undefined") {
-        return new XMLHttpRequest();
+        createXHR = function() {
+            return new XMLHttpRequest();
+        };
     } else if (typeof ActiveXObject != "undefined") {
-        if (typeof arguments.callee.ActiveXString != "string") {
-            var versions = ["MSXML2.XHLHttp.6.0", "MSXML2.XMLHttp.3.0",
-                           "MSXML2.XMLHttp"];
-            for (var i = 0, len = versions.length; i < len; i++) {
-                try {
-                    var xhr = new ActiveXObject(versions[i]);
-                    arguments.callee.ActiveXString = versions[i];
-                    break;
-                } catch(ex) {
-                    //跳过
+        createXHR = function() {
+            if (typeof arguments.callee.ActiveXString != "string") {
+                var versions = ["MSXML2.XHLHttp.6.0", "MSXML2.XMLHttp.3.0",
+                               "MSXML2.XMLHttp"];
+                for (var i = 0, len = versions.length; i < len; i++) {
+                    try {
+                        var xhr = new ActiveXObject(versions[i]);
+                        arguments.callee.ActiveXString = versions[i];
+                        break;
+                    } catch(ex) {
+                        //跳过
+                    }
                 }
             }
-        }
 
-        return new ActiveXObject(argumens.callee.ActiveXString);
+            return new ActiveXObject(argumens.callee.ActiveXString);
+        };
     } else {
-        throw new Error("No XHR object acailable.");
+        createXHR = function() {
+            throw new Error("No XHR object acailable.");
+        };
     }
+    return createXHR();
 }
 
