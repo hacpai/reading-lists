@@ -64,3 +64,7 @@ var DragDrop = function() {
     }
 }();
 
+//针对所有包含"draggable"类的元素启用
+//为了元素能够被托 dog，必须绝对定位
+<div class="draggable" style="position:absolute; background:red" ></div>
+
