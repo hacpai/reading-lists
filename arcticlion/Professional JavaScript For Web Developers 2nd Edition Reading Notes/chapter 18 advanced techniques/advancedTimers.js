@@ -38,3 +38,13 @@ setTimeout(function() {
     setTimeout(arguments.callee, interval);
 }, interval);
 
+//这段定时器代码每次执行的时候将一个<div>向右移动，当左坐标在200像素的时候停止
+setTimeout(function() {
+    var div = document.getElementById("myDiv");
+    var left = parseInt(div.style.left) + 5;
+    div.style.left = left + "px";
+    if (left < 200) {
+        setTimeout(arguments.callee, 50);
+    } 
+}, 50);
+
