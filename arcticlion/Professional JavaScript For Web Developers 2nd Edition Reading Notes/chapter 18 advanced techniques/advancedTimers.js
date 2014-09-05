@@ -13,7 +13,10 @@
  *         长时间运行循环会降低用户的交互体验
  *         对于无须同步完成和无须顺序完成的数据
  *             使用数组分块技术：小块小块地处理数组
- *         
+ *     函数节流
+ *         定时器对函数进行节流
+ *         第一次调用函数，创建一个定时器，再指定的时间间隔后运行代码
+ *         第二次清楚前一次的定时器并设置另一个
  */
 
 var btn = document.getElementById("my-btn");
@@ -96,4 +99,26 @@ chunk(data, printValue);
 
 //可以将数组可痛传递给chunk保持原数组不变
 chunk(data.concat(), printValue);
+
+var processor = {
+    timeoutId: null,
+
+    //实际进行处理的方法
+    performProcessing: function() {
+        //实际执行的代码
+    },
+
+    //初始处理调用的方法
+    process: function() {
+        clearTimeout(this.timeoutId);
+
+        var that = this;
+        this.timeoutId = setTimeout(function() {
+            that.performProcessing();
+        }, 100);
+    }
+};
+
+//尝试开始执行
+processor.process();
 
