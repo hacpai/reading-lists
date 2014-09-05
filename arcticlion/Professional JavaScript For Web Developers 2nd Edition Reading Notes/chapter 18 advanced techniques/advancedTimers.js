@@ -14,3 +14,14 @@ btn.onclick = function() {
     //其他代码
 };
 
+//确定定时器多久次执行，仅在Firefox中
+setTimeout(function(diff) {
+    if (diff > 0) {
+        //晚调用
+    } else if (diff < 0) {
+        //早调用
+    } else {
+        //调用及时
+    }
+}, 250);
+
