@@ -17,6 +17,7 @@
  *         定时器对函数进行节流
  *         第一次调用函数，创建一个定时器，再指定的时间间隔后运行代码
  *         第二次清楚前一次的定时器并设置另一个
+ *         throttle(): 自动进行定时器的设置和清除
  */
 
 var btn = document.getElementById("my-btn");
@@ -121,4 +122,21 @@ var processor = {
 
 //尝试开始执行
 processor.process();
+
+//定时器ID存储再函数的tId属性
+function throttle(method, context) {
+    clearTimeout(method.tId);
+    method.tId = setTimeout(function() {
+        method.call(context);
+    }, 100);
+}
+
+function resizeDiv = function() {
+    var div = document.getElementById("myDiv");
+    div.style.height = div.ofsetWidth + "px";
+};
+
+window.onresize = function() {
+    throttle(resizeDiv);
+};
 
