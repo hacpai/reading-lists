@@ -94,3 +94,6 @@ function printValue(item) {
 }
 chunk(data, printValue);
 
+//可以将数组可痛传递给chunk保持原数组不变
+chunk(data.concat(), printValue);
+
