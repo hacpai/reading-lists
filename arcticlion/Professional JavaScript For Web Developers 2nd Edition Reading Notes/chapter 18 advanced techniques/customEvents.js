@@ -73,3 +73,30 @@ target.removeHandler("message", handleMessage);
 //再次，应没有事件处理程序
 target.fire( { type: "message", message: "Hello world!" } );
 
+function Person(name, age) {
+    EventTarget.call(this);
+    this.name = name;
+    this.age = age;
+}
+
+//寄生组合继承方法继承EventTarget
+//一旦调用say()，便触发事件
+inheritPrototype(Person, EventTarget);
+
+Person.prototype.say = function(message) {
+    this.fire({type: "message", message: message});
+};
+
+function handleMessage(event) {
+    alert(event.target.name + "says: " + event.message);
+}
+
+//创建新Person
+var person = new Person("Nicholas", 29);
+
+//添加一个事件处理程序
+person.addHandler("message", handleMessage);
+
+//在该对象上调用1个方法，它触发消息事件
+person.say("Hi there.");
+
