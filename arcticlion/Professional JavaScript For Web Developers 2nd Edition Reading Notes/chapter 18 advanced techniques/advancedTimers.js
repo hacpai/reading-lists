@@ -69,3 +69,28 @@ setTimeout(function(){
     }
 }, 100);
 
+//chunk()接受三个参数
+//要处理的项目的数组
+//用于处理项目的函数
+//可选的运行该函数的环境
+//函数内部用了之前描述过的基本模式
+//通过call()调用process()函数，以便设置合适的执行环境
+function chunk(array, process, context) {
+    setTimeout(function(){
+        var item = array.shift();
+        process.call(context, item);
+
+        if (array.length > 0) {
+            setTimeout(arguments.callee, 100);
+        }
+    }, 100);
+}
+
+var data = [12, 123, 213, 343, 35435, 4546, 557, 67547, 4563346, 564, 34];
+
+function printValue(item) {
+    var div = document.getElementById("myDiv");
+    div.innerHTML += item + " <br> ";
+}
+chunk(data, printValue);
+
