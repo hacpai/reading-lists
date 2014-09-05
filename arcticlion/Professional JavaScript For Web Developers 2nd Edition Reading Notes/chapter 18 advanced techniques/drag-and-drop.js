@@ -1,6 +1,7 @@
 /*
  * 拖放
  *     设置onmousemove事件处理程序，总是将指定元素移动到鼠标指针位置上
+ *     修缮拖动功能
  */
 
 EventUtil.addHandler(document, "mousemove", function(event) {
@@ -13,6 +14,9 @@ EventUtil.addHandler(document, "mousemove", function(event) {
 var DragDrop = function() {
     //存放被拖动的元素
     var dargging = null;
+    //保存x和y坐标的差值
+    var diffX = 0;
+    var diffY = 0;
 
     function handleEvent(event) {
 
@@ -27,18 +31,20 @@ var DragDrop = function() {
                 //如果是则将target存放到dragging中
                 if (target.className.indexOf("draggable") > -1) {
                     dragging = target;
+                    diffX = event.clientX - target.offsetLeft;
+                    diffY = event.clientY - target.offsetTop;
                 }
                 break;
             
             case "mousemove":
                 if (dragging !== null) {
 
-                    //get event
+                    //获取事件
                     event = EventUtil.getEvent(event);
 
-                    //assign location
-                    dragging.style.left = event.clientX + "px";
-                    dragging.style.top = event.clientY + "px";
+                    //指定位置
+                    dragging.style.left = (event.clientX - diffX) + "px";
+                    dragging.style.top = (event.clientY - diffY) + "px";
                 }
                 break;
 
