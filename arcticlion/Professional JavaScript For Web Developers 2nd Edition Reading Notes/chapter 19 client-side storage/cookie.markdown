@@ -44,3 +44,29 @@ Other-header: other-header-value
 > **注意：** 
 > 只有名－值对才会发送到服务器。
 > 域、路径、失效时间和secure标识都是服务器给浏览器都只是，以何时发送cookie，这些参数不会发送到服务器的cookie信息的一部分。
+
+##JavaSctipt中的cookie
+
+JavaScript处理cookie用BOM的document.cookie, 返回当前可用页面的所有字符串，一系列由分号隔开的名－值对，如下实例。
+
+```
+name1=value1;name2=value2;name3=value3
+```
+**document.cookie**也可以设置新的字符串, 设置cookie的格式巨额Set-Cookie头使用一样的格式：
+
+```
+name1=value; expires=exporation_time; path=domain_path; domain=domain_name; secure
+```
+
+这些参数中只有cookie的名值对是必须的，下面是一个简单的例子。
+
+```
+document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent("Nicholas");
+```
+也可以添加指定的额外信息
+
+```
+document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent("Nicholas") + "; domain=.wrox.com; path=/";
+```
+
+
