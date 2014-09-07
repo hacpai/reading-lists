@@ -4,15 +4,17 @@
 
 在Web上，HTML和JavaScript各自代表了解决方案中的不同层次：HTML是数据，JavaScript是行为。由于它们天生交互，常常过于紧密地耦合在一起。
 
-- 直接写在HTML中的JavaScript，使用包含內联代码的<script>元素或是使用HTML属性来分配事件处理程序。
+- 直接写在HTML中的JavaScript，使用包含內联代码的`<script>`元素或是使用HTML属性来分配事件处理程序。
 
-    <!-- 使用了<script>的紧密耦合的HTML/JavaScript -->
-    <script type="text/javascript">
-        document.write("Hello world!");
-    </script>
+```
+<!-- 使用了<script>的紧密耦合的HTML/JavaScript -->
+<script type="text/javascript">
+    document.write("Hello world!");
+</script>
 
-    <!-- 使用时间处理程序属性值的紧密耦合的HTML/JavaScript -->
-    <input type="button" value="Click Me" onclick="doSomething()" />
+<!-- 使用时间处理程序属性值的紧密耦合的HTML/JavaScript -->
+<input type="button" value="Click Me" onclick="doSomething()" />
+```
 
 - JavaScript包含了HTML。这通常出现在innerHTML插入一段HTML文本到页面上这种情况时。
 
