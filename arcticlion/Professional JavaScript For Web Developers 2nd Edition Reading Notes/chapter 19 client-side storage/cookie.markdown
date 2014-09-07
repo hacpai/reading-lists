@@ -68,7 +68,9 @@ document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent("Nichola
 ```
 document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent("Nicholas") + "; domain=.wrox.com; path=/";
 ```
-由于JavaScript中读写cookie不直观，我们常常写一些函数简化cookie功能。基本的cookie操作有三种：读取、写入和删除。它们在CookieUtil对象如下表示：
+由于JavaScript中读写cookie不直观，我们常常写一些函数简化cookie功能。基本的cookie操作有三种：读取、写入和删除。
+
+它们在CookieUtil对象如下表示：
 
 ```
 var CookieUtil = {
@@ -137,12 +139,16 @@ CookieUtil.unset("name", "/book/projs/", "www.wrxo.com");
 CookieUtil.set("name", "Nicholas", null, null, null, true);
 ```
 ## 子 cookie
-绕开浏览器单域名下的cookie数限制，是存放在单个cookie中的更小段的数据，也就是使用cookie值来存取多个名－值对。常见格式如下：
+绕开浏览器单域名下的cookie数限制，是存放在单个cookie中的更小段的数据，也就是使用cookie值来存取多个名－值对。
+
+常见格式如下：
 
 ```
 name=name1=value1&name2=value2&name3=value3&name4=value4&name5=value5
 ```
-为了更好地操作子cookie，必须建立一系列新方法。例如，要获得一个子cookie，需要遵循与获得cookie一样的基本步骤，但是在解码cookie值之前，需要如下找出子cookie的信息：
+为了更好地操作子cookie，必须建立一系列新方法。
+
+例如，要获得一个子cookie，需要遵循与获得cookie一样的基本步骤，但是在解码cookie值之前，需要如下找出子cookie的信息：
 
 ```
 var SubCookieUtil = {
@@ -252,6 +258,7 @@ var SubCookieUtil = {
 };
 ```
 可以按如下方式使用这些方法：
+
 ```
 //假设document.cookie=data=name=Nicholas & book=Professional%20JavaScipt
 
@@ -265,7 +272,11 @@ SubCookieUtil.setAll("data", { name: "Nicholas", book: "Professional JavaScipt" 
 //修改名字的值，并修改cookie的失效时间
 SubCookieUtil.set("data", "name", "Michael", new Date("February 1, 2010") );
 ```
-子cookie最后一组方法用于删除子cookie的。普通cookie可以通过将失效时间设置为过去的时间的方法来删除，子cookie必须获取包含在某个cookie中的所有子cookie，然后仅删除需要删除的那个子cookie，然后再将包含余下的子cookie值存为cookie的值
+子cookie最后一组方法用于删除子cookie的。
+
+普通cookie可以通过将失效时间设置为过去的时间的方法来删除，子cookie必须获取包含在某个cookie中的所有子cookie，
+
+然后仅删除需要删除的那个子cookie，然后再将包含余下的子cookie值存为cookie的值
 
 ```
 var SubCookieUtil = {
@@ -297,6 +308,8 @@ SubCookieUtil.unsetAll("data");
 ```
 ##关于 cookie 的思考
 还有一类称为**HTTP专有的cookie**, 只能从服务器端读取，JavaScript无法获得。
+
 由于cookie都由浏览器作为请求放松，若存储大量信息会影响请求性能，最好尽可能少存储信息。
+
 cookie的性能和它的局限性不能最为大量信息存储的方式。
 
