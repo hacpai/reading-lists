@@ -158,4 +158,19 @@ function getLocalStorage() {
 var storage = getLocalStorage();
 ```
 
+##StorageItem类型
+
+在Storage对象中所存储的每个项目都是StorageItem的实例。
+
+无论合适存入新值，都会创建StorageItem对象。
+
+该对象有两个属性：**value**,被存储的数据的值；**secure**，表示该值是否必须通过HTTPS访问的布尔值。
+
+当通过getItem()或者点系好访问一个值的时候，实际上返回的是StorageItem实例。
+
+```
+localStorage.name = "Nicholas";
+localStorage.name.secure = false;
+```
+
 
