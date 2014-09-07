@@ -118,6 +118,44 @@ var book = globalStorage[location.host].getItem("book");
 
 存储在globalStorage属性中的数据会保留在磁盘上，直到通过removeItem()或者delete删除，或者用户清除浏览器缓存。这让globalStorage在客户端存储文档或者持久化用户设定上十分理想。
 
+## localStorage对象
 
+不同于globalStorage, localStorage上规则已经事先设置好了。访问同一个对象，页面必须来自同一个域名，使用同一种协议，同一个端口。相当于globalStorage[location.host]
+
+由于localStorage是Storage的实例，可以按与sessionStorage一样的方式使用它。
+
+```
+//使用方法来存储数据
+localStorage.setItem("name", "Nicholas");
+
+//使用属性来存取数据
+localStorage.book = "Professional JavaScript";
+
+//使用方法来读取数据
+var name = localStorage.getItem("name");
+
+//使用属性来读取数据
+var book = localStorage.book;
+```
+
+为了兼容只支持globalStorrage的浏览器，使用以下函数
+
+```
+function getLocalStorage() {
+    if (typeof localStorage == "object") {
+        return localStorage;
+    } else if (typeof globalStorrage == "object") {
+        return globalStorrage[location.host];
+    } else {
+        throw new Error("Local storage not available.");
+    }
+}
+```
+
+然后进行初始化调用就可以确定数据存储的正确位置：
+
+```
+var storage = getLocalStorage();
+```
 
 
