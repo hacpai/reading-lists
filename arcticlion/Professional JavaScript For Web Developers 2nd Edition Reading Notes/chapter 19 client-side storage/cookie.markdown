@@ -295,5 +295,8 @@ SubCookieUtil.unset("data", "name");
 //删除整个cookie
 SubCookieUtil.unsetAll("data");
 ```
-
+##关于 cookie 的思考
+还有一类称为**HTTP专有的cookie**, 只能从服务器端读取，JavaScript无法获得。
+由于cookie都由浏览器作为请求放松，若存储大量信息会影响请求性能，最好尽可能少存储信息。
+cookie的性能和它的局限性不能最为大量信息存储的方式。
 
