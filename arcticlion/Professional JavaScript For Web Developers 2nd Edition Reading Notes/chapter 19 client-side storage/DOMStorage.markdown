@@ -81,3 +81,43 @@ sessionStorage.removeItem("book");
 
 sessionStorage对象应该主要用于仅针对回话的小段数据的存储。如果需要跨会话存储数据，那么globalStorage或者localStorage更为合适。
 
+##globalStorage对象
+
+使用globalStorage对象首先要指定哪些域可以访问数据。
+
+可以通过使用方括号标记属性来实现。
+
+```
+//保存数据
+globalStorage["wrox.com"].name = "Nicholas";
+
+//获取数据
+var name = globalStorage["wrox.com"].name;
+```
+
+这里访问的是针对域名wrox.com存储区域。
+> globalStorage对象自身并非Storage的实例，而globalStorage["wrox.com"]规格才是。
+
+```
+//保存数据
+globalStorage["www.wrox.com"].name = "Nicholas";
+globalStorage["www.wrox.com"].book = "Profesional JavaScript";
+globalStorage["www.wrox.com"].removeItem("name");
+
+//获取数据
+var name = globalStorage["www.wrox.com"].name;
+var book = globalStorage["www.wrox.com"].getItem("book");
+```
+
+对于实现不确定的域名，使用location.host作为属性名比较安全。
+
+```
+globalStorage[location.host].name = "Nicholas";
+var book = globalStorage[location.host].getItem("book");
+```
+
+存储在globalStorage属性中的数据会保留在磁盘上，直到通过removeItem()或者delete删除，或者用户清除浏览器缓存。这让globalStorage在客户端存储文档或者持久化用户设定上十分理想。
+
+
+
+
