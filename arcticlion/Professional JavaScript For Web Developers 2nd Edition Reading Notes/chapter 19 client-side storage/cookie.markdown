@@ -68,5 +68,72 @@ document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent("Nichola
 ```
 document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent("Nicholas") + "; domain=.wrox.com; path=/";
 ```
+由于JavaScript中读写cookie不直观，我们常常写一些函数简化cookie功能。基本的cookie操作有三种：读取、写入和删除。它们在CookieUtil对象如下表示：
 
+```
+var CookieUtil = {
+    
+    get: function(name) {
+        var cookieName = encodeUriComponent(name) + "=",
+            cookieStart = document.cookie.indexOf(cookieName),
+            cookieValue = null;
 
+        if (cookieStart > -1) {
+            var cookieEnd = document.cookie.indexOf(";", cookieStart);
+            if (cookieEnd == -1) {
+                var cookieEnd = document.cookie.length;
+            }
+            cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
+        }
+        return cookieValue;
+    },
+
+    set: function(name, value, expires, path, domain, secure) {
+        var cookieText = encodeURICompnet(name) + "=" + encodeURICompnet(value);
+
+        if (expires instanceof Data) {
+            cookieText += "; expires=" + expires.toGMTString();
+        }
+
+        if (path) {
+            cookieText += "; domain=" + domain;
+        }
+
+        if (secure) {
+            cookieText += "; secure";
+        }
+
+        document.cookie = cookieText;
+    },
+
+    unset: funciton (name, path, domain, secure) {
+        this.set(name, "", new Data(0), path, domain, secure);
+    }
+};
+
+```
+这些方法可以如下使用：
+
+```
+//设置cookie
+CookieUtil.set("name", "Nicholas");
+CookieUtil.set("book", "Professional JavaScript");
+
+//读值
+alert(CookieUtil.get("name");    //"Nicholas"
+alert(CookieUtil.get("book");    //"Professional JavaScript"
+
+//删除cookie
+CookieUtil.unset("name");
+CookieUtil.unset("book");
+
+//设置一个cookie，包括它的路径、域、截止日期
+CookieUtil.set("name", "Nicholas", "/book/projs/", "www.wrox.com", new Data("Javuary 1, 2010"));
+
+//删除同一cookie
+CookieUtil.unset("name", "/book/projs/", "www.wrxo.com");
+
+//设置一个安全的cookie
+CookieUtil.set("name", "Nicholas", null, null, null, true);
+
+    
