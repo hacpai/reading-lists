@@ -173,4 +173,18 @@ localStorage.name = "Nicholas";
 localStorage.name.secure = false;
 ```
 
+##storage事件
+
+对Storage对象进行任何修改，都会在文档上出发storage事件。
+
+可以使用下列代码侦听storage事件：
+
+```
+EventUtil.addHandler(documentk, "storage", function(event) {
+    alert("Storage changed for " + event.domain);
+});
+```
+
+> 所有对sessionStorage、globalStorage和localStorage的更改都会触发storage事件，当不进行区分。
+
 
