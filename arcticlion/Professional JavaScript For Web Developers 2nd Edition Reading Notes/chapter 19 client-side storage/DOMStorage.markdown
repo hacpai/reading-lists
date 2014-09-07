@@ -187,4 +187,8 @@ EventUtil.addHandler(documentk, "storage", function(event) {
 
 > 所有对sessionStorage、globalStorage和localStorage的更改都会触发storage事件，当不进行区分。
 
+##限制
+
+DOM的限制和浏览器紧密相关。一般来说，客户端数据的尺寸限制是按照每个域名设置的，所有每个域名都有一个固定的空间存储数据。
+
 
