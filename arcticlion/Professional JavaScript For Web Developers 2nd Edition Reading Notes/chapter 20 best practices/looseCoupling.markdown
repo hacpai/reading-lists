@@ -62,3 +62,48 @@ div {
 
 > **再次提醒**,好的层次划分非常重要。显示问题的唯一来源应该是CSS，行为问题的唯一来源应该是JavaScript。在这些层次之间保持松散耦合可以让你的整个应用更加易于维护。
 
+## 解耦应用逻辑/事件处理程序
+
+每个Web应用一般都有相当多的事件处理程序，监听着无数不同的事件。然而很少有能仔细得将应用逻辑从事件处理程序中分离的。请看下面的例子。
+
+```
+function handleKeyPress(event) {
+    if (event.keyCode == 13) {
+        var target = EventUtil.getTarget(event);
+        var value = 5 * parseInt(target.value);
+        if (value > 10) {
+            document.getElementById("error-msg").style.display = "block";
+        }
+    }
+}
+```
+这个事件处理程序除了包含应用逻辑，还进行了事件的处理。
+
+较好的方法是将应用逻辑和事件处理程序分离，这样两者分别处理各自的东西。一个事件处理程序应该从事件对象中提取相关信息，并将这些信息传送到处理应用逻辑的某个方法中。例如，前面的代码可以被重写为：
+
+```
+function validateValue(value) {
+    value = 5 * parseInt(value);
+    if (value > 10) {
+        document.getElementById("error-msg").style.display = "block";
+    }
+}
+
+function hadnleKeyPress(event) {
+    var target = EventUtil.getTarget(event);
+    validateValue(target.value)
+}
+```
+
+从时间处理程序分离应用逻辑有几个好处。
+
+首先，可以让你更容易更改触发特定过程的事件。如果最开始由鼠标点击事件触发过程，但现在按键事件也要进行同样处理，更改就很容易。
+
+其次，可以在不附加到事件的情况下测试代码，使其更易创建单元测试或者自动化应用流程。
+
+以下是要牢记的应用和业务逻辑之间松散耦合的几条原则：
+
+- 勿将event对象传递给其他方法；只传来自event对象中所需的数据
+- 任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行。
+- 任何事件处理程序都应该处理事件，然后将处理转交给应用逻辑。
+
