@@ -134,3 +134,63 @@ do {
 } while (i >= 0);
 ```
 
+### 展开循环
+
+当循环次数确定时，消除循环并使用多次函数调用往往更快。请看下面的例子。
+
+```
+//消除循环
+process(values[0]);
+process(values[1]);
+process(values[2]);
+```
+如果循环中的迭代次数不能事先确定，那可以老吕使用一种叫做Duff装置的技术。Duff装置的基本概念是通过计算迭代的次数是否为8的倍数将一个循环展开为一系列语句。请看以下代码。
+
+```
+var iterations = Math.floor(values.length / 8);
+var startAt = values.length % 8;
+var i = 0;
+
+do {
+    switch(startAt) {
+        case 0: process(values[i++]);
+        case 7: process(values[i++]);
+        case 6: process(values[i++]);
+        case 5: process(values[i++]);
+        case 4: process(values[i++]);
+        case 3: process(values[i++]);
+        case 2: process(values[i++]);
+        case 1: process(values[i++]);
+    }
+    startAt = 0;
+} while (--iterations > 0)
+```
+Diff装置的实现是通过将values数组中元素的个数除以8来计算出循环需要进行多少次迭代的。然后使用取整的下限函数确保结构是整数。将不能整除的数量保存在startAt变量中。用switch第一次处理额外调用。在接下来的循环中，startAt被重置为0，这样之后的每次循环8次调用。展开循环可以提升大数据集的处理速度。
+
+还有一种更快的Duff装置技术，将do-while循环分成2个单独的循环。以下是例子。
+
+```
+var iterations = Math.floor(values.length / 8);
+var leftover = values.length % 8;
+var i = 0;
+
+if (leftover > 0) {
+    do {
+        process(values[i++]);
+    } while (--leftover > 0);
+}
+do {
+    process(values[i++]);
+    process(values[i++]);
+    process(values[i++]);
+    process(values[i++]);
+    process(values[i++]);
+    process(values[i++]);
+    process(values[i++]);
+    process(values[i++]);
+} while (--iterations > 0);
+```
+在这个实现中，剩余的计算部分不会在实际循环中处理，而是在一个初始化循环中进行除以8的操作。当处理掉额外的元素，继续执行每次调用8次process()的主循环。这个方法比上一个版本快上40%
+
+
+
