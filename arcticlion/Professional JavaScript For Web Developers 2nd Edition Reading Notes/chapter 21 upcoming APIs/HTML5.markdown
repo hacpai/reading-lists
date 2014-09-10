@@ -1,4 +1,4 @@
-# HTML5
+#google-chrome HTML5
 
 ## 字符集属性
 
@@ -173,4 +173,67 @@ EventUtil.addHandler(document, "message", function(event) {
 });
 ```
 这段代码中，message事件是这样处理的：先检查接受的消息的来源以确保其来自可信的来源，如果可信，则显示消息并给发送原消息的window发送一个新的消息。
+
+## 媒体元素
+
+HTML4在浏览器层面引入了两个和媒体相关的元素，用来实现无需任何擦肩的跨浏览器的音频和视频嵌入：`<audio>`和`<video>`.这些用法如下：
+
+```
+<!--嵌入一个视频-->
+<video src="conference.mpg" id="myVideo">Video player not available. </video>
+
+<!--嵌入一个音频文件-->
+<audio src="song.mp3" id="myAudio">Audio player not available. </audio>
+```
+这两个元素至少需要出现表示要载入的媒体文件的src特性。还可以指定width和height特性来表示所需的视频播放器的尺寸，还有poster特性，即当视频内容正在被加载时显示的一个图像URI。如果出现controls特性，则表示浏览器应该显示一个能让用户直接于媒体交互的UI。在起始和结束标签之间的任何内容，都是作为当媒体播放器不可用时显示的候选内容。
+
+可以使用play()和pause()方法手动控制媒体文件的回放，这些属性、事件加上方法就可以很容易的创建一个自定义的媒体播放器。如下例：
+
+```
+<div class="mediaplayer">
+    <div class="video">
+        <video id="player" src="movie.mov" poster="mymovie.jpg"
+                width="300" height="200">
+           Video player not available.
+        </video>
+    </div>
+    <div class="controls">
+        <input type="button" value="play" id="video-btn"/>
+        <span id="curtime">0</span>/<span id="duration">0</duration>
+    </div>
+</div>
+```
+再用点JavaScript就能给上面这段基本的HTML画龙点睛，成为一个见DNA的视频播放器
+
+```
+//获取元素的引用
+var player = document.getElementById("player");
+var btn = document.getElementById("video-btn");
+var curtime = document.getElementById("curtime");
+var duration = document.getElementById("duration");
+
+//给按钮附加事件处理程序
+EventUtil.addHandler(btn, "click", function(event) {
+    if (player.paused) {
+        player.play();
+        btn.value = "Pause";
+    } else {
+        player.pause();
+        btn.value = "play";
+    }
+});
+
+//当载入完成之后初始化UI
+EventUtil.addHandler(player, "load", function(event) {
+    duration.innerHTML = player.duration;
+});
+
+//定时更新当前时间
+setInterval(function() {
+    curtime.innerHTML = player.currentTime;
+}, 250);
+```
+
+这里的JavaScript代码(根据当前状态）给暂停或播放视频的按钮简单添加了时间处理程序。然后，为`<video>`的载入时间设置了一个事件处理程序，可以显示总长度，设置了重复定时器来更新当前显示的时间。
+
 
