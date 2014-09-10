@@ -262,4 +262,41 @@ var person = {
 ```
 重写后的代码只用了两条语句，减少了75%的语句量。
 
+## 优化DOM交互
+
+### 最小化现场更新
+
+一旦你需要访问的DOM部分是已经显示的页面的一部分，那么你就是进行一个现场更新。
+
+```
+var list = document.getElementById("myList");
+
+for (var i = 0; i < 10; i++) {
+    var item = document.createElement("li");
+    list.appendChild(item);
+    item.appendChild(document.createTextNode("Item" + i));
+}
+```
+这段代码为列表添加了10个项目。添加每个项目时，都有2个现场更新：一个添加`<li>`元素，另一个给它添加文本节点。这样添加10个项目，这个操作总共要完成20个现场更新。
+
+要修正这个性能瓶颈，需要减少现场更新的数量。一般使用文档碎片来构建DOM结构，接着将其添加到List元素中。这个方式也避免了现场更新和页面闪烁问题。请看下面内容。
+
+```
+var list = document.getElementById("myList");
+var fragment = document.createDocumentFragment();
+
+for (var i = 0; i < 10; i++) {
+    var item = document.createElement("li");
+    fragment.appendChild(item);
+    item.appendChild(document.createTextNode("item" + i));
+}
+
+list.appendChild(fragment);
+```
+文档碎片用作一个临时的占位符，放置新创建的项目。
+
+> 记住，当给appendChild() 传入文档碎片时，只用碎片的子节点被添加到目标，碎片本身不会添加的。
+
+一旦需要更新DOM，请考虑使用文档碎片来构建DOM结构，然后再将其添加到现存的文档中。
+
 
