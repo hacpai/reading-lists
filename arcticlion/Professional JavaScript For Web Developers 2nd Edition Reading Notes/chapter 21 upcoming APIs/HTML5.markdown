@@ -128,3 +128,49 @@ if (div.dataset.has("myname")) {
 ```
 当需要给某个元素绑定一些非可见数据用于其他类型的处理时，自定义数据特性就非常哟用。
 
+## 跨文档消息传递
+
+跨文档消息传递的执行是使用任意window对象（包括那些代表iframe的）的postMessage()方法。其他所有文档总是可以访问postMessage()，甚至包括来自不同域名下的文档。这个方法接受两个参数：要发送给文档的数据，数据的目标域名。
+
+当调用了某个window对象的postMessage()时，document的的message事件则会被出发。为该消息事件创建的event对象包含以下属性：
+- data——作为第一个参数传递给postMessage()的数据
+- origin——发送该消息的窗口的协议、域名和端口号
+- source——发送该消息的窗口对象
+
+跨文档消息传递一般和iframe一起使用，如下：
+
+```
+<iframe src="http://www.wrox.com/somepage.php" id="wroxPage"></iframe>
+```
+要从包含该iframe的页面给该文档发送消息，可以使用以下JavaScript：
+
+```
+//获取iframe的窗口对象的引用
+var wroxWin = document.getElementById("wroxPage").contentWindow;
+
+//发送消息
+wroxWin.postMessage("Hello, Worx!". "http://www.worx.com");
+
+//或者，发送不包含域名限制的消息
+wroxWin.postMessage("Hello, Worx!", "*");
+```
+
+在发出消息之后，该iframe包含的document的message事件则会出发。可以使用以下代码接受消息：
+
+```
+//在http://www.wrox.com/somepage.php中
+EventUtil.addHandler(document, "message", function(event) {
+
+    //确保来源和预期的一致
+    if (event.origin.indexOf("p2p.wrox.com") > -1) {
+
+        //显示数据
+        alert(event.data);
+
+        //回发一个消息
+        event.source.postMessage("Got it, thanks!", "http://p2p.wrox.com");
+    }
+});
+```
+这段代码中，message事件是这样处理的：先检查接受的消息的来源以确保其来自可信的来源，如果可信，则显示消息并给发送原消息的window发送一个新的消息。
+
