@@ -99,4 +99,32 @@ for (var i = 0, len = div.classList.length; i < len; i++) {
 }
 ```
 
+## 自定义数据特性
+
+HTML5允许给元素指定以`data-`为前缀的非标准特性，以便能提供元素的不需要进行渲染或者没有语义的值。这些特性可以按意愿添加和命名。
+
+```
+<div id="myDiv" data-appId="1234" data-myname="Nicholas" ></div>
+```
+当定义了一个自定义数据特性之后，就可以通过元素的dataset属性对它进行访问。dataset属性包含一个DOMString Map的实例，它是一个名字-值的映射。直到2008年6月份，DOMStringMap接口还尚未定义，但至少包含三个方法：一个用于设置名－值对，一个用于获取给定名称对应的值，还有一个用于判断名称时否已经存在于数据集中。以下例子仅仅用于示意：
+
+```
+//本例中的方法仅用于示意
+
+var div = document.getElementById("myDiv");
+
+//获取值
+var appId = div.dataset.appId;
+var myName = div.dataset.get("myname");
+
+//设置值
+div.dataset.appId = 23456;
+div.dataset.set("myname", "Michael");
+
+//"myName"的值是否存在
+if (div.dataset.has("myname")) {
+    alert("Hello, " + div.dataset.myname);
+}
+```
+当需要给某个元素绑定一些非可见数据用于其他类型的处理时，自定义数据特性就非常哟用。
 
