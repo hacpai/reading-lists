@@ -325,3 +325,31 @@ for (var i = 0; i < 10; i++) {
 ```
 每次循环都调用innerHTML是极其低效的。构建好一个字符串然后一次性调用innerHTML要比调用多次innerHTML快得多。
 
+### 注意NodeList
+
+优化NodeList访问最重要的地方就是循环了，将长度计算移入for循环的初始化部分。
+
+```
+var images = document.getElementsByTagName("img");
+
+for (var i = 0, len = images.length; i < len; i++) {
+    //处理
+}
+```
+当循环中使用NodeList的时候，下一步应该是获取要使用的项目的引用。
+
+```
+var images = document.getElementsByTagName("img");
+
+for (var i = 0, len = images.length; i < len; i++) {
+    var image = images[i];
+    //处理
+```
+这段代码添加了image变量，保存了当前的图像。在循环内就没有理由再访问images的NodeList了。
+
+发生以下情况会返回NodeList对象。
+- 进行对getElementsByTagName()的调用
+- 获取了元素的childNodes属性
+- 获取了元素的attributes属性
+- 访问了特殊的集合，如document.forms, document.images等等
+
