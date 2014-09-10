@@ -236,3 +236,93 @@ setInterval(function() {
 
 这里的JavaScript代码(根据当前状态）给暂停或播放视频的按钮简单添加了时间处理程序。然后，为`<video>`的载入时间设置了一个事件处理程序，可以显示总长度，设置了重复定时器来更新当前显示的时间。
 
+## `<canvas>`元素
+
+`<canvas>`元素为在页面上绘制图案提供了一个画布。绘图画布开始总是空的，唯一设置其显示的方法是通过JavaScript。`<canvas>`元素要求至少设置width和height特性，以指定要创建的绘图区域的大小。任何起始和结束标签之间的内容是候选内容，当浏览器不支持该元素时，便会显示。例如。
+
+```
+<canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+```
+开始在画布上绘图之前，要先取得绘图的环境。绘图环境的引用可以使用getContext()方法获取，要传入一个"2d"参数。如下：
+
+```
+var drawing = document.getElementById("drawing");
+
+//确保完全支持<canvas>
+if（drawing.getContext) {
+    
+    var context = drawing.getContext("2d");
+
+    //其他代码
+}
+```
+
+### 绘制长方形
+
+唯一的一个可以直接在2D绘图环境总绘制的图像时长方形。长方形有三个方法：fillRect(), strokeRect(), clearRect().三个方法都接受四个参数：长方形的x坐标，y坐标，宽和高。
+
+fillRect()方法用于绘制一个内部填充了指定颜色的长方形。填充的色彩是使用fillStyle属性指定的，它一开始等于黑色（"#000000").可以将该属性设置为以六位十六进制数指定的任意色彩，或者使用CSSrgb()或者rgba()格式。如下例：
+
+```
+var drawing = document.getElementById("drawing");
+
+//确保完全支持<canvas>if (drawing.getContext) {
+    
+    var context = drawing.getContext("2d");
+
+    //绘制一个红色的长方形
+    context.fillStyle = "#ff0000";
+    context.fillRect(10, 10, 50, 50);
+
+    //绘制一个半透明的蓝色长方形
+    context.fillStyle = "rgba(0, 0, 255, 0.5)";
+    context.fillRect(30, 30, 50, 50);
+}
+```
+该代码首先将fillStyle设置为红色，然后在(10, 10)绘制了一个50像素高和宽的长方形。然后，又使用rgba()格式将fillStyle设为一个半透明的蓝色，并画了另一个长方形覆盖了第一个。结果可以看到红色和蓝色长方形中间接在一起。
+
+strokeRect()方法使用由strokeStyle属性指定的颜色绘制一个长方形外框。和fillStyle属性一样，strokeStyle默认为"#000000", 并可以使用十六进制值，rgb()或者rgba（）设置。
+
+```
+var drawing = document.getElementById("drawing"):
+
+//确保完全支持<canvas>
+if (drawing.getContext) {
+
+    var context = drawing.getContext("2d");
+
+    //绘制一个红色的长方形边框
+    context.strokeStyle = "#ff0000";
+    context.strokeRect(10, 10, 50, 50);
+
+    //绘制一个半透明的蓝色长方形边框
+    context.strokeStyle = "rgba(0, 0, 255, 0.5)";
+    context.strokeRect(30, 30, 50, 50);
+}
+```
+
+这段代码也绘制了两个重叠的长方形，不过都只是边框而不是填充的长方形。
+
+可以使用clearRect()方法清除画布的一块区域。该方法用于让一块绘图环境变透明。通过绘制图形然后清除指定区域，就可以创建有趣的效果，比如切掉另一个形状的一部分。如下例：
+
+```
+var drawing = document.getElementById("drawing");
+
+//确保完全支持<canvas>
+if (drawing.getContext) {
+    
+    var context = drawing.getContext("2d");
+
+    //绘制一个红色长方形
+    context.fillStyle = "#ff0000";
+    context.fillRect(10, 10, 50, 50);
+
+    //绘制一个半透明的蓝色长方形
+    context.fillStyle = "rgba(0, 0, 255, 0.5)";
+    context.fillRect(30, 30, 50, 50(;
+
+    //创建一个覆盖前面长方形的长方形
+    context.clearRect(40, 40, 10, 10);
+}
+```
+
