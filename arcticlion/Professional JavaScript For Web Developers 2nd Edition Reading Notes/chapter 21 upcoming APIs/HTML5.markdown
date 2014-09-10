@@ -319,7 +319,7 @@ if (drawing.getContext) {
 
     //绘制一个半透明的蓝色长方形
     context.fillStyle = "rgba(0, 0, 255, 0.5)";
-    context.fillRect(30, 30, 50, 50(;
+    context.fillRect(30, 30, 50, 50);
 
     //创建一个覆盖前面长方形的长方形
     context.clearRect(40, 40, 10, 10);
@@ -389,4 +389,119 @@ context.textBaseline = "middle";
 context.fillText("12", 100, 80);
 ```
 
+### 变换
+
+对绘图环境进行变换，可以让绘图操作应用一个不同的变换矩阵并产生一个不同的结果。
+
+变换矩阵可以使用以下方法扩展。
+
+- rotate(angle)——图像绕原点旋转一定弧度
+- scale(scaleX, scaleY)——缩放图像，在x轴放大scaleX，y轴放大scaleY。scaleX和scaleY的默认值都是1.0
+- translate(x, y)——将原点移动到点(x, y).该操作之后，坐标(0, 0)将位于点(x, y).
+- transform(m1_1, m1_2, m2_1, m2_2, dx, dy)——将变换矩阵乘上以下矩阵：
+
+m1_1 | m2_2 | dx 
+:--- | :--: | --:
+m2_1 | m2_2 | dy
+0    |   0    | 1
+
+- setTransform(m1_1, m1_2, m2_1, m2_2, dx, dy)——重置变换矩阵到默认状态，RNA后调用transform().
+
+如果能将原点变换到钟的中心，那么绘制钟的指针就更加容易了。
+
+```
+var drawing = document.getElementById("drawing");
+
+//完全支持<canvas>
+if (drawing.getContext) {
+    var context = drawing.getContext("2d");
+
+    //路径开始
+    context.beginPath();
+
+    //绘制外圆
+    context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+
+    //绘制内圆
+    context.moveTo(194, 100);
+    context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+
+    //转换到中心
+    context.translate(100, 100);
+
+    //绘制时针
+    context.moveTo(0, 0);
+    context.lineTo(0, -85);
+
+    //绘制分针
+    context.moveTo(0, 0);
+    context.lineTo(-65, 0);
+
+    //路径描边
+    context.stroke();
+}
+```
+更进一步，可以如下使用rotate()方法旋转钟的指针：
+
+```
+var drawing = document.getElementById("drawing");
+
+//完全支持<canvas>
+if (drawing.getContext) {
+    var context = drawing.getContext("2d");
+
+    //路径开始
+    context.beginPath();
+
+    //绘制外圆
+    context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+
+    //绘制内圆
+    context.moveTo(194, 100);
+    context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+
+    //转换到中心
+    context.translate(100, 100);
+
+    //旋转指针
+    context.rotate(1);
+
+    //绘制时针
+    context.moveTo(0, 0);
+    context.lineTo(0, -85);
+
+    //绘制分针
+    context.moveTo(0, 0);
+    context.lineTo(-65, 0);
+
+    //路径描边
+    context.stroke();
+}
+```
+
+save()方法，调用这个方法之后，当前所有的设置都会推倒一个栈保存，然后可以继续对环境进行其他更改。当你想回到之前的设置，可以调用restore(),它会从设置栈上弹出设置并恢复它。
+
+```
+context.fillStyle = "#ff0000";
+context.save();
+
+context.fillStyle = "#00fff00";
+context.translate(100, 100);
+context.save();
+
+context.fillStyle = "#0000ff";
+context.fillRect(0, 0, 100, 200);    //在(100, 100)处绘制一个蓝色的矩形
+
+context.restore();
+context.fillRect(10, 10, 100, 200);    //在(110, 110)处绘制一个绿色的矩形
+
+context.restore();
+context.fillRect(0, 0, 100, 200);    //在(0, 0)处绘制一个红色的矩形
+```
+
+这段代码中，fillStyle设成红色，然后调用save().接下来，fillStyle变成了绿色，然后坐标又移动到了(100, 100). 然后再次调用save()来保存这个设置。
+
+然后fillStyle属性又被设置成了蓝色并绘制了一个矩形。因为坐标移动，实际上最终矩形画在(100, 100)处的。当调用了restore()之后，fillStyle又设回了绿色，所以接下来画的矩形是绿色的。矩形实际是画在(110, 110)处，因为坐标转换仍然有效。再次嗲用了restore()之后，取消了坐标转换并且fillStyle设回了红色。最后的矩形画在(0, 0)处的。
+
+> 注意save()只保存应用于绘图环境上的设置的变换，不包括绘图环境的内容。
 
