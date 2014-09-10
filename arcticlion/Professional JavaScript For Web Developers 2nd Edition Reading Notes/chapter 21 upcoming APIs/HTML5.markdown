@@ -326,3 +326,67 @@ if (drawing.getContext) {
 }
 ```
 
+### 绘制路径
+
+2D绘图环境支持一些在画布上绘制路径的方法，可以创建复杂的形状和线条。要开始创建路径，必须首先调用beginPath()表示新路径开始。调用以下方法创建路径。
+
+- arc(x, y, radius, startAngle, endAngle, anticlockwise)——绘制中心点在(x, y)的弧，半径为radius，角度在startAngle和endAngle弧度之间。最后一个参数是一个布尔值，表示startAngle和endAngle是逆时针方向计算还是顺时针方向计算。
+- arcTo(x1, y1, x2, y2, radius)——绘制从一个点到(x2, y2)的弧，经过(x1, y1), 半径为radius。
+- bezierCurveTo(c1x, c1y, c2x, c2y, x, y)——使用控制点(c1x, c1y)和(c2x, c2y)从最后一点到点(x, y)绘制一条曲线。
+- lineTo(x, y)——从最后一点到(x, y)而不绘制线条。
+- moveTo(x, y)——将绘图光标移动到点(x, y)而不绘制线条。
+- quadraticCurveTo(cx, cy, x, y)——使用控制点(cx, cy)从最后一点绘制一条而驰曲线到点(x, y).
+- rect(x, y, width, height)——在点(x, y)绘制一个长width和宽height的矩形。与strokeRect()和fillRect()不一样的是，这个函数创建一个路径而不是单独的形状。
+
+绘制一条线回到路径起始点，可以调用closePath()。如果路径已经闭合，还可以调用fill()方法用fillStyle填充它。另外一个选项是调用stroke()方法对路径描边。最后一个选项是调用clip()，根据路径创建一个裁剪区域。
+
+请看下面绘制一个钟（不带数字）的例子：
+
+```
+var drawing = document.getElementById("drawing");
+
+//完全支持<canvas>
+if (drawing.getContext) {
+    var context = drawing.getContext("2d");
+
+    //路径开始
+    context.beginPath();
+
+    //绘制外圆
+    context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+
+    //绘制内圆
+    context.moveTo(194, 100);
+    context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+
+    //绘制时针
+    context.moveTo(100, 100);
+    context.lineTo(100, 15);
+
+    //绘制分针
+    context.moveTo(100, 100);
+    context.lintTo(35, 100);
+
+    //路径描边
+    context.stroke();
+}
+```
+还有一个方法叫做isPointInPath(), 接受一个x坐标和一个y坐标作为参数。该方法在路径关闭之前任意时间点调用，判断某个点是否存在于路径上。
+
+### 绘制文本
+
+有两个绘制文本的方法：fillText()和strokeText(), 两者都接受4个参数：要绘制的字符串、x坐标、y坐标和可选的最大像素宽度。两者都根据以下3个属性进行绘制。
+- font
+- textAlign——表示文本应如何对齐
+- textBaseline——表示文本的基线位置。
+
+例如，以下代码在上一节制作的钟的顶部呈现了一个“12”
+
+```
+context.font = "bold 10px Arial";
+context.textAlign = "center";
+context.textBaseline = "middle";
+context.fillText("12", 100, 80);
+```
+
+
