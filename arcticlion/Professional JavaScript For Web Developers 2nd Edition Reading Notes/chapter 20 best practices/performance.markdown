@@ -325,6 +325,12 @@ for (var i = 0; i < 10; i++) {
 ```
 每次循环都调用innerHTML是极其低效的。构建好一个字符串然后一次性调用innerHTML要比调用多次innerHTML快得多。
 
+### 使用事件代理
+
+减轻页面上的时间处理程序的数量和页面响应用户交互的速度之间有个负相关。
+
+用到了事件冒泡，任何可以冒泡的事件都不仅仅可以再事件目标上进行处理，目标的任何祖先节点也能处理。事件处理程序附加到高层的地方负责多个目标的事件处理。
+
 ### 注意NodeList
 
 优化NodeList访问最重要的地方就是循环了，将长度计算移入for循环的初始化部分。
@@ -352,4 +358,5 @@ for (var i = 0, len = images.length; i < len; i++) {
 - 获取了元素的childNodes属性
 - 获取了元素的attributes属性
 - 访问了特殊的集合，如document.forms, document.images等等
+
 
