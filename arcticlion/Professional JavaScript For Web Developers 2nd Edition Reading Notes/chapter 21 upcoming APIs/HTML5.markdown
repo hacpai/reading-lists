@@ -525,3 +525,68 @@ context.drawImage(image, 0, 10, 50, 50, 0, 100, 40, 60);
 ```
 除了可以传入一个HTML的`<img>`之外，还可以传入另一个`<canvas>`元素，将一个画布的内容画到另一个上。
 
+## 数据库存储
+
+HTML5引入了一个可以从JavaScript访问的客户端数据库系统。要开始使用客户端数据库存储，先要调用window对象的openDatabase()方法。这个方法接受四个参数：数据库名称、数据库版本、显示名称以及数据库大概要花多少直接的容量。如果数据库已经存在，那么openDatabase()返回一个表示该数据库的Database对象；如果数据库不存在，openDatabase()首先创建新数据库然后返回它的Database对象。看下面的例子：
+
+```
+var db = window.openDatabase("TestDB", "1.0", "MyTestDatabase", 200000);
+```
+和数据库交互的主要方式是transaction()方法。这个方法接受三个参数：当系统准备操作数据库时调用的事务回调函数、可选的错误回调函数和可选的成功回调函数。
+
+事务回调函数接受一个SQLTransaction对象作为唯一的参数。这个对象只有一个方法，executeSql(), 接受4个参数：要执行的SQL字符串、可选的要嵌入到SQL的参数的数组、可选的成功回调函数和可选的错误回调函数。成功回调函数接受两个参数：SQLTransaction对象和包含任意结果的SQLResultSet对象。错误回调函数接受SQLTransaction对象和表示发生的错误的对象。
+
+要开始使用客户端数据库，要先如下创建一个表：
+
+```
+db.transaction(function(transaction) {
+    
+    transaction.executeSql("CREATE TABLE Message (id REAL UNIQUE, msg TEXT)", [], function(transaction, result) {
+        //数据库已创建
+        },
+        function(transaction, error) {
+        //数据库未创建
+        }
+    );
+});
+```
+当执行了一个查询后，结果信息作为成功回调函数的一部分返回。SQLResultSet对象有3个属性：insertId, 表示最后插入的一行的ID；rowsAffected，这次操作所影响到的行数；rows，是一个有序列表，包含了查询返回的行。rows属性是SQLResultSet的实例，它有一个length属性和一个获取单个行的item()方法。每个行都是一个属性名和数据库字段名一样的对象，如下例所示：
+
+```
+db.transaction(function(transaction) {
+
+    transaction.executeSql("SELECTid, msg FROM Message", [],
+        function(transaction, results) {
+            for (var i = 0, len = results.rows.length; i < len; i++) {
+                var row = results.rows.item(i);
+                alert(row.id + "=" + row.msg);
+            }
+        },
+        function(transaction, error) {
+            //发生了不好的事件
+        }
+    );
+});
+```
+这段代码执行了一个查询，检索了Messages表中的所有记录，并显示给用户。
+
+为了房子SQL注入攻击，executeSql()的第二个参数应该包含要插入到SQL语句中的数据值。SQL语句自身应该使用问号标示数据值插入的地方。数据库引擎能够格式化所有支持的数据类似以防止SQL注入攻击。如下:
+
+```
+db,transaction(function(transaction) {
+    transaction.executeSql("SELECTid, msg FROM Messages WHEREid=?", [queryId],
+        function(transaction, results) {
+            for (var i = 0, len = results.rows.length; i < len; i++) {
+                var row = results.rows.item(i);
+                alert(row.id + "=" + row.msg);
+            }
+        },
+        function(transaction, error) {
+            //发生了不好的事情
+        }
+    };
+});
+```
+在这个修改过的版本中，查询根据特定的ID查找一条信息。这个查询不直接通过字符串连接插入queryId来构造字符串，而改在语句中放问号。executeSql()的第二个参数是只有一个元素的queryId的数组，queryId即要查找的ID。执行之后，问号会被替换成queryId的值，确保组成正确的SQL语句。
+
+
