@@ -299,4 +299,29 @@ list.appendChild(fragment);
 
 一旦需要更新DOM，请考虑使用文档碎片来构建DOM结构，然后再将其添加到现存的文档中。
 
+### 使用innerHTML
+
+有两种创建DOM节点的方法：createElement()和appendChild()，以及使用innerHTML。对于大的DOM更改，innerHTML比使用标准DOM方法创建同样的DOM结构快得多。
+
+innerHTML设置为某个值时，后台会创建一个HTML解析器，然后使用内部的DOM调用来创建DOM结构，而非基于JavaScript的DOM调用。内部方法是编译好的，而非解释执行的，所以执行快得多。
+
+```
+var list = document.getElementById("myList");
+var html = "";
+
+for (var i = 0; i < 10; i ++) {
+    html += "<li>item" + i + "</li>";
+}
+list.innerHTML = html;
+```
+使用innerHTML的关键在于（和其他DOM操作一样）最小化调用它的次数。例如，下面的代码再这个操作中用到innerHTML的次数太多了
+
+```
+var list = document.getElementById("myList");
+
+for (var i = 0; i < 10; i++) {
+    list.innerHTML += "<li>Item " + i + "</li>";    避免
+}
+```
+每次循环都调用innerHTML是极其低效的。构建好一个字符串然后一次性调用innerHTML要比调用多次innerHTML快得多。
 
