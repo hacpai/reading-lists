@@ -1,6 +1,6 @@
 # 在HTML中使用JavaScript
 
-## <script>元素
+## script元素
 
 向HTML页面中插入JavaScript的主要方法，就是使用`<script>`元素。
 
