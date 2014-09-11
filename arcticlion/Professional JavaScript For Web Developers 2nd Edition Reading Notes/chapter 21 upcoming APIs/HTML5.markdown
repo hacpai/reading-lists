@@ -679,3 +679,38 @@ dropEffect属性用于告诉浏览器允许哪种放置行为。这个属性有�
 - setDragImage(element, x, y)——允许拖动时显示在光标下面的一个图片。这个方法接受三个参数：一个要显示的HTML元素，以及光标在图片上定位的x和y坐标。如果HTML元素是图片，则显示的是图片；如果是其他元素，则显示元素的渲染结果。
 - types——当前存储的数据类型的列表。
 
+## WebSocket类型
+
+WebSocket类型，一种可以让浏览器和服务器之间进行双向通讯的机制。WebSocket构造行数接受唯一一个表示进行连接的URL的参数。URL必须指定为ws或wss协议以及一个绝对URL。一旦调用了构造行数，到该URL的连接就建立了。如下例：
+
+```
+var socket = new WebSocket("ws://www.yourdomain.com/connect/");
+```
+监听open和close事件来判断状态何时改变更加。
+
+```
+socket.onopen = function(event) {
+    alert("Connection ready.");
+};
+
+socket.onclose = function(event) {
+    alert("Connection closed.");
+}
+```
+一旦打开了套接字(socket),就可以通过send()方法给服务器发送数据。这个方法接受一个字符串作为唯一的参数。当服务器把数据大宋回来的时候，会触发message事件，并且有效负荷会存放在event对象的data属性中：
+
+```
+socket.onmessage = function(event) {
+    var data = event.data;
+
+    //处理数据
+
+};
+
+socket.send("fp=1");
+```
+可以通过调用disconnect()方法手动关闭一个连接。它会起动连接的关闭过程，当关闭操作完成的时候，会触发close事件。
+
+WebSocket类型对于正式支持Comet风格的交互的第一次尝试。浏览器和服务器之间Comet风格的交互是浏览器保持一个连接打开，并不断发送和接受数据。如果实现了，WebSocket类型将带来更为动态的服务器通讯，改进那些用到实时更新的web应用的性能，如监视股票投资组合、即时消息、和基于web的游戏。
+
+
