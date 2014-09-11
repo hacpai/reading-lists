@@ -86,4 +86,7 @@ alert(removed);    //red
 removed = colors.splice(1, 0, "yellow", "orange");    //从1位置开始删除0项，插入“yellow”和“orange”
 ```
 
+## Date类型
+
+Date类型提供了有关日期和时间的信息，包括当前日期和时间以及相关的计算功能。
 
