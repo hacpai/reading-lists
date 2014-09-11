@@ -589,4 +589,93 @@ db,transaction(function(transaction) {
 ```
 在这个修改过的版本中，查询根据特定的ID查找一条信息。这个查询不直接通过字符串连接插入queryId来构造字符串，而改在语句中放问号。executeSql()的第二个参数是只有一个元素的queryId的数组，queryId即要查找的ID。执行之后，问号会被替换成queryId的值，确保组成正确的SQL语句。
 
+## 拖放操作
+
+默认情况下，图片、链接和文本是可以拖动的。HTML5给所有的HTML元素指定了一个draggable属性标示元素是否可以拖动。图像和链接的draggable属性自动设置true，而其他的都默认为false。可以设置该属性来允许其他元素变得可以拖动，或者让某个图像和链接不可拖动。
+
+### 拖放事件
+
+当拖动了一个东西，以下事件按顺序触发：
+1. dragstart
+2. drag
+3. dragend
+
+当你按住鼠标按钮并开始移动鼠标时，被拖动的元素上会触发dragstart事件。
+
+在dragstart事件触发之后，只要对象还在被拖动，drag事件将持续触发。当拖动停止时（由于将对象放下，无论是否是有效的放置目标），则触发dragend事件。
+
+这些事件的目标都是正在被拖动的元素。
+
+当拖动对象到一个有效的放置目标上时，依次发生以下一系列事件：
+1. dragenter
+2. dragover
+3. dragleave或drop
+
+一旦对象拖到了放置对象上立刻触发dragenter事件。dragenter事件触发之后，马上触发dragover事件并且当在放置目标的边界内拖动对象时持续触发。当对象拖出了放置目标，dragover便停止触发，并触发dragleave事件。如果拖动的对象确实放入了该目标，那么不会触发dragleave而触发drop事件。这些事件的目标是放置目标元素。
+
+### 自定义放置目标
+
+可以将任何元素转换成一个有效的放置目标，只需覆盖默认的dragenter和dragover事件。例如，如果有一个`<div>`，其ID为"droptarget", 可以使用以下代码将其转换为一个放置目标：
+
+```
+var droptarget = document.getElementById("droptarget");
+
+EventUtil.addHandler(droptarget, "dragover", function(event) {
+    EventUtil.preventDefault(event);
+});
+
+EventUtil.addHandler(droptarget, "dragenter", function(event) {
+    EventUtil.preventDefault(event);
+});
+```
+
+### dataTransfer对象
+
+dataTransfer对象作为event对象的一个属性出现，用于从被拖放的对象传递字符到放置对象。
+
+dataTransfer对象有两个主要的方法：getData()和setData().setData()第一个参数以及getData()的唯一参数，是一个表示设置的数据的类型的字符串："text"或者"URL",如下所示：
+
+```
+//用于文本
+event.dataTransfer.setData("text", "sometext");
+var text = event.dataTransfer.getData("text");
+
+//用于URL
+event.dataTransfer.setData("URL", "http://www.wrox.com/");
+var url = event.dataTransfer.getData("URL");
+```
+
+### dropEffect和effectAllowed
+
+dataTransfer对象除了可以用于传输数据外，还可以用于判断被拖动的对象和放置目标可以进行何种行为，此时可以使用这两个属性：dropEffect和effectAllowed。
+
+dropEffect属性用于告诉浏览器允许哪种放置行为。这个属性有以下4个可能的值。
+- "none"——被拖动的对象不能被放在这里。所有元素的默认值（除文本框）
+- "move"
+- "copy"
+- "link"
+
+要使用dropEffect属性，必须在放置目标的ondragenter事件处理程序中进行设置。
+
+除非还设置了effectAllowed,否则dropEffect属性没有多大用处。该属性表示对于被拖动的对象允许哪种dropEffect.可能的值如下所示.
+- "uninitialized"——被拖动的对象尚未设置任何行为
+- "none"——被拖动的对象不允许任何行为
+- "copy"——只允许dropEffect"copy"
+- "link"
+- "move"
+- "copyLink"
+- "copyMove"
+- "linkMove"
+- "all"——允许所有的dropEffect
+
+这些属性必须在ondragstart事件处理程序中设置。
+
+假设你要允许用户从一个文本框移动文本到一个`<div>`。要达到这个目的，必须同时设置dropEffect和effectAllowed为"move".
+
+### 其他成员
+
+- addElement(element)——给拖动操作增加一个元素。这仅仅只针对数据，不会影响到拖动操作的外观。
+- clearData(format)——清除特定格式中存储的数据。
+- setDragImage(element, x, y)——允许拖动时显示在光标下面的一个图片。这个方法接受三个参数：一个要显示的HTML元素，以及光标在图片上定位的x和y坐标。如果HTML元素是图片，则显示的是图片；如果是其他元素，则显示元素的渲染结果。
+- types——当前存储的数据类型的列表。
 
