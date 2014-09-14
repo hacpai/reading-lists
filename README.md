@@ -5,5 +5,6 @@ This repository is not a "real" project. It is meant as a couple of notes of tho
 
 ### Index
 
+* Code
 * Professional JavaScript for Web Developers
 
