@@ -12,12 +12,15 @@
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse1.png)
 
 一组含有2个点或划得编码组合，可以呈现4个字母——I，A，N，M
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse2.png)
 
 一组含有3个点或划得莫尔斯码可以表示8个字母
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse3.png)
 
 一串由4个点或划组成得莫尔斯码可以表示16个字符
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse4.png)
 
 点和划数目和码子的规律
