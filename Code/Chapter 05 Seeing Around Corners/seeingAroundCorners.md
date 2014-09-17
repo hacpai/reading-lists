@@ -3,36 +3,36 @@
 
 ### 单向电报系统
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午4.55.26.png)
 
 
 ### 双向电报系统
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午4.55.54.png)
 
 ### 公用线路的双向电报系统
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午4.56.15.png)
 
 导线从4根减少到3根，节约了25%的电量。
 
 ### 接地负号
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午5.10.17.png)
 
 
 ### 单向电报系统（高电压大灯泡接地版）
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午4.57.00.png)
 
 ### 单向电报系统（再去电池化V版）
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午4.57.18.png)
 
 
 ### 双向电报系统（最简版）
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2005%20Seeing%20Around%20Corners/屏幕快照%202014-09-17%20下午4.57.28.png)
 
 
 由于距离原因，普通的导线和电池可能点不亮灯泡。
