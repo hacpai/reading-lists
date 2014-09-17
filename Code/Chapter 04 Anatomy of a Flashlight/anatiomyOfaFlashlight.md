@@ -11,27 +11,26 @@
 
 当电路存在的时候，电路将负极的电子带走，补充正极缺失的电子，化学反应才继续发生。如图所示，电子在电路中是逆时针方向移动的。
 
-
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2004%20Anatomy%20of%20a%20Flashlight/屏幕快照%202014-09-17%20下午1.28.47.png)
 
 ### 导线
 
 电池单独放置，没有连接任何设备。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2004%20Anatomy%20of%20a%20Flashlight/屏幕快照%202014-09-17%20下午1.23.55.png)
 
 
 它的电压E是1.5V，代表做功的势能，但是因为正负极通过空气也有连通，所以R非常非常的大，电流几乎为0.
 
 现在用一小段铜线把正负极连接起来。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2004%20Anatomy%20of%20a%20Flashlight/屏幕快照%202014-09-17%20下午1.24.03.png)
 
 这种情况被称为“短路”，电压仍然是1.5V，但是由于电阻非常非常小，电流变得非常非常的大。导线点呢个被转化为热能，发热甚至发光或熔化。
 
 大部分的电路都介于这两种极端情况之间。我们可以把它们统一表述为如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2004%20Anatomy%20of%20a%20Flashlight/屏幕快照%202014-09-17%20下午1.24.10.png)
 
 上图中的那段折线对于电气工程师来说就是表示电阻的负号。这里表示电路中的电阻既不大也不小。
 
