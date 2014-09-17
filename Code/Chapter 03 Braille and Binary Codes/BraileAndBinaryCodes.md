@@ -9,10 +9,11 @@
 
 在布莱叶盲文中，2x3的点码单元中一个或者多个凸起的点表示每个文字中用到的符号。
 
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.17.18.png)
 
 例如下面的布莱叶盲文
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.17.53.png)
 
 其中，第1，3，5点是凸起的，而第2，4，6点的位置是平的。
 
@@ -22,21 +23,21 @@
 
 这是最基本的小写字母表
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.18.01.png)
 
 词组“you and me”用布莱叶盲文表示的组合：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.23.31.png)
 
 > 注意，单词中每个字母所对应的点码单元之间用小块空白分开；单词之间租用大的空格分开。
 
 二级布莱叶盲文使用缩写来保存树型结构和提高阅读速度。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.27.16.png)
 
 “you and me”使用二级布莱叶盲文就可以表示为
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.27.23.png)
 
 目前为止，已经描述了31个码子——单词间的大空格（即没有凸点的点码单元）以及总共3排每排10个的字母和单词码字。
 
@@ -44,23 +45,23 @@
 
 首先第一组a到j的码字加6号凸点的组合
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.46.37.png)
 
 然后，a到j的码字，去掉1号和2号凸起的组合。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.46.43.png)
 
 目前已经定义了51个码字了，再补充3，4，5，6号点遗漏的码字
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.47.32.png)
 
 表示字符串缩写“ble”的码字当不作为单词的一部分时，作为数字表示符。转换a到j的码字为数字1到0.
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.47.40.png)
 
 最后添加剩余的7个码字
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2003%20Braille%20and%20Binary%20Codes/屏幕快照%202014-09-17%20上午9.48.01.png)
 
 将6号凸起的点作为大写字母标示符
 
