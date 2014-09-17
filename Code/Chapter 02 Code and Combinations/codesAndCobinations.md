@@ -12,12 +12,15 @@
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse1.png)
 
 一组含有2个点或划得编码组合，可以呈现4个字母——I，A，N，M
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse2.png)
 
 一组含有3个点或划得莫尔斯码可以表示8个字母
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse3.png)
 
 一串由4个点或划组成得莫尔斯码可以表示16个字符
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/Morse4.png)
 
 点和划数目和码子的规律
@@ -39,6 +42,7 @@
       4     |  2x2x2x2
 
 莫尔斯码的解码树形图
+
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2002%20Code%20and%20Combinations/MorseTree.png)
 
 莫尔斯码也被称为二进制码（Binary Code), 因为这种编码的组合元素只有两个——点和划。这根硬币，只有正面朝上或反面朝上蕾丝。二元对象（例如硬币）和二进制码（例如莫尔斯码）常常使用2的盛放来进行描述。
