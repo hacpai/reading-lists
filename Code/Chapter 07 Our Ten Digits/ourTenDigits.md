@@ -15,7 +15,7 @@
 ```
 一个多位数每一位都有其各自特定的意义。每个位置都代表10的一个整数次幂。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2007%20Our%20Ten%20Digits/屏幕快照%202014-09-18%20下午12.38.20.png)
 
 另一个好处就是，以同样的方式将数字置于小数点右边可以表示分数。数字4825.76就是
 ```
