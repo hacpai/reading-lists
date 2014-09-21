@@ -97,53 +97,57 @@ M x N x (W + T) + N x W x (1 - W) + B
 
 和前面介绍的一样，这是一个灯泡和电池连接在一起的电路，这回用两个开关：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.04.18.png)
 
 只有当左右两个开关都闭合时灯泡才会亮。如下图所示：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.01.43.png)
 
 对于电路的运转情况，我们可以总结为如下表格：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.01.35.png)
 
 在前面的章节，我们已经知道了二进制是如何表示信息的——而信息是无所不包的，比如说，可以规定二进制0代表“拇指向上”，二进制1代表“拇指向下”。一个开关有两个状态，因此也可以代表二进制数。0代表“开关断开”，1代表“开关闭合”。一个灯泡有两个状态，0代表“灯泡不亮”，1代表“灯泡亮”，根据以上表述，我们将表格简化如下形式：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.01.27.png)
 
 这里左边的开关和右边的开边调换位置，结果是一样的。所以我们不用分辨开关哪个是哪个。所以，上面的表也可以写为AND表OR表类似的形式。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.01.22.png)
 
 的确，这与AND表是一样的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.00.56.png)
 
 这个简单的电路演示了布尔代数中的AND运算。
 
 接下来，稍微改变一下开关连接方式，如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.00.36.png)
 
 无论上面的开关闭合还是下面的开关闭合或者都闭合，灯泡都会亮。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午5.00.02.png)
 
 电路做了一个逻辑上的演示。灯泡回答了“是否开关闭合？”的问题，下表总结了这样一个电路的工作原理。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.59.52.png)
 
 同样用0来表示开关断开或者灯泡不亮，用1表示开关闭合或灯泡亮，这个表可以写为如下形式：
 
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.59.43.png)
 
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.59.09.png)
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.59.00.png)
 
 同样的，两个开关可以调换，因此上表可以写为如下形式。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.58.53.png)
 
 你可能已经才到了，这与布尔代数中的OR是一样的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.58.44.png)
 
 这就是说，两个开关并联相当于布尔代数的OR运算。
 
@@ -155,7 +159,7 @@ M x N x (W + T) + N x W x (1 - W) + B
 
 上面已经分析出两个开关串联表示逻辑AND；两个开关并联表示逻辑OR，因此这个表达式可用8个开关做如下连接。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.58.30.png)
 
 此电路的每一个开关用一个字母标记。如果按照从左到右，从上倒下的顺序遍历电路图，你会以同样此序遇到出现在表达式中的字母。
 
@@ -163,7 +167,7 @@ M x N x (W + T) + N x W x (1 - W) + B
 
 拿出一只已绝育得灰色母猫，闭合相应得开关，如图所示
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2010%20Logic%20and%20Switches/屏幕快照%202014-09-21%20下午4.57.50.png)
 
 这次，灯泡被成功点亮了，这只猫符合你得全部要求。
 
