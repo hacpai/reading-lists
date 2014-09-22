@@ -7,7 +7,7 @@
 
 上一章用开关和电灯泡组成的电路表示布尔表达式。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.29.21.png)
 
 这个电路19世纪才被发明出来，但是直到20世界30年代才被发现。主要贡献者是克罗德·艾尔伍德·香农，清晰严谨地阐述了：电子工程师可以用布尔代数的所有工具去设计开关电路。此外，如果你简化了一个描述网络的布尔表达式，那么可以简化相应的电路。
 
@@ -44,13 +44,13 @@ Y = F x (1 - W)
 ```
 现在表达式少了一个变量，就意味者少了一个开关。以下是化简后的电路图。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.29.55.png)
 
 事实上，电路中仍有三个开关是多余的。理论上，你只需要四个开关来定义心中的猫咪即可。因为每一个开关都是二进制数，你可以设定一个开关代表猫的性别，另一个开关代表猫的生育能力，再来两个开关表示猫的颜色。这里有四种可能出现的颜色（白色、黑色、褐色和其他颜色），而我们知道，四种选择可以用两个二进制来定义。
 
 现在用一个控制面板来选择猫咪，这个控制面板上只有四个开关，此外面板上还安装了一个灯泡，如下所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.30.37.png)
 
 开关向上闭合，向下断开。表示猫咪颜色的两个开关的标记是这样理解。两个开关都断开表示白色；左边开关闭合，右边开关断开表示黑色；左边开关断开，右边开关闭合表示褐色；两个开关都闭合表示其他颜色。
 
@@ -68,11 +68,11 @@ Y = F x (1 - W)
 
 就我们目前而言，我们对于继电器放大微弱信号的功能并不感兴趣。我们真正感兴趣的是继电器可以作为一个电流控制而非人工控制的开关。我们将继电器、开关、灯泡和两节电池按照下图连接。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.31.18.png)
 
 注意，左边的开关是断开的，灯泡没有发光。当闭合开关的时候，左端的电池产生的电流流过缠在铁芯上的圆线圈。于是铁芯产生了磁性，将上面的弹性金属簧片拉下，使回路接通，灯泡发光。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.31.34.png)
 
 当电磁铁将金属簧片拉下来时，我们称继电器被“触发”（triggered）。当左边的开关断开的时候，铁芯的磁性消失，金属簧片回到原位。
 
@@ -80,29 +80,29 @@ Y = F x (1 - W)
 
 在逻辑门建立之前，我们将多次运用继电器，因此就需要将上面那幅电路图简化。我们利用接地的方式减少一些电线。在这种情况下，大地仅代表了一个公共端，并不是真正意义上的物理接地。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.31.58.png)
 
 这看起来还不够简化，我们需要更加简化电路图。注意两节电池的负极都是接地的。因此，我们可以看到这样的符号。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.32.11.png)
 
 和第5章，第6章一样，可以用大写字母V（代表电压）来代替上图中的电池。这样，继电器看上去就如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.32.24.png)
 
 上图显示了两个电源和两个接地端。为了更简化电路，我们将所有电源即“V”彼此互连，接地端也如此。例如上述电路可用如下只用一节电池的方式。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.32.48.png)
 
 下图简化了回路，当当看继电器，像前面的控制面板一样，从输入和输出开始。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.33.01.png)
 
 电流流经输入时，电磁铁就会被触发，输出就得到一个电压。
 
 继电器的输入不一样只是开关，输出也未必只限于灯泡。一个继电器的输出可以连到另一个继电器的输入，例如下面这个电路。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.34.19.png)
 
 连接继电器时建立逻辑门的关键。
 
@@ -112,21 +112,21 @@ Y = F x (1 - W)
 
 前面提到，两个开关可以串联，同样地，两个继电器也可以串联。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.35.08.png)
 
 就像两个开关串联一样，这两个继电器也执行了逻辑操作。只有当两个继电器触发的时候灯泡才会亮。这样两个继电器的串联被称为一个“与门”。为了避免复杂的图示，电器工程师用如下专门的符号表示一个与门。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.35.18.png)
 
 因为人们习惯于从左向右的阅读方式，所以将两个输入端画在左边，一个输入端画在右边。
 
 两个继电器、两个开关和一个灯泡的原始电路图如下所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.35.43.png)
 
 使用“与门”的符号，上图可以画为如下所示的图。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.35.57.png)
 
 > 注意，与门的符号不仅仅代替了两个串联的继电器，而且还暗示着上面的继电器与电源相连，两个继电器都接地。
 
@@ -134,11 +134,11 @@ Y = F x (1 - W)
 
 同样可以让与门有多个输入端。例如，将三个继电器串联，如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.37.27.png)
 
 只有当三个开关全部闭合时灯泡才会发光。这个结论可以用如下符号来表示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.37.42.png)
 
 它被称为三输入端与门。
 
@@ -146,11 +146,11 @@ Y = F x (1 - W)
 
 以下逻辑门是由两个继电器并联而成。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.38.44.png)
 
 显而易见，当上面的开关或是下面的开关闭合时，灯泡都会发光，这里的关键词是“或”，因此这样的门被称为“或门”。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.39.26.png)
 
 > 它与与门的符号稍微有点相似，但是输入端的一边是弧形，像英文单词“OR”中字母“O”一样（这样可以帮你分清他们）。
 
@@ -158,13 +158,13 @@ Y = F x (1 - W)
 
 继电器的输出有两种不同的连接方式。通常在开关断开的时候，灯泡不亮。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.39.49.png)
 
 当开关闭合的时候，灯泡发光。
 
 也可以用另外一种连接方式，使开关断开时灯泡被点亮。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.40.03.png)
 
 这样的话，开关闭合，灯泡就会熄灭。以这种方式连接的继电器叫做反向器。
 
@@ -172,47 +172,47 @@ Y = F x (1 - W)
 
 反向器可以用如下的专门符号来表示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.41.26.png)
 
 它能将0（低电平）转换为1（高电平），因此被称为反向器，反过来也是一样的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.41.43.png)
 
 #### 设计自动选择理想猫咪的控制面板
 
 首先从开关开始，第一个断开表示公猫，闭合表示母猫。因此我们可以得到两个信号，把它们分别叫做M和F。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.41.59.png)
 
 当F=1时，M为0，反之亦然。同样，第二个开关闭合表示这只猫已绝育，断开表示这只猫未绝育。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.05.png)
 
 下面两个开关更加复杂。两个开关的不同组合表示四种不同的颜色。以下是两个接有电源的开关。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.09.png)
 
 两个开关都断开时，表示白色。以下就是如何运用两个反向器和一个与门得到W信号的方式。如果你选择一只白猫，W就为高电平（1）；否则，就为低电平（0）。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.14.png)
 
 当两个开关断开时，两个反向器的输入均为0，两个反向器的输出（也就是与门的输入）都为1.这就意味着与门的输出为1.
 
 要想闭合第一个开关表示一只黑猫，可以利用一个反向器和一个与门实现。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.18.png)
 
 只有当第一个开关闭合而第二个开关断开的时候，与门输出才为1.同样，如果第二个开关闭合而第一个开关断开，与门输出也为1，我们用此来表示褐色的猫。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.27.png)
 
 如果两个开关闭合表示其他颜色的猫。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.33.png)
 
 现在，我们将四个小电路合并成一个大电路。（按照惯例，黑实心点表示交叉之间是相连的，没有黑实心点的交叉线着表示仅仅是穿过，没有连接）。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.38.png)
 
 这个电路看起来非常复杂，但是如果你仔细地从输出沿着线路走，看清每个与门的输入从哪来的，电路的工作原理就会一目了然。
 
@@ -227,7 +227,7 @@ Y = F x (1 - W)
 ```
 在这个表达式中，每个加号对应电路中的一个或门。对于每一个乘号，则对应一个与门，电路图如下所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.42.58.png)
 
 电路图左侧的字母由上到下的顺序与它们表达式中出现的顺序一样。这些信号来源于与反向器相连的开关和2-4译码器的输出。请注意用反向器表示表达式中（1-W）。
 
@@ -237,30 +237,31 @@ Y = F x (1 - W)
 
 以下两个门都会用到一个继电器，该继电器在未被触发时，其输出为高电平（这是用在反向器中的输出）。例如，在下面这种配置中，第一个继电器的输出为第二个继电器提供电源。布局和与门很累死。两个继电器都断开时，灯泡发光。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.43.15.png)
 
 如果上面的开关闭合时，灯泡就会熄灭。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.43.34.png)
 
 灯泡熄灭时由于第二个继电器没有电源供应。同样的，如果下面的开关闭合，灯泡也会熄灭。
 
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.43.45.png)
 
 如果则两个开关全部闭合，灯泡也不亮。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.50.17.png)
 
 这些结果恰恰与或门相反，这个门称为“或非门”，简称NOR，用以下符号表示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.50.34.png)
 
 除去中间部分的小圆圈，这个符号与或门非常想像。小圆圈表示“反向”，所以或非门也可用下面的符号表示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.50.49.png)
 
 或非门的输出如下表示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.51.04.png)
 
 这个表所显示的结果与或门正好相反，在或门中，两个输入中有一个为1输出就为1，只有两个输入都为0，输出才为0.
 
@@ -268,49 +269,49 @@ Y = F x (1 - W)
 
 下面是另一种连接两个继电器的方法。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.51.29.png)
 
 在这种情况下，两个输出连接在一起，与或门的布局类似，但是却采用了另一种输出接发。灯泡在两个开关全断开时被点亮。
 
 当上面的开关闭合时，灯泡依然是亮的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.51.48.png)
 
 同时，当只有下面的开关闭合时，灯泡也依然是亮的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.51.56.png)
 
 只有当两个开关闭合的时候，灯泡才会熄灭。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.03.png)
 
 这一结果和与门恰恰相反。这种逻辑门被称为与非门，或简称NAND。与非门符号和与门类似，但在输出部位多了一个小圆圈，意思是输出和与门正好相反。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.09.png)
 
 与非门的输出如下表所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.13.png)
 
 > 注意与非门的输出是和与门完全相反的。与门只有当输入全为1的时候输出才为1，否则输出为0.
 
 到此为止，我们已经看到可以用四种不同的方式连接有两个输入、一个输出的继电器，每一种方式的行为功能都不一样。为了避免重复画继电器，我们将它们称为逻辑门，并用电气工程师专门的符号来表示它们。特定的逻辑门取决于它的输入，输出和输入的关系可总结为以下几个表格。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.27.png)
 
 ### 缓冲器（buffer）
 
 现在，我门已经有四个逻辑门和一个反向器，把这些工具组合到一起的其实就是原始的继电器,如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.39.png)
 
 这叫做缓冲器，可用如下符号表示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.43.png)
 
 除了输出端的小圆圈，这个符号和反向器很相似。很明显，缓冲器它的输入和输出是相同的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.46.png)
 
 但是在输入信号很微弱的时候，缓冲器就可以派上用场。之前也提到过，这就是很多年前在电报机中使用继电器的原因。另外，缓冲器还可以用于延迟一个信号。这是因为继电器需要一点时间——几分之一秒——才会被触发。
 
@@ -320,25 +321,25 @@ Y = F x (1 - W)
 
 前面在建立2-4译码器的时候，曾出现过这样一个小电路。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.51.png)
 
 两个输入信号经过反向器后作为与门的输入。这样的组合有时可以去掉反向器而画成如下的形式。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.52.55.png)
 
 实际上，带有两个反向输入的与门和或非门是等价的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.53.00.png)
 
 类似的，带有两个反向输入的或门和与非门也是等价的。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.53.04.png)
 
 这两组等价关系就是摩根定律在电路中的实现。
 
 摩根定律可以简单地表示为如下形式：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2011%20Gates/屏幕快照%202014-09-23%20上午12.53.12.png)
 
 摩根定律是简化布尔表达式的一种重要手段，因此也可以用它来简化电路。从历史的角度来说，这真是香农的论文给电气工程师们带来真正意义。但在本书中简化电路不是重点，我们关注的是然一切有效地运转而不是以最简的形式运转。我们下面要做的就是一台加法器。
 
