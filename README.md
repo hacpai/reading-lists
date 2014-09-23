@@ -6,5 +6,6 @@ This repository is not a "real" project. It is meant as a couple of notes of tho
 ### Index
 
 * Code: The Hidden Language of Computer Hardware and Software
+* How to Design Programs: An Introduction to Programming and Computing
 * Professional JavaScript for Web Developers
 
