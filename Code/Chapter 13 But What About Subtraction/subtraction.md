@@ -51,39 +51,44 @@
 
 问题变为：
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.23.png)
+```
+  10110000 
+− 11111101 
+  ---------
+  ?????????
+```
 
 第一步，用11111111减去减数：
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.44.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.23.png)
 
 我们发现在对1求补数的时候，只需将原来的二进制数中的1变为0，将0变为1即可。因此对1求补数有时也称为相反数（negation）或反码（inverse）。这里你可能会想到第11章的反向器，它的作用就是将0变为1，将1变为0.
 
 第二步，将减数对1的补数与被减数相加。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.52.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.44.png)
 
 第三步，将上式所得到的结果加1：
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.57.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.52.png)
 
 第四步，减去1000000000:
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.17.22.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.16.57.png)
 
 结果就等于十进制的77.
 
 我们把这两个数颠倒位置后再做一遍。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.17.27.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.17.22.png)
 
 第一步，用11111111减去简述好，得到对1的补数：
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.17.32.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.17.27.png)
 
 第二步，将减数对1的补数与被减数相加：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2013%20But%20What%20About%20Subtraction/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-25%20%E4%B8%8A%E5%8D%882.17.32.png)
 
 现在我们用第二步得到的结果对1求补数：
 
