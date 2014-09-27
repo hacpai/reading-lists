@@ -380,8 +380,6 @@ X表示“其取值情况与结果无关”，只要保持位的值为0，那么
 
 通常情况下，预置和清零信号输入会覆盖时钟和数据端输入，且两个输入都为0，当预置信号为1时，Q变为1，1-Q变为0.当清零信号为1，Q变为0，1-Q变为1（同R-S触发器中的S和R输入端一样，预置和清零信号不能同时为1）。除此之外，该触发器的工作原理是和普通边沿D触发器是一样的。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.09.png)
-
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.17.png)
 
 电路图如下。
