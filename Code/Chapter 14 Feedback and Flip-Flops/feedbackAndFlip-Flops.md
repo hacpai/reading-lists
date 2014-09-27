@@ -300,29 +300,31 @@ X表示“其取值情况与结果无关”，只要保持位的值为0，那么
 
 仔细看一下下面的功能表就可以明白电路中发生的情况了，电路启动时，假设时钟输入为0且Q输出也为0，则1-Q端输出为1，而1-Q是和D端输入相连。
 
-当时钟输入从0变为1时，Q输出与D输入相同。
-
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.13.53.png)
 
-但是由于1-Q的输出变为0，因此D输入也变为0.现在时钟输入为1，如下表所示。
+当时钟输入从0变为1时，Q输出与D输入相同。
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.13.58.png)
 
-当时钟输入变回0时，不会影响输出，如下表所示。
+但是由于1-Q的输出变为0，因此D输入也变为0.现在时钟输入为1，如下表所示。
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.03.png)
 
-现在时钟端输入又变为1.由于D输入为0，那么Q输出为0且1-Q输出为1.
+当时钟输入变回0时，不会影响输出，如下表所示。
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.09.png)
 
-所以D输入也变为1，如下表所示。
+现在时钟端输入又变为1.由于D输入为0，那么Q输出为0且1-Q输出为1.
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.16.png)
 
-以上发生的现象可以简单总结为：每当时钟输入由0变为1时，Q端输出就发生边哈 u，或者从0到1，或者由1到0.下面的时序图可以更加清楚地说明这个问题。
+所以D输入也变为1，如下表所示。
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.21.png)
+
+以上发生的现象可以简单总结为：每当时钟输入由0变为1时，Q端输出就发生边哈 u，或者从0到1，或者由1到0.下面的时序图可以更加清楚地说明这个问题。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.26.png)
 
 当时钟端Clk输入由0变为1时，D的值（与1-Q的值相同）被输出到Q端。当下一次Clk信号由0变为1时，D和1－Q的值同样改变。
 
@@ -332,21 +334,21 @@ X表示“其取值情况与结果无关”，只要保持位的值为0，那么
 
 当然，分频器的输出可以作为另一个分频器的Clk输入，并再一次进行分频.下面是三个分频器连接在一起的示意图。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.26.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.31.png)
 
 上图顶部的4个信号变化规律如下所示。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.31.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.37.png)
 
 这里只给出了这幅图的一部分，因为这个电路会重复上述过程周而复始地变化下去。在这幅图中，你有没有发现眼熟的东西呢？
 
 提示一下，把这些信号标上0和1.
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.37.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.43.png)
 
 再试着把这个图顺时针旋转90度，然后读一读没遗憾的4位数字，它们分别对醒了十进制中0～15中的一个数。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.43.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.54.png)
 
 可以看出来，这个电路具备了计数功能，如果再这个电路中添加更多触发器，其计数范围就会更大。
 
@@ -356,22 +358,8 @@ X表示“其取值情况与结果无关”，只要保持位的值为0，那么
 
 把8个触发器连接在一起，然后放入一个盒子中，构成了一个8位计数器。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.14.54.png)
-
-这个计数器称为“8位行波计数器”，因为每一个触发器的输出都是下一个触发器的时钟输入。变化是在触发器中一级一级地顺序传递的，最后一级触发器的变化必定会有一些延迟，更先进的计数器是“并行（同步）计数器”，这种计数器的所有输出是在同一时刻改变。
-
-在计数器中输出端用Q0～Q7标记，在最右边的Q0是第一个触发器的输出。如果将灯泡连到这些输出端上，就可以将8位数数字读出来了。
-
-这样一个计数器的时序图可以将8个输出分别表示出来，也可以将它们作为整体一起表示出来，如下图所示。
-
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.03.png)
 
-4位信号每半个周期二进制编码递增为1，8位行波计数器时钟每一个正跳变，二进制编码递增为1观察信号变化规律图，1-Clk每运行一个周期时，Q1只运行半个周期，Q1运行一个周期时，Q2运行半个周期，以此类推。
-
-把8个触发器连接在一起，然后放入一个盒子中，构成了一个8位计数器。
-
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.09.png)
-
 这个计数器称为“8位行波计数器”，因为每一个触发器的输出都是下一个触发器的时钟输入。变化是在触发器中一级一级地顺序传递的，最后一级触发器的变化必定会有一些延迟，更先进的计数器是“并行（同步）计数器”，这种计数器的所有输出是在同一时刻改变。
 
 在计数器中输出端用Q0～Q7标记，在最右边的Q0是第一个触发器的输出。如果将灯泡连到这些输出端上，就可以将8位数数字读出来了。
@@ -379,6 +367,8 @@ X表示“其取值情况与结果无关”，只要保持位的值为0，那么
 这样一个计数器的时序图可以将8个输出分别表示出来，也可以将它们作为整体一起表示出来，如下图所示。
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.09.png)
+
+4位信号每半个周期二进制编码递增为1，8位行波计数器时钟每一个正跳变，二进制编码递增为1观察信号变化规律图，1-Clk每运行一个周期时，Q1只运行半个周期，Q1运行一个周期时，Q2运行半个周期，以此类推。
 
 4位行波计数器每个跳变，二进制编码递增为1; 8位行波计数器时钟每一个正跳变，二进制编码递增为1。8位是4位频率的一半，正好在时钟每个正跳变是编码加1.
 
@@ -389,6 +379,8 @@ X表示“其取值情况与结果无关”，只要保持位的值为0，那么
 #### 带预置和清零功能的边沿型D触发器
 
 通常情况下，预置和清零信号输入会覆盖时钟和数据端输入，且两个输入都为0，当预置信号为1时，Q变为1，1-Q变为0.当清零信号为1，Q变为0，1-Q变为1（同R-S触发器中的S和R输入端一样，预置和清零信号不能同时为1）。除此之外，该触发器的工作原理是和普通边沿D触发器是一样的。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.09.png)
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2014%20Feedback%20and%20Flip-Flops/屏幕快照%202014-09-27%20下午12.15.17.png)
 
