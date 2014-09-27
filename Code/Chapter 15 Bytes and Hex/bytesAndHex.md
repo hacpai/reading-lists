@@ -34,17 +34,17 @@
 
 假如要把一个二进制数（如10110110）转换为8进制，可以从最右边的数字开始，每3比特看作一组，这样每组便对应着一个八进制数：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.47.07.png)
 
 10110110这个字节很容易就表示为八进制数266.这个方法简洁明了，八进制来用表示字节不失为一个好方法。但还是有那么一点美中不足。
 
 字节可以表示的二进制数的范围为00000000～11111111，如果采用八进制表示，那么相对应的范围也随之变成了000～377.仔细分析一下先前的理智，我们从右到左把3位二进制数对应于中间以及最靠右的八进制数，而最靠左的八进制数却是由二进制数对应的。如果我们将16位二进制数直接表示为八进制会得到如下结果：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.47.19.png)
 
 如果我们把这个16位二进制数平分为两个字节将其分别表示为八进制数会得到如下所示的不同结果：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.47.24.png)
 
 为了使多字节值能和分开表示的单字节取得一致，我们需要一种可以等分单个字节的系统，按照这种思想，我们可以把每个字节等分成4组，每组2bit（log4=2, 基于4的计数系统）；还可以等分为2组，每组4bit（log16=4,基于16的计数系统）。
 
@@ -52,7 +52,7 @@
 
 两个十六进制数可以完整地代表一个字节。这也意味着一个十六进制数恰好由4位二进制数组成，即半字节。下面这张表描述了如何在二进制、十六进制、十进制之间的进行转换。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.47.40.png)
 
 这样一来，字节10110110就可以表示为十六进制的B6.
 
@@ -63,51 +63,51 @@ B6h
 ```
 通过分析可以得到十六进制数的每一位代表16的不同整数幂的倍数，如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.48.14.png)
 
 十六进制数9A48Ch，可表示为如下形式：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.48.20.png)
 
 这个数用16的乘方表示可以写为：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.48.26.png)
 
 运算的最后结果是631948.这就是一个十六进制转换成为十进制数的完整过程。
 
 下面这个模版，帮助我们把4位十六进制转换为十进制。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.48.39.png)
 
 十进制数转换为十六进制数通常涉及出发运算。下面给出一个十进制向十六进制转换的模版。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.49.45.png)
 
 使用时首先把十进制写到左上角的方框里。这个方框代表着第一个被除数，然后处以第一个除数4096，得到的商放到被除数所对应的下面的方框里，而将余数放到被除数右边的方框里。这时将余数作为新的被除数去除以256.利用这个规则，通过反复迭代就可以得到最终结果。
 
 下面这幅图向我们展示了十进制数31148转换为十六进制数的过程。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.50.04.png)
 
 显而易见，十进制数的10和12代表者十六进制中的A和C，计算得到的最后结果就是79ACh。
 
 还有一种转换小于65535的十六进制数的方法，首先我们把元素通过除以256的方式将其分为两个字节。接下来对于每个字节，再分别除以16.下图是运算过程使用到的模版。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.50.09.png)
 
 我们采用自顶向下的方式。每一次出发完成后，就将其得到的商放入余数左下方的方框里，而余数进入右边的方框里。下图举例说明了十六进制数51966的转换过程。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.50.13.png)
 
 最后我们得到了四个1位的十六进制数字，其十进制值分别是12，10，15和14，转换过来就是CAFE，无论怎么看它都像一个单词，我想应该没人愿意点一杯叫做51966的东西，然后把它当作咖啡喝下去吧！
 
 对于每种计数系统，我们都可以描绘出相应的操作运算表，下面是十六进制的加法运算表。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.50.34.png)
 
 使用这张表可以方便地仿照一般的加法运算来对十六进制数进行加运算，如下所示：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2015%20Bytes%20and%20Hex/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202014-09-28%20%E4%B8%8A%E5%8D%881.50.48.png)
 
 
 第13章的我们讨论过可以用一个2的补数来表示与其相对应的负数。如果我们处理的是带符号的8位二进制数，那么所有负数的最高位都为1.同理，在十六进制系统中，最高位为8，9，A，B，C，D，E或F的两位带符号数都是负数，因为这些十六进制数对应的二进制数的最高位为1.例如99h可以表示无符号的十进制数153，也可以表示十进制的-103.
