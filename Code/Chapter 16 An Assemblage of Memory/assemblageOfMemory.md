@@ -122,19 +122,21 @@ RAM阵列的组合形式多种多样。比如我们可以通过共享地址的�
 
 我们还可以把两个8x1的RAM阵列看作是两个锁存器，使用一个2-1选择器和一个1-2译码器就可以把它们按照单个锁存器连接方式进行集成，下面给出了这种方案的电路图。
 
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.42.59.png)
+
 “选择”端之所以连接到译码器和选择器，主要作用是在两个8x1RAM阵列中选择一个，本质上它扮演了第4根地址线的角色。因此这种结构实质上是一种16x1的RAM阵列，如下图所示。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.42.59.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.09.png)
 
 上图所示的RAM阵列存储容量为16个单元，每个单元占一位。
 
 RAM阵列的存储容量与其地址输入端的数量有直接的联系。在没有地址输入端的情况下（只有1位锁存器和8位锁存器的情况），只能存储1个单元的数据；当存在1个地址输入端时，可以存储2个单元的数据；有两个地址输入端时，可以存储4个单元的数据；有3个地址输入端时，可以存储8个单元的数据；有4个地址输入端时，可以存储16个单元的数据。我们可以把它们之间的关系归纳成如下等式。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.09.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.15.png)
 
 前面已经向大家演示了怎么搭建小型RAM阵列，你可能回问：为什么不搭建一个大规模的RAM阵列呢？就像下面这样。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.15.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.21.png)
 
 上图所示的RAM阵列可存储8192个bit的信息，每8个bit为一组，总分为1024组。因为2的10次方恰好是1024，所以地址端共有10个输入端口。电路还包括8位的数据输入端和8位的数据输出端。
 
@@ -156,25 +158,25 @@ RAM阵列的存储容量与其地址输入端的数量有直接的联系。在�
 
 既然我们已经学会如何构造任意大小的RAM阵列，接下来继续对这个问题探究下去。假设现在已经构造好了一个容量为65536字节的存储器组织，如下图所示。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.21.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.31.png)
 
 为什么要选择大小为64KB的RAM阵列？而给32JB或128KB？因为65536是一个约整数，转换为幂的形式就是2的16次方，这个RAM阵列需要配备16位的寻址端。换句话说，该地址恰好可以用2个字节表示。将地址范围转换为十六进制就是0000h～FFFFh。
 
 如果用一种控制面板来辅助我们管理对这块64KB存储器的操作——包括写数据和读数据，一切就会直观明了。在这款控制面板上，有16个开关用于控制地址位，还有8个开关用于控制要输入的8bit数据。写操作端也用一个开关来表示，8个灯泡用来显示8位数据，这个控制面板如下图所示。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.31.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.37.png)
 
 初始状态下所有的开关均置0.其右下角有一个标识为控制端（takeover）的开关，这个开关的作用是确定由控制面板还是由外部所连接的其他电路来控制存储器。如果其他电路连接到与控制面板相连的存储器，这时控制端置0（如图所示），此时存储器由其他电路系统接管，控制面板上的其他开关将不起任何作用；当控制端置1时，控制面板将重新获得对存储器的控制能力。
 
 这种功能可以用一些2-1选择器来实现。仔细数一下会发现，我们需要25个2-1选择器——其中包括16个地址输入端，8个数据输入端，以及1个写操作端。电路如下图所示。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.37.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.47.png)
 
 当控制端开关断开时，RAM阵列的地址端，数据输入和写操作端的数据全部来源于外部信号，也就是在2-1选择器的左上角的输入信号；当控制端开关闭合，RAM阵列的地址端，数据输入端和写操作端的数据来源于控制面板开关发出的信号。但最终RAM阵列的输出信号都会传输到8个灯泡上或其他可能的地方。
 
 下面这幅是控制面板与64Kx8 RAM阵列的逻辑结构框图。
 
-![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.47.png)
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2016%20An%20Assemblage%20of%20Memory/屏幕快照%202014-09-30%20上午2.43.57.png)
 
 当控制端开关闭合时，通过操作16个地址开关，我们可以选择65536个地址中的任何一个，灯泡的状态将表示地址中所保存的8位数据。我们可以使用8个数据开关表示一个新数，然后把写操作端置1，从而将数据写入存储器。
 
