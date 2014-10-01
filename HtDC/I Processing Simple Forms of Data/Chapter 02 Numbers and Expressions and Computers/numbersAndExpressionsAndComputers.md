@@ -51,4 +51,37 @@
 
 仅当一个数的前缀为`#i`时，它才是一个数的非精确表示。
 
+### 变量和程序
+
+在代数中，可以用含变量的表达式阐明两个数之间的关系。变量是一个未知数的占位符（placeholder）。
+
+一般来说，一个包含变量的表达式可以被认为是一条从给定值计算另一个数值的规则。
+
+程序也是一种规则，它不仅告诉我们也告诉计算机应如何从一些数据产生另一些数据。一个大型的程序可能包括多个以某种方式组合起来的小程序。因此程序设计者在编写程序的时候给它们的命名是非常重要的。对于计算圆满面积面积的程序，合适的名字是*area-of-disk*.
+
+```
+(define (area-of-disk r)
+ (* 3.14 (* r r)))
+```
+上两行程序指明*area-of-disk*是一条规则，r是唯一的输入，一旦知道了r的值，程序的结果或输出就是*(* 3.14 (* r r))*.
+
+函数一旦被定义，此后就可以如同基本函数那样被使用。对函数各右边列出的变量，我们必须提供一个输入，也就是说，我们可以编写表达式，其中操作是*area-of-disk*, 其后跟着一个数值。
+
+```
+(area-of-disk 5)
+```
+其意为将*area-of-disk*应用于数值5。
+
+很多程序的输入多于一个，计算圆环（中心有一个洞的圆盘）面积的程序就是一个例子：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/HtDC/I%20Processing%20Simple%20Forms%20of%20Data/Chapter%2002%20Numbers%20and%20Expressions%20and%20Computers/屏幕快照%202014-10-01%20上午10.53.16.png)
+
+我们知道圆盘的面积是外盘的面积减去内盘的面积，这意味该程序需要两个未知量：外盘的半径*outer*和内盘的半径*inner*,因此，计算圆环的面积的程序可以写成：
+
+```
+(define (area-of-ring outer inner)
+ (- (area-of-disk outer)
+    (area-of-disk inner)))
+```
+此3行代码表示*area-of-ring*是一个程序，该程序有两个输入，*outer*和*inner*，并且程序结果是(*area-of-ring outer*)和(*area-of-disk inner*)之差。换句话说，*area-of-ring*使用了Scheme的操作和前面已定义过的函数。
 
