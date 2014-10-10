@@ -204,7 +204,7 @@ XYZ公式所有雇员的报酬都是每小时12美元。通常每个雇员每周
 ```
 ;; 合约: area-of-ring : number number -> number
 ;; 用途: 计算一个半径为outer, 其中洞的半径为inner的圆环的面积
-;; 例子: (area-of-ring 5 3) 的计算记过为50.24
+;; 例子: (area-of-ring 5 3) 的计算结果为50.24
 ;; 定义: [函数头部的精化]
 (define (area-of-ring outer inner)
  (- (area-of-disk outer)
