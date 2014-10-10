@@ -97,4 +97,32 @@
 | ------------                               |
 | 给频繁使用的常量定义一个名字并在程序中使用 |
 
+### 复合函数练习
 
+根据6种主要英制长度单位和公制长度单位的换算表：
+
+| English   | metri    |
+| -------   | -----    |
+| 1 inch    | 2.54 cm  |
+| 1 foot    | 12in     |
+| 1 yard    | 3 ft     |
+| 1 rod     | 5(1/2)yd |
+| 1 furlong | 40 rd|
+| 1 mile    | 8 fl     |
+
+请设计函数 inches->cm, feet->inches, yards->feet, rods->yards, furlongs- >rods, 和 miles->furlongs.
+
+请进一步设计函数 feet->cm, yards->cm, rods->inches, 和 miles->feet
+
+```
+;; 合约：inches:  number -> number
+;; 用途：将单位inch转换为单位cm
+;; 例子：(inches 1)的计算结果为2.54
+;; 定义：[函数头部的精化]
+(define (inches cm)
+  (* 2.54 cm))
+;; 测试：
+(inches 1)
+;; 预期的值
+2.54
+```
