@@ -283,5 +283,39 @@ MOV B, A
 | 37     | STC   | 令CF置1  |
 | 3F     | CMC   | 令CF取反 |
 
+##### 逻辑运算
+
+第17章设计的计算机可以执行ADD，ADC，SUB和SBB指令（虽然缺乏灵活性），而8080功能更为强大，它还可以执行AND（与），OR（或），XOR（异或）等逻辑运算。不论是算术运算还是逻辑运算，都是由8080处理器的算术逻辑单元（ALU）来完成的。
+
+以下是8080的算术运算和逻辑运算指令。
+
+| 操作码 | 指令        | 操作码 | 指令        |
+| ------ | ----        | ------ | ----        |
+| A0     | AND A，B    | B0     | OR A，B     |
+| A1     | AND A，C    | B1     | OR A，C     |
+| A2     | AND A，D    | B2     | OR A，D     |
+| A3     | AND A，E    | B3     | OR A，E     |
+| A4     | AND A，H    | B4     | OR A，H     |
+| A5     | AND A，L    | B5     | OR A，L     |
+| A6     | AND A，[HL] | B6     | OR A，[HL]  |
+| A7     | AND A，A    | B7     | OR A，A     |
+| A8     | XOR A，B    | B8     | CMP A，B    |
+| A9     | XOR A，C    | B9     | CMP A，C    |
+| AA     | XOR A，D    | BA     | CMP A，D    |
+| AB     | XOR A，E    | BB     | CMP A，E    |
+| AC     | XOR A，H    | BC     | CMP A，H    |
+| AD     | XOR A，L    | BD     | CMP A，L    |
+| AE     | XOR A，[HL] | BE     | CMP A，[HL] |
+| AF     | XOR A，A    | BF     | CMP A，A    |
+
+AND, XOR和OR都是按位运算（bitwise operation）指令，也就是说对于这些逻辑运算指令，其操作数的每一个对应位都是独立运算的，例如：
+
+```
+MVI A, 0Fh
+MVI B, 55h
+AND A, B
+```
+
+保存到累加器的结果将会是05h。假如我们把3条指令换作OR，则最终的结果将会是5Fh；如果换作XOR，则结果会变成了5Ah。
 
 
