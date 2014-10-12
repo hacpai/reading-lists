@@ -19,11 +19,11 @@ Intel设定8080最初价格为$360，这是对IBMSystem/360的一个讽刺。IBM
 
 8080和6800都是40个管脚的集成电路。这些芯片最常见的IC封装大约为2英寸长，1/2英寸宽，1/8英寸厚。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2019%20Two%20Classic%20Microprocessors/屏幕截图%202014-10-12%2017.24.19.png)
 
 当然，你看到的只是外包装。位于其内部的硅晶片非常小，就拿早期的8位微处理器来说，其硅晶片小于1/4平方英寸。外包装保护硅晶片并通过管脚提供对芯片的输入和输出点的访问。下图显示了8080的40个管脚的功能：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2019%20Two%20Classic%20Microprocessors/屏幕截图%202014-10-12%2017.25.50.png)
 
 本书中我们所创建的所有电气或电子设备都需要某种电源供电。8080的一个特殊地方就是它需要三种电源电压：管教20必须接到5V的电压；管教11需要接到－5V的电压；管教28需要接到12V的电压；管脚2接地。（1976年，Intel发布了8085芯片，简化了这些电源需求）。
 
@@ -714,7 +714,7 @@ NOP代表（即声明）no op（no operation，无操作）。NOP指令使处理
 
 本章不准备详细介绍Motorola 6800微处理器，因为在构造和功能方面它与8080非常相似。下面是6800的40个管脚的功能描述图。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2019%20Two%20Classic%20Microprocessors/屏幕截图%202014-10-12%2017.29.49.png)
 
 在上图中，Vss标示接地，Vcc代表5V的电源。同8080一样，6800也有16个地址输出信号端和8个数据信号端，其中数据信号端既可以用于输入信号也可以用于输出信号。它还有一个RESET信号端和一个R/(1-W) (read/write, 读/写) 信号。1-1RQ信号代表中断请求。与8080相比，6800的时钟信号较为简单，6800没有设计独立的I/O端口，所有的输入／输出设备的地址都是存储器地址空间的一部分。
 
@@ -748,11 +748,11 @@ NOP代表（即声明）no op（no operation，无操作）。NOP指令使处理
 
 8080和6800的另一个有趣的区别是：在两个处理器中，LDA指令都从存储器的特定地址将数据加载到累加器。例如，在8080中，下面的字节序列：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2019%20Two%20Classic%20Microprocessors/屏幕截图%202014-10-12%2017.30.06.png)
 
 将把存储器地址347Bh处的字节加载到累加器。下载对比一下6800的LDA指令，它使用6800扩展寻址模式（6800 extended addressing mode）：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2019%20Two%20Classic%20Microprocessors/屏幕截图%202014-10-12%2017.30.16.png)
 
 上组的这组字节序列将把存储器7B34h地址处的字节加载到累加器。
 
@@ -766,7 +766,7 @@ NOP代表（即声明）no op（no operation，无操作）。NOP指令使处理
 
 这两种微处理器后来怎样了呢？8080用在一些人所谓的第一台个人计算机上，不过可能更准确的说法是第一台家用计算机上。下图是Altair8800，出现在1975年1月份的《PopularElectronics》杂志的封面上。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2019%20Two%20Classic%20Microprocessors/屏幕截图%202014-10-12%2017.30.25.png)
 
 当你看到Altair8800时，前面面板上的灯泡和开关看起来似乎很熟悉。这和第16章为64KBRAM阵列建议的初始“控制面板”的界面是同一类型的。
 
