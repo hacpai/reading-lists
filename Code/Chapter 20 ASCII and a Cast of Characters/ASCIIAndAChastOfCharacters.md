@@ -298,7 +298,7 @@ A      B      C
 
 尽管ASCII码在计算机领域可谓是一统江湖，但许多IBM大型机上却没有采用这种标准。例如，System /360 产品北部采用的是IBM自发研制的8位字符编码系统，也被称为扩展的BCD交换码（Extended BCD Interchange Code），或EBCDIC（英文中发音为EBB－see－dick）。EBCDIC是早期的6位BCDIC编码的扩展形式，BCDIC的起源于IBM的打孔机。一张打孔机——存储容量为80个文本字符——1928年由IBM受创并沿用了将近50年，它的外观如下图所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2020%20ASCII%20and%20a%20Cast%20of%20Characters/屏幕截图%202014-10-14%2012.08.20.png)
 
 在考虑打孔卡与8位EBCDIC字符码的关系时，需要知道，在几代技术的影响下，这种编码也历经几十年的演变。因此，打孔卡与EBCDIC之间的逻辑性和一致性也逐渐消失了。
 
@@ -371,7 +371,7 @@ A      B      C
 
 > 在该表里，十六进制字符编码的高半字节由最高行给出，低半字节由左边列给出：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2020%20ASCII%20and%20a%20Cast%20of%20Characters/屏幕截图%202014-10-14%2012.09.04.png)
 
 代码A0h对应的字符为非断开空格。通常计算机处理格式文本是按照行和段来编排的，每一行以空格符号断开，对应的ASCII码为20h。代码A0h用来显示一个空格，但不能用来断开一行。非断开空格可以用在如“WWII”这样的文本中。代码ADh定义成软连字符，该连字符用来分开一个字中间的音节，且只在需要连接被两行分开的一个单词时才使用。
 
