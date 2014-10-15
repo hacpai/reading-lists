@@ -96,7 +96,7 @@ XYZ公司给雇员的报酬是每小时12美元。通常一个员工每周工作
 ```
 如果输入的值介于5和6之间（不包括5和6），函数输出结果为true。理解此类函数的一种较好的方式是认为函数划分了数轴上的一个区间：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/HtDC/I%20Processing%20Simple%20Forms%20of%20Data/Chapter%2004%20Conditional%20Expressions%20and%20Functions/屏幕截图%202014-10-15%2011.37.48.png)
 
 区间边界：一个以“（”或“）”标识的区间是不包含边界的，而以“［”或“］”标识的区间则包含边界。
 
@@ -194,4 +194,26 @@ XYZ公司给雇员的报酬是每小时12美元。通常一个员工每周工作
 = 0.045
 ```
 因为第一个条件的值为false，而第2个条件的值为true，因此程序的结果为0.045或4.5%。如果使用`(> amount 5000)` 而不是使用`else`,计算过程也是一样的。
+
+### 条件函数的设计
+
+与设计一般函数相比，条件函数的设计比较复杂，程序设计者必须了解问题表述中所列出的不同情况加以识别。为了强调这种思想的重要性，这里介绍并讨论条件函数的设计过程。该过程引入了一个新的设计诀窍数据分析（data analysis），它要求程序设计者理解问题表述中所涉及的不同情况。因此，有必要对2.5节中所讨论的程序设计诀窍中的例子和程序体部分进行一些修改。
+
+#### 数据分析和定义
+
+了解了问题表述所涉及的不同情况后，必须确定它们的数据定义` data definiton`，下面对这个思想进行深入讨论。
+
+对于数学函数，一种好的策略是画出数轴，然后针对不同的情况确定相应的区间。考虑` interest-rate` 函数的合约：
+
+```
+;; interest-rate : number -> number
+;; 确定相应于存款额 amount (大于等于零）的利率
+(define (interest-rate amount) ...)
+```
+该函数的输入是一个非负数，程序对于3种不同的情况给出不同的答案：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/HtDC/I%20Processing%20Simple%20Forms%20of%20Data/Chapter%2004%20Conditional%20Expressions%20and%20Functions/屏幕截图%202014-10-15%2019.33.55.png)
+
+对于处理布尔值的函数，cond表达式必须区分两种不同情况，即true和false。我们很快将遇到其他形式的数据，这些数据需要对更多不同的情况进行推理。
+
 
