@@ -11,7 +11,7 @@
 
 在新设计的计算机中，把软件放到合适地方的处理过程可能是最令人费解的。要理解它，先从控制面板着手。该控制面板和第16章讲到的用来写入字节到随机访问存储器然后再读取出的控制面板相似。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2022%20The%20Operating%20System/屏幕截图%202014-10-19%2018.36.39.png)
 
 与以前的控制面板不同的是，这个控制面板有一个标明为复位的开关，这个开关连接到微处理器的复位输入，只要这个开关是闭合的，处理器就什么都不做；当断开这个开关后，微处理器就开始执行机器码。
 
@@ -222,7 +222,7 @@ F510h
 
 操作系统的引导过程完成后，随机存储器（RAM）的最高地址区域用来存放CP/M,加载完CP/M后，整个内存空间的组织结构如下所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2022%20The%20Operating%20System/屏幕截图%202014-10-19%2018.37.33.png)
 
 该图仅仅粗略地表示出了内存各构成部分，没有按比例刻画各部分所占内存的大小。控制台命令处理程序（Console Command Processor，CCP），基本磁盘操作系统（Base Disk Operating System，BDOS）和基本输入／输出系统（Basic Input/Output System, BIOS)是CP/M的三个组成部分，这三个部分只占用了6KB大小的内存空间。在拥有64KB的内存空间的计算机中，大约58KB被临时程序区（Transient Program Area，TPA）占用，但是这58KB空间一开始时是空的。
 
