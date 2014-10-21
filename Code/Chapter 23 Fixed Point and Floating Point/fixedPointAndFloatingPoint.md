@@ -223,7 +223,7 @@ IEEE浮点数标准定义了两种基本的格式：以4个字节表示的单精
 
 让我们首先来了解一下单精度格式。它的4个字节可以分为三个部分：1位的符号位（0代表正数，1代表负数），8位用作指数，最后的23位用作有效数。下表给出了但进度格式的三部分的划分方式，其中有效数的最低位在最右边。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2023%20Fixed%20Point%20and%20Floating%20Point/屏幕截图%202014-10-20%2022.54.07.png)
 
 
 三部分共32位，也就是4个字节。我们刚才提到过，对于二进制科学计数法的规范化式，其有效数的小数点左边有且仅有一个1，因此在IEEE浮点数标准中，这一位没有分配存储空间。在该标准中，仅存储有效数的23位小数部分，尽管存储的只有23位，但仍然称其精度为24位。我们将在下面的内容里体会24位精度的含义。
@@ -319,11 +319,11 @@ IEEE浮点数标准定义了两种基本的格式：以4个字节表示的单精
 
 如果相在程序中使用浮点格式数，但使用单精度格式又会出现各种问题，这时你可能以考虑使用双精度浮点数（double-precision floating-point format).这种类型的数需要用8个字节来表示，它的结构如下表所示。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2023%20Fixed%20Point%20and%20Floating%20Point/屏幕截图%202014-10-21%2013.01.19.png)
 
 双精度浮点数的指数偏移量是1023，或十六进制的3FFh，因此以该格式存储的数可以表示为：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Code/Chapter%2023%20Fixed%20Point%20and%20Floating%20Point/屏幕截图%202014-10-21%2013.01.24.png)
 
 
 上面提到的关于单精度浮点格式下的0，无穷大（小）和NaN的判断规则同样适用于双精度浮点格式。
