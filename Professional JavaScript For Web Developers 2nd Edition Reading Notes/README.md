@@ -1,4 +1,4 @@
-about
+About
 =====
 English name:  Professional JavaScript for Web Developers
 
