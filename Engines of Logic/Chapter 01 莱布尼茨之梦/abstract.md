@@ -22,7 +22,7 @@
 
 莱布尼茨级数
 
-![]()
+![](https://github.com/arcticlion/reading-lists/blob/master/Engines%20of%20Logic/Chapter%2001%20莱布尼茨之梦/Screenshot%202014-11-01%2020.57.50.png)
 
 通过一种特别简洁的方式把奇数序列与π这个数继而与圆的面积联系了起来。这是可以利用极限过程来解决的一类问题——确定边界为曲线的图形的面积——的一个例子。
 
