@@ -7,6 +7,8 @@ English name:How to Design Programs: An Introduction to Programming and Computin
 
 作者：Matthias Felleisen、Robert Bruce Findler、Matthew Flatt和Shriram Krishnamurthi
 
+译者: 黄林鹏 / 朱崇恺
+
 ### 前言
 
 许多职业都需要进行某种形式的计算机编程，会计师使用电子表格和字处理软件编程，摄影师使用图片编辑器编程，音乐家使用音乐合成器编程，职业程序员使用计算机编程。编程已经称为了一种人人都需要掌握的技能。
