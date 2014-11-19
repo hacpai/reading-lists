@@ -8,5 +8,6 @@ This repository is not a "real" project. It is meant as a couple of notes of tho
 * Code: The Hidden Language of Computer Hardware and Software
 * How to Design Programs: An Introduction to Programming and Computing
 * Engines of Logic
+* Introduction to the Design and Analysis of Algorithms
 * Professional JavaScript for Web Developers
 
