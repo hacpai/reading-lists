@@ -9,8 +9,7 @@
 
 两种最重要的基本数据结构是数组和链表。（一维）**数组**是n个相同数据类型的元素构成的序列，并且连续存储在计算机的存储器中，通过指定数组的**下标**来访问其中的元素。
 
-
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2011.49.41.png)
 
 访问数组任何元素的时间都是相等的且为常量。数组中每个元素占据相同的计算机存储空间。
 
@@ -20,7 +19,7 @@
 
 **单链表**如下
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2014.42.46.png)
 
 访问链表特定元素，从链表的第一个元素开始，沿着一系列指针前进，直到访问到该特定元素为止。所以，访问单链表中的元素需要的时间有赖于钙元素在链表中所处的位置。
 
@@ -28,7 +27,7 @@
 
 **双链表**是链表的扩展结构，除了第一个和最末一个节点，每一个节点都既包含指向前趋的指针又包含指向后继的指针。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2014.42.51.png)
 
 **线性列表**（简称列表）是一种更抽象的数据结构。**列表**是由数据项构成的有限序列，按照一定的线性顺序，排列而成的数据项的集合。在列表上进行的基本操作包括对元素的查找，插入和删除。
 
