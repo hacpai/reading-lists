@@ -41,3 +41,77 @@
 
 实现优先队列一个比较好的方法是基于一种称为**堆**的构思精巧的数据结构。6.4节中讨论堆（以及一个基于堆的重要排序算法）。
 
+### 图
+
+按照非正式的定义，图可以认为是平面上的“顶点”或者“节点”构成的集合，顶点被称为“边”或者“弧”的线段连接。按照正式的定义，一个图G=<V, E>由两个集合定义：元素被称为顶点的有限集合V；另一个元素是一对顶点，被称为边的优先集合。若每对顶点之间没有顺序，即顶点对(u, v)和顶点对(v, u)是相同的，则说图G是**无向**的；否则，边(u, v)的方向是从顶点u到顶点v，图本身为有向的。
+
+为方便期间，通常图或者有向图的顶点标上字母或整数，抑或按照应用的要求标上字符串。图a包含6个顶点和7条边：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2014.42.51.png)
+
+V = {a, b, c, d, e, f} E = {(a, c), (a, d), (b, c), (b, f), (c, e), (d, e), (e, f)}.
+
+图b中包含6个顶点和8条有向边：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2015.13.01.png)
+
+V = {a, b, c, d, e, f} E = {(a, c), (b, c), (b, f), (c, e), (d, a), (d, e), (e, c), (e, f)}
+
+我们对图的定义没有禁止圈，即连接顶点自身的边。一般，除非另外明确定义，我们将只考虑不含圈的图。因为定义不允许无向图的同一对顶点拥有多条边，对于|V|个顶点的无圈无向图，可能包含的边的数量|E|用这个不等式表示：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2015.13.05.png)
+
+每个顶点|V|和所有其他|V|-1个顶点都有边相连，边的数量就会达到最大，又因为每条边被包含了两次，故`|V|(|V|-1)的积除以2`为最大边的数量。
+
+完全图内任意两个顶点之间都有边相连。完全图具有|V|个顶点，标准符号是K|v|.图中所缺的边数量相对较少的额为**稠密图**;图中所缺的边数量相对较多的为**稀疏图**。处理的是稀疏图还是稠密图，可能会影响图的表示方式，从而影响算法的运行时间。
+
+#### 图的表示
+
+计算机算法中，图用两种方法表示：邻接矩阵和邻接链表。n个顶点的**邻接矩阵**是一个nxn的布尔矩阵，图中每个顶点用一行和一列来表示，第i个顶点到第j个顶点之间有连接边，则矩阵中第i行第j列的元素等于1，若没有这样的边，则等于0.参见图a
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2015.15.40.png)
+
+观察图a发现，无向图的邻接矩阵总是对称的，即当i≧0，j≦n-1时，A[i, j]=A[j, i].
+
+**邻接链表**每一个顶点用一个包含了和这个顶点邻接的所有顶点（所有和该顶点有边相连的顶点）的链表表示。上图b的邻接链表参见图b。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2015.56.06.png)
+
+对于一个给定的顶点，它的邻接链表指出了邻接矩阵中值为1的列。
+
+稀疏图的邻接链表占用的空间少于邻接矩阵；稠密图，情况正好相反。一般来说，采用哪种表示法更方便取决于问题的性质，用哪种算法来解决问题，或者输入图是稀疏的还是稠密的。
+
+#### 加权图
+
+**加权图**是给边赋了值的图。这些值称为边的**权重**或**成本**.一些应用需要用到加权图，比如寻找交通网络或者饿通讯网络两点间的最短路径，又比如前面提到过的旅行商问题。
+
+图两种表示方法都可以表示加权图。矩阵元素A[i, j]可以包含这条边的权重；当不存在这样一条边时，会包含一个特殊符号，例如∞。图b展示了这种方法。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2016.04.53.png)
+
+加权图的邻接链表在它们的节点不仅包含邻接节点的名字，还必须包含相应的边的权重，如图c。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2016.10.32.png)
+
+#### 路径和环
+
+图有两个特性对于大量的应用是非常重要的:**连通性**和**无环性**.两者都基于**路径**de概念。
+
+顶点u到顶点v的**路径**可以这样定义：它是图G中始于u止于v的邻接顶点序列。一条路径上所有的边都是互不相同的，这条路径是**简单路径**.路径的**长度**是定义路径的顶点序列中包含的顶点数目减一，恰好和路径所包含的边的数目一致。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2016.11.20.png)
+
+上图中，a, c, b, f是从a到f的长度为3的简单路径(4-1); a, c, e, c, b, f是从a到f的长度为5的路径(6-1)(非简单路径).
+
+有向图有**有向路径**。图b中，a, c, e, f是a到f的一条有向路径。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2016.16.19.png)
+
+非正式来讲，连通性意味着：如果我们把连通图的模型定义为代表边的绳子连接着代表顶点的小球，我们只要抓住任意一个小球就能把所有的东西一手抓住。如果图是非连通的，每一个自我连接的每一部分，称为该图的**连通分量**.正式来讲，连通分量是给定图的极大连通子图。图1.9有连哥哥连通分量，分别包含顶点{a, b, c, d, e}和{f, g, h, i}
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-20%2016.19.29.png)
+
+现实应用中常常出现包含若干连通分量的图。
+
+直到所考虑的图是否包含回路是非常重要的。**回路**是起点和终点都是同一顶点的，长度大于0的简单路径。例如，f, h, i, g, f是图1.9的回路。不包含回路的图称为**无环图**.
+
