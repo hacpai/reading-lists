@@ -149,3 +149,43 @@ V = {a, b, c, d, e, f} E = {(a, c), (b, c), (b, f), (c, e), (d, a), (d, e), (e, 
 
 顶点v的**深度**从根到v的简单路径的长度。树的**高度**是从根到节点的最长简单路径的长度。例如，在上图b的树中，顶点c的深度是2，树的高度是3.因此，如果我们约定根的层数是0，从上到下地计算树的层数，顶点的深度就是它在树中的层数，树的高度就是顶点的最大层数。
 
+### 有序树
+
+**有序树**所有的子女都是从左到右排列的。
+
+**二叉树**就为一棵有序树，其中所有顶点子女个数不超过两个，并且每个子女不是父母的**左子女**就是父母的**右子女**.一棵子树的根若是某顶点的左（右）子女，该子树称为该顶点的**左(右)子树**.图1.12a是一棵二叉树的例子。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2001.12.42.png)
+
+将一些数字分配到二叉树的顶点的数为二叉查找树，如图b
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2001.14.14.png)
+
+观察图b发现，分配给父母顶点的数字比它左子树的数字大，比右子树的数字小。
+
+二叉查找树推广为一种更一般的查找树，称为**多路查找树**, 这种姐哦股对于磁盘上超大型文件的高效存储是必不可少的。
+
+有关二叉查找树的算法效率取决于这些树的高度。对于高度为h，具有n个顶点的二叉树，我们有以下不等式：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2002.16.26.png)
+
+出于计算目的，二叉树由一个代表树的顶点的节点集合来表示。每个节点包含一些相关顶点的信息（顶点的值或顶点的名字）和两个分别指向该节点的左子女和右子女的指针。图1.13是上图b中二叉查找树的标准实现。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2002.22.53.png)
+
+在计算机中，任意一棵有序树可以简单地表示为一个父节点和与子女相同数量的指针。不同节点的子女数目相差很大，这种表示法将变得很不方便。
+
+为了避免这种不便, 引用**先子女后兄弟表示法**:左指针指向节点第一个子女，右指针指向节点下一个兄弟。将有序树变成二叉树的样式，所有兄弟都被一个单独的链表（通过节点的右指针）链接起来，该链表的第一个元素被父节点的左指针指着。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2002.29.14.png)
+
+上图b中的树应用了这种表示法以后，变成图a的样子。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2002.30.27.png)
+
+图a是图b的关联二叉树。
+
+图a的表现形式把指针顺时针“转动”45度，树变成下图b的形式。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/01%20Introduction/屏幕截图%202014-11-21%2002.31.43.png)
+
