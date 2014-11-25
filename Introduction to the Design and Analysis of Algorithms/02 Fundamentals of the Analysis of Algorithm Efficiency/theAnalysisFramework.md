@@ -33,3 +33,21 @@
 
 注意，我们不需要知道Cop的值就能够回答刚才的问题：这个值在做出发的时候已经完全被约去了。还需要注意的是，C(n)公式的乘法常量1/2也被越饿去了。因此，对于大规模的输入，我们的效率分析框架忽略执行次数C(n)中的乘法常量，而仅关注执行次数的**增长次数**及其常熟倍。
 
+### 增长次数
+
+对于大规模的输入要强调执行次数的增长次数。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-25%2013.23.53.png)
+
+表2.1中数字的数量级对于算法的分析具有深远意义。这些函数中增长最慢的是对数函数，其次是线性函数，然后是线性的对数函数。
+
+如果一个程序具有对数级的基本操作次数，该程序对于任何实际规模的输入都会在几乎瞬间内完成。虽然特定的操作次数明显依赖于对数的底，通过以下方程：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-25%2013.26.07.png)
+
+允许对数在不同的底之间转换，并且仅在对数部分以外新增一个乘法常量。这就是为什么当我们仅对函数的增长次数及其常数倍感兴趣时，我们甚至可以忽略对数的底，简单地写成logn.
+
+幂函数2^n和阶乘函数n!.常常倾向于把两者都作为“呈指数级增长的函数”（或者简称为“指数级”），尽管严格来讲，只有前者才能这么称呼。一个需要记住的要点是：
+
+一个需要指数级操作次数的算法只能用来解决规模非常小的问题。
+
