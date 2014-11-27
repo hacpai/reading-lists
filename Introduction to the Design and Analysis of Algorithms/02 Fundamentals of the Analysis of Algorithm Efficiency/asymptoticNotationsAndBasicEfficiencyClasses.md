@@ -113,3 +113,39 @@ n^3和0.0001n^3都是立法函数，增长次数比n^2大；对于四次多项�
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.29.38.png)
 
+### 利用极限比较增长次数
+
+符号O，Ω和Θ的正式定义对于证明它们的抽象性质是不可缺少的，但我们很少直接用它们的定义来比较两个特定函数的增长次数。一种较为简便的比较方法，基于对所讨论的两个函数的比率求极限。有3种极限情况会发生：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.36.07.png)
+
+注意，前两种情况意味着t(n)∈O(g(n)),后两种情况意味着t(n)∈Ω(g(n)),第二种情况意味着t(n)∈Θ(g(n)).
+
+基于极限的方法常常比基于定义的方法更方便，因为它可以利用强大的微积分技术计算极限，比如说洛必达法制
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.38.52.png)
+
+和史特林公式
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.38.56.png)
+
+下面3个例子用极限法来比较两个函数的增长次数。
+
+**例1** 比较1/2n(n-1)和n^2的增长次数（可以一眼看出来）
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.40.52.png)
+
+因为极限等于一个为正的常量，所以这两个函数具有相同的增长次数，也可以用符号的形式表达为1/2n(n-1)∈Θ(n^2).
+
+**例2** 比较logn和√n的增长次数。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.43.49.png)
+
+因为极限等于0，logn的增长次数比√n小。
+
+**例2** 比较n!和2^n的增长次数。利用史特林公式，我们有
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2014.44.01.png)
+
+因此，虽然2^n增长很快，但n!增长得更快。我们可以用符号记作n!∈Ω(2^n).
+
