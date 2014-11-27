@@ -27,11 +27,13 @@ n^3和0.0001n^3都是立法函数，增长次数比n^2大；对于四次多项�
 
 ### 符号O
 
-**定义一** 函数t(n)包含在O(g(n))中，记作t(n) ∈ O(g(n)); 它的成立条件是：
+**定义1** 函数t(n)包含在O(g(n))中，记作t(n) ∈ O(g(n)); 它的成立条件是：
 
 > 对于所有的n≧n0来说，t(n) ≦ cg(n)
 
 图2.1说明了这个定义，我们在图中，将n扩展为实数。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202014-11-27%2013.52.06.png)
 
 作为例子，我们对前面介绍中的断言做一个正式的证明：100n + 5 ∈ O(n^2).
 
@@ -44,4 +46,20 @@ n^3和0.0001n^3都是立法函数，增长次数比n^2大；对于四次多项�
 > 100n + 5 ≦ 100n + 5n(当n≧1) = 105n
 
 这时，c＝105而n0 ＝1.
+
+### 符号Ω
+
+**定义2** 函数t(n)包含在Ω(g(n))中，记作t(n)∈Ω(g(n))，成立条件是：
+
+> 对于所有的n≧n0来说，t(n) ≧ cg(n)
+
+图2.2说明了这个定义。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202014-11-27%2013.52.13.png)
+
+这个例子是n^3 ∈ Ω(n^2)的一个正式证明：
+
+> 当n≧0时，n^3 ≧ n^2
+
+也就是所，我们可以选择c=1及n0=1.
 
