@@ -25,11 +25,11 @@
 
 把C(n)记作比较运算的执行次数，由于该算法每执行一次循环就会做一次比较，循环变量i从1到n－1，所以，C(n)的下列求和表达式：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.20.33.png)
 
 这个和很好计算，它对1重复了n－1遍。因此，
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.21.15.png)
 
 一个分析非递归算法时可遵循的一般性方案。
 
@@ -43,11 +43,11 @@
 
 我们用得特别频繁的是求和运算的两个基本规则：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.27.41.png)
 
 以及两个求和公式
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.27.47.png)
 
 **例2** **元素唯一性问题**:验证给定数组中的元素是否全部唯一。
 
@@ -67,18 +67,17 @@
 
 根据定义，如果对某个数组所做的比较数Cworst(n)比其他数组都多，那么它是所有大小为n的数组中的最差输入。查看最内层循环，发现有两种类型的最差输入（它们不会使算法过早地推出循环）：不包括相同元素的数组，以及最后两个元素使唯一对相同元素的数组。对于这样的输入，最内层循环每执行一次就会进行一次比较，并且对于循环变量j在i+1和n-1的每个值都做一次循环；对于外层循环变量i在0和n－2之间的每个值，上述过程都会再重复一遍。因此，我们有：
 
-
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.35.28.png)
 
 用S2式，计算会更快
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.35.32.png)
 
 这个结果是完全可以晕车的：在最坏的情况下，对于n个元素的所有(n-1)n/2对两两组合，该算法都要比较一遍。
 
 **例3** 两个给定n阶方阵A和B，有一个基于定义的算法计算它们乘积，求该算法的时间效率。
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.37.54.png)
 
 对于i≧0和j≦n-1的每一对下标，C[i, j]=A[i, 0]B[0, j]+...A[i, k]B[k, j]+...+A[i, n-1]B[n-1, j].
 
@@ -99,15 +98,15 @@
 
 算法最内层循环每次执行的时候，只执行一次乘法运算，变量k的范围从0到n－1，执行次数也为0到n－1.因此，对于变量i和j每个取值，算法所做的乘法运算次数是
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.46.53.png)
 
 而乘法运算总次数M(n)可以用一下三重求和式来表示：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.49.23.png)
 
 使用公式(S1)和规则(R1)求和。于是，我们得到：
 
-
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/02%20Fundamentals%20of%20the%20Analysis%20of%20Algorithm%20Efficiency/屏幕截图%202014-11-27%2015.49.23(2).png)
 
 这个例子足够简单，我们也可以不使用求和工具得出相同的结果。该算法计算的是乘积矩阵中n^2个元素的值。乘积的每一个元素都是第一个矩阵中某个n元素行和第二个矩阵中某个n元素列的点积，也就是做n次乘法运算。所以乘法运算的总次数是n·n^2=n^3.
 
