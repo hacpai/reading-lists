@@ -35,5 +35,5 @@ f(n)表示将问题分解为小问题和将结果合并起来所消耗的时间�
 
 ![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-02%2020.03.08.png)
 
-通过这个定理，无需对递推式求解，就可以知道该揭发的效率类型。
+通过这个定理，无需对递推式求解，就可以知道该算法的效率类型。
 
