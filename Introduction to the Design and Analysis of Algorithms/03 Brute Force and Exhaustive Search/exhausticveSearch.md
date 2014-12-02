@@ -17,3 +17,19 @@
 
 然而这个改进并不能大大改善效率。排列的总次数仍然需要(n-1)!/2次，这意味着除了一些非常小的n之外，穷举查找法几乎是不实用的。
 
+### 背包问题
+
+给定n个重量为Wi,...,Wn, 价值为Vi,..,Vn的物品和一个承重为W的背包，求这些物品中一个最有价值的子集，并且要能够装到背包中。
+
+图(a)介绍了背包问题的一个小规模的实例。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/03%20Brute%20Force%20and%20Exhaustive%20Search/屏幕截图%202014-12-02%2017.14.25.png)
+
+这个问题，穷举查找考虑给定的n个物品集合的所有子集，计算出每个子集的总重量，然后在它们中间找到价值最大的子集。图(b)给出图(a)问题的解。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/03%20Brute%20Force%20and%20Exhaustive%20Search/屏幕截图%202014-12-02%2017.14.48.png)
+
+因为一个n元素集合的子集数量是2^n,所以无论生成独立子集的额效率有多高，穷举查找都会导致一个Ω(2^n)的算法。
+
+旅行商问题和背包问题就是所谓的**NP困难问题**.对于NP困难问题，目前没有已知的，效率可以用多项式来表示的算法。一些更复杂的方法——回溯法和分支界限法（参见11.1节和11.2节），可以在优于指数级的效率下解决部分问题。
+
