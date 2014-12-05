@@ -71,3 +71,43 @@ c1 = (a1+b1) * (a0+b0) - (c2+c0)，即a数字和b数字和的积减去c2与c0的
 
 对于不是很大的整数，该算法的运行时间很可能比经典算法长。报告说，实验显示，大于600位的整数开始，分治算法的性能超越了笔算算法的性能。如果我们使用类似Java，C++和Smalltalk这样的面向对象的语言，会发现这些语言专门为处理大整数提供了一些类。
 
+### Strassen矩阵乘法
+
+分治方法可以减少两个数乘法中的位乘次数，它在矩阵乘法中发挥的同样作用。V.Strassen在1969年发表了一个算法，该算法的成功依赖于这个实现：计算两个2阶方阵A和B的积C只需要进行7次乘法运算，而不是曼丽算法所需要的8次(n^3=2^3).为了做到这一点，我们使用了下面的公式。
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-05%2017.57.13.png)
+
+其中，
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-05%2017.57.54.png)
+
+因此，对两个2阶方阵相乘时，Strassen算法执行了7次乘法和18次加减法，而蛮力算法需要执行8次乘法和4次加减法。该算法的重要性体现在当矩阵的阶趋于无穷大时，该算法所表现出来的卓越的渐进效率。
+
+假设n是2的乘方，A和B是两个n阶方阵（如果n不是2的乘方，矩阵可以用全0的行或列来填充）。我们把A，B和C分别划分为4个n/2阶的子矩阵：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-05%2018.08.44.png)
+
+我们像对待数字一样对待这些子矩阵，求得正确的积。例如，把数字替换成相应的子矩阵的话，C00用M2+M4-M5+M7来计算，其中M1，M4，M5和M7是由Strassen方程定义的。如果递归调用相同的方法来计算7个n/2阶矩阵的乘积，我们就得到了矩阵乘法的Strassen算法。
+
+评估一下该算法的渐进效率。如果M(n)是Strassen算法在计算两个n阶方阵时执行的乘法次数，我们对它有下面的递推关系式：
+
+> 当n > 1时，M(n) = 7M(n/2), M(1) = 1
+
+因为n=2^k,
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-05%2018.13.35.png)
+
+因为k＝log2 n，
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-05%2018.13.55.png)
+
+它比蛮力算法需要的n^3次乘法运算要来得小。
+
+因为减少了的乘法运算次数是以额外的加法运算为代价的，我们必须检查一下Strassen算法执行的加法次数A(n).对两个n>1阶矩阵相乘时，该算法要对n/2阶的矩阵作7次乘法和18次加法；当n＝1时，因为两个数字直接相乘，所以没有执行加法运算，从这一事实我们得出了下列递推关系式：
+
+![](https://github.com/arcticlion/reading-lists/blob/master/Introduction%20to%20the%20Design%20and%20Analysis%20of%20Algorithms/04%20Divide-and-Conquer/屏幕截图%202014-12-05%2018.42.47.png)
+
+根据主定理，A(n)∈Θ(n^(log2 7)).换句话说，加法的增长次数和乘法的增长次数是相同的。所以Strassen算法属于集合Θ(n^(log2 7)),这个效率类型要比蛮力法的Θ(n^3)要来得好。
+
+目前为止，这类算法中最快的是Coopersmith和Winograd发明的，它的时间效率达到了O(n^2.376).指数值的减小以算法越来越复杂为代价的。而且乘法常量的值很大，使它们没有实用的价值。然而从学术的观点看，我们得到的最优效率和理论上的最优效率之间还有鸿沟，但它们越来越接近。矩阵乘法在理论上的效率下界n^2次乘法。另一方面，矩阵乘法同其他一些重要问题在算法上是等价的，比如解线性方程组问题。
+
