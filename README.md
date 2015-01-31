@@ -10,4 +10,5 @@ This repository is not a "real" project. It is meant as a couple of notes of tho
 * Engines of Logic
 * Introduction to the Design and Analysis of Algorithms
 * Professional JavaScript for Web Developers
+* Think Python: How to Think Like a Computer Scientist
 
