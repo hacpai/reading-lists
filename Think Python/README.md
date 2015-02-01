@@ -12,4 +12,4 @@ English name: Think Python: How to Think Like a Computer Scientist
 ### Case study
 
 * 接口设计
-    * mypolygon.py
+    * polygon.py/mypolygon.py
