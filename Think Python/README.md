@@ -13,3 +13,5 @@ English name: Think Python: How to Think Like a Computer Scientist
 
 * 接口设计
     * polygon.py/mypolygon.py
+* word play
+    * wordplay.py
