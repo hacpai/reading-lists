@@ -45,17 +45,11 @@ def is_abecedarian( word ):
     return True
 
 
-#letters = raw_input( 'Enter a string of forbidden letters: ' )
-#fin = open( 'word.txt', 'r' )
-#sum_counter = 0
-#no_letters_counter = 0
-#for line in fin:
-    #word = line.strip()
-    #if avoids( word, letters ):
-        #no_letters_counter += 1
-    #sum_counter += 1
-#print 'The number of words that don\'t contain any of', letters, \
-        #'is', sum_counter - no_letters_counter
-print is_abecedarian( 'anc' )
-print is_abecedarian( 'bcd' )
-print is_abecedarian( 'aabbcc' )
+letters = raw_input( 'Enter a string of forbidden letters: ' )
+fin = open( 'words.txt', 'r' )
+sum_counter = 0
+no_letters_counter = 0
+for line in fin:
+    word = line.strip()
+
+    sum_counter += 1
