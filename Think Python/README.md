@@ -15,3 +15,11 @@ English name: Think Python: How to Think Like a Computer Scientist
     * polygon.py/mypolygon.py
 * word play
     * wordplay.py
+* dictionaries
+    * dictory.py
+        * 字典作为计数器集合
+        * 循环和字典
+        * 逆向查找
+        * 字典和列表
+        * 备忘录
+
