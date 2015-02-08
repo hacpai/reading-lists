@@ -49,11 +49,7 @@ def histogram( s ):
     """
     d = dict()
     for c in s:
-        if d.get( c, 0 ) > 0:
-            d[c] += 1
-        else:
-            d[c] = 1
-
+        d[c] = d.get( c, 0 ) + 1
     return d
 
 
@@ -147,6 +143,7 @@ def ackermann_no_memo( m, n ):
 
 #h = histogram( 'parrot' )
 #print invert_dict( h )
+print histogram( 'hello' )
 start = time.time()
 print ackermann_no_memo( 3, 4 )
 print time.time() - start
