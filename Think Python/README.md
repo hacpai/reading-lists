@@ -22,4 +22,5 @@ English name: Think Python: How to Think Like a Computer Scientist
         * 逆向查找
         * 字典和列表
         * 备忘录
-
+* data structure selection
+    * my_analyze_book.py
