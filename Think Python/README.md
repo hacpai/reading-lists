@@ -24,3 +24,5 @@ English name: Think Python: How to Think Like a Computer Scientist
         * 备忘录
 * data structure selection
     * my_analyze_book.py
+* 继承
+    * card.py
