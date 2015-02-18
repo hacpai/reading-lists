@@ -24,6 +24,11 @@ English name: Think Python: How to Think Like a Computer Scientist
         * 备忘录
 * data structure selection
     * my_analyze_book.py
+* 类和对象
+    * point_rectangle.py
+        * Write a function called distance_between_points that takes two Points as ar- guments and returns the distance between them.
+        * Write a function named move_rectangle that takes a Rectangle and two numbers named dx and dy. It should change the location of the rectangle by adding dx to the x coordinate of corner and adding dy to the y coordinate of corner.
+        * Write a version of move_rectangle that creates and returns a new Rectangle instead of modifying the old one.
 * 类和方法
     * point.py
         * Write an init method for the Point class that takes x and y as optional parameters and assigns them to the corresponding attributes.
