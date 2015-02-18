@@ -37,6 +37,7 @@ English name: Think Python: How to Think Like a Computer Scientist
         * Write a “pure” version of increment that creates and returns a new Time object rather than modifying the parameter.
         * Rewrite increment using time_to_int and int_to_time.
         * Rewrite time_to_int as a method.
+        * Write a `__cmp__` method for Time objects. Hint: you can use tuple comparison, but you also might consider using integer subtraction.
 * 类和方法
     * point.py
         * Write an init method for the Point class that takes x and y as optional parameters and assigns them to the corresponding attributes.
