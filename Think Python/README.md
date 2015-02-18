@@ -29,6 +29,14 @@ English name: Think Python: How to Think Like a Computer Scientist
         * Write a function called distance_between_points that takes two Points as ar- guments and returns the distance between them.
         * Write a function named move_rectangle that takes a Rectangle and two numbers named dx and dy. It should change the location of the rectangle by adding dx to the x coordinate of corner and adding dy to the y coordinate of corner.
         * Write a version of move_rectangle that creates and returns a new Rectangle instead of modifying the old one.
+* 类和函数
+    * time.py
+        * Write a function called print_time that takes a Time object and prints it in the form hour:minute:second. Hint: the format sequence '%.2d' prints an integer using at least two digits, including a leading zero if necessary.
+        * Write a boolean function called is_after that takes two Time objects, t1 and t2, and returns True if t1 follows t2 chronologically and False otherwise. Challenge: don’t use an if statement.
+        * Write a function increment which adds a given number of seconds to a Time object, can be written naturally as a modifier. Challenge: don't contain any loops.
+        * Write a “pure” version of increment that creates and returns a new Time object rather than modifying the parameter.
+        * Rewrite increment using time_to_int and int_to_time.
+        * Rewrite time_to_int as a method.
 * 类和方法
     * point.py
         * Write an init method for the Point class that takes x and y as optional parameters and assigns them to the corresponding attributes.
