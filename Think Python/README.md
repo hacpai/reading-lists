@@ -48,3 +48,5 @@ English name: Think Python: How to Think Like a Computer Scientist
             * If the second operand is a tuple, the method should add the first element of the tuple to the x coordinate and the second element to the y coordinate, and return a new Point with the result.
 * 继承
     * card.py
+* Gui
+    * gui_demo.py
