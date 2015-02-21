@@ -49,4 +49,11 @@ English name: Think Python: How to Think Like a Computer Scientist
 * 继承
     * card.py
 * Gui
-    * gui_demo.py
+    * Widgets
+        * gui_demo.py
+    * Packing widgets
+        * SimpleTurtleWorld.py
+    * Menus and Callables
+        * menubutton_demo.py
+    * Binding
+        * draggable_demo.py
