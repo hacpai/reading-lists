@@ -57,3 +57,5 @@ English name: Think Python: How to Think Like a Computer Scientist
         * menubutton_demo.py
     * Binding
         * draggable_demo.py
+* HashTable
+    * hashtable.py
