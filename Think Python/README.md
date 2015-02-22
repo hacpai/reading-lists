@@ -59,3 +59,21 @@ English name: Think Python: How to Think Like a Computer Scientist
         * draggable_demo.py
 * HashTable
     * hashtable.py
+* Lumpy
+    * state diagram
+        * lumpy_state.py
+            ![](http://ww2.sinaimg.cn/large/8178ba0ejw1epiaj8trmwj20vh0iz0uf.jpg)
+    * stack diagram
+        * lumpy_stack.py
+            ![](http://ww2.sinaimg.cn/large/8178ba0ejw1epiazckh0jj20vh0izmya.jpg)
+    * object diagram
+        * lumpy_object.py
+            ![](http://ww1.sinaimg.cn/large/8178ba0ejw1epibia4x39j20vh0iz40o.jpg)
+    * function and class object diagram
+        * lumpy_function.py
+            ![](http://ww2.sinaimg.cn/large/8178ba0ejw1epicajcycjj20vh0izwfz.jpg)
+    * class diagram
+        * lumpy_class.py
+            ![](http://ww2.sinaimg.cn/large/8178ba0ejw1epidehxa5cj20vh0iz3zv.jpg)
+        * lumpy_class2.py
+            ![](http://ww1.sinaimg.cn/large/8178ba0ejw1epidf5tig4j20vh0izmz6.jpg)
