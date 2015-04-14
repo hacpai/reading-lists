@@ -164,10 +164,37 @@ Docker 挂载数据卷的默认权限是读写，用户也可以通过 :ro 指�
 
     $ sudo docker run --rm -P --name web training/webapp python app.py
 
-> `--rm` 标记表示容器在终止后会立刻删除。
+> `--rm` 标记表示容器在终止后会立刻删除, 不能与 `-d` 参数一同使用
 
 ### 容器互联
 
     $ sudo docker run -d -P --name web --link db:db training/webapp python app.py
 
+> --link name:alias 其中 name 是要连接的容器的名称，alias 是这个链连接的别名
+
+### 查看容器公开连接信息
+
+```
+$ sudo docker run --rm --name web2 --link db:db training/webapp env
+. . .
+DB_NAME=/web2/db
+DB_PORT=tcp://172.17.0.5:5432
+DB_PORT_5000_TCP=tcp://172.17.0.5:5432
+DB_PORT_5000_TCP_PROTO=tcp
+DB_PORT_5000_TCP_PORT=5432
+DB_PORT_5000_TCP_ADDR=172.17.0.5
+. . .
+```
+
+Docker 还添加 host 信息到父容器的 /etc/hosts 的文件。下面是父容器 web 的 hosts 文件
+
+```
+$ sudo docker run -t -i --rm --link db:db training/webapp /bin/bash
+root@aed84ee21bde:/opt/webapp# cat /etc/hosts
+172.17.0.7  aed84ee21bde
+. . .
+172.17.0.5  db
+```
+
+这里有 2 个 hosts，第一个是 web 容器，web 容器用 id 作为他的主机名，第二个是 db 容器的 ip 和主机名。 
 
