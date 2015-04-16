@@ -198,3 +198,23 @@ root@aed84ee21bde:/opt/webapp# cat /etc/hosts
 
 这里有 2 个 hosts，第一个是 web 容器，web 容器用 id 作为他的主机名，第二个是 db 容器的 ip 和主机名。 
 
+### 配置 DNS
+
+默认情况下，容器挂载主机的 `/etc/resolv.conf` 文件，用主机的 DNS
+
+在 `docker run` 执行时添加 `--dns=IP_ADDRESS` 添加 DNS 服务器到容器的 /etc/resolv.conf 中.
+
+### 查看系统转发支持
+
+```
+$sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward = 1
+```
+
+如果为 0，说明没有开启转发，则需要手动打开。
+
+    $sysctl -w net.ipv4.ip_forward=1
+
+### 访问指定端口
+
+
