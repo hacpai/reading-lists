@@ -452,4 +452,14 @@ You can also extend the chain by mounting the volume that came from the dbdata c
 
 ### Docker Compose
 
+#### Install Compose
+
+```
+curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+```
+
+Or
+
+    pip install -U docker-compose
 
