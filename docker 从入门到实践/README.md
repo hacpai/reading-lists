@@ -215,6 +215,95 @@ net.ipv4.ip_forward = 1
 
     $sysctl -w net.ipv4.ip_forward=1
 
+### 容器之间的访问
+
+默认情况下，容器之间是允许网络互联的。
+
+为了安全考虑，可以在 `/etc/default/docker` 文件中配置 `DOCKER_OPTS=--icc=false` 来禁止它。
+
 ### 访问指定端口
+
+查看系统的 `iptables` 规则
+
+```
+$ sudo iptables -nL
+...
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+DROP       all  --  0.0.0.0/0            0.0.0.0/0
+...
+```
+
+`docker run` 时使用 `--link=CONTAINER_NAME:ALIAS` 会在 `iptable` 中为两个容器分别添加一条 `ACCEPT` 规则。
+
+```
+ sudo iptables -nL
+ ...
+ Chain FORWARD (policy ACCEPT)
+ target     prot opt source               destination
+ ACCEPT     tcp  --  172.17.0.2           172.17.0.3           tcp spt:80
+ ACCEPT     tcp  --  172.17.0.3           172.17.0.2           tcp dpt:80
+ DROP       all  --  0.0.0.0/0            0.0.0.0/0
+ ```
+
+### 容器访问外部网络
+
+默认情况下，容器可以主动访问到外部网络。
+
+容器到外部网络的连接，源地址都会被 NAT 成本地系统网卡发出的。
+
+### 外部访问容器实现
+
+`docker run` 通过 `-p` 或 `-P` 参数来启用。
+
+Docker 配置文件 `/etc/default/docker` 中指定 `DOCKER_OPTS="--ip=IP_ADDRESS"`, 可以永久绑定某个固定的 ip 地址。
+
+### 配置 docker0 网桥
+
+* `--bip=CIDR` --IP 地址加掩码格式，例如 192.168.1.5/24
+* `--mtu=BYTES` --覆盖默认的 Docker mtu 配置
+
+`brctl show` 可以查看网桥和端口连接信息。
+
+```
+$ sudo brctl show
+bridge name     bridge id               STP enabled     interfaces
+docker0         8000.3a1d7362b4ee       no              veth65f9
+                                             vethdda6
+```
+
+### 自定义网桥
+
+如果服务已经运行，那需要先停止服务，并删除旧的网桥。
+
+```
+$ sudo service docker stop
+$ sudo ip link set dev docker0 down
+$ sudo brctl delbr docker0
+```
+然后创建一个网桥 bridge0。
+
+```
+$ sudo brctl addbr bridge0
+$ sudo ip addr add 192.168.5.1/24 dev bridge0
+$ sudo ip link set dev bridge0 up
+```
+查看确认网桥创建并启动。
+
+```
+$ ip addr show bridge0
+4: bridge0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state UP group default
+    link/ether 66:38:d0:0d:76:18 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.5.1/24 scope global bridge0
+       valid_lft forever preferred_lft forever
+```
+配置 Docker 服务，默认桥接到创建的网桥上。
+
+```
+$ echo 'DOCKER_OPTS="-b=bridge0"' >> /etc/default/docker
+$ sudo service docker start
+```
+
+可以继续用 `brctl show` 命令查看桥接的信息。另外，在容器中可以使用 `ip addr` 和 `ip route` 命令来查看 IP 地址配置和路由信息。
 
 
