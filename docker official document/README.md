@@ -149,6 +149,7 @@ $ sudo docker top nostalgic_morse
 PID                 USER                COMMAND
 854                 root                python app.py
 ```
+查看容器进程
 
 #### Inspecting our Web Application Container
 
